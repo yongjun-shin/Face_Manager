@@ -25,6 +25,20 @@ function App() {
         <BrowserRouter>
             <div>
                 <Navi/>
+                <Routes>
+                    <Route path="/" element={<Home/>} />
+                    <Route path="/detect" element={<FaceDetect/>} />
+                    <Route path="/pricing" element={<Pricing/>} />
+                    <Route path="/qna" element={<QnA/>} />
+                    <Route path="/login" element={<Login/>} />
+                    <Route path="/join" element={<Join/>} />
+                </Routes>
+                <Footer></Footer>
+            </div>
+
+
+            {/* <div>
+                <Navi/>
                 <Nav_my/>
                 <Routes>
                     <Route path="/" element={<Home/>} />
@@ -48,7 +62,7 @@ function App() {
                     <Btn_home text={'내 얼굴 인식하기'} onClick={btn_click}></Btn_home>
                 </div>
                 <Footer></Footer>
-            </div>
+            </div> */}
         </BrowserRouter>
     );
 }
