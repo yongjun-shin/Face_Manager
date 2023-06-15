@@ -1,6 +1,5 @@
 import { ReactComponent as Human } from '../svgs/about_human.svg';
 import { ReactComponent as Logos } from '../svgs/logos.svg';
-import { useEffect, useRef } from 'react';
 import './pricing.css'
 
 export function Pricing() {
@@ -23,17 +22,45 @@ export function Pricing() {
                 </div>
                 <div class='line1-top'>
                     <div class='line1'>
-                        <canvas class='myCanvas' style={{backgroundColor:'#FAE1DD'}}></canvas>
-                        <canvas class='myCanvas' style={{backgroundColor:'#F8EDEB'}}></canvas>
-                        <canvas class='myCanvas' style={{backgroundColor:'#E8E8E4'}}></canvas>
-                        <canvas class='myCanvas' style={{backgroundColor:'#D8E2DC'}}></canvas>
+                        <div class='parent'>
+                            <div class='myCanvas' style={{backgroundColor: '#FAE1DD' }}></div>
+                            <img class='human' src='/imgs/human.png' />
+                            <p class='info'>박진영<br/>AI Track</p>
+                        </div>
+                        <div class='parent'>
+                            <div class='myCanvas' style={{backgroundColor: '#F8EDEB' }}></div>
+                            <img class='human' src='/imgs/human.png' />
+                            <p class='info'>박천성<br/>AI Track</p>
+                        </div>
+                        <div class='parent'>
+                            <div class='myCanvas' style={{backgroundColor: '#E8E8E4' }}></div>
+                            <img class='human' src='/imgs/human.png' />
+                            <p class='info'>심유진<br/>AI Track</p>
+                        </div>
+                        <div class='parent'>
+                            <div class='myCanvas' style={{backgroundColor: '#D8E2DC' }}></div>
+                            <img class='human' src='/imgs/human.png' />
+                            <p class='info'>신용준<br/>AI Track</p>
+                        </div>
                     </div>
                 </div>
                 <div class='line2-top'>
                     <div class='line2'>
-                        <canvas class='myCanvas' style={{backgroundColor:'#ECE4DB'}}></canvas>
-                        <canvas class='myCanvas' style={{backgroundColor:'#FFE5D9'}}></canvas>
-                        <canvas class='myCanvas' style={{backgroundColor:'#FFD7BA'}}></canvas>
+                        <div class='parent'>
+                            <div class='myCanvas' style={{backgroundColor: '#ECE4DB' }}></div>
+                            <img class='human' src='/imgs/human.png' />
+                            <p class='info'>이성욱<br/>AI Track</p>
+                        </div>
+                        <div class='parent'>
+                            <div class='myCanvas' style={{backgroundColor: '#FFE5D9' }}></div>
+                            <img class='human' src='/imgs/human.png' />
+                            <p class='info'>박세은<br/>AI Track</p>
+                        </div>
+                        <div class='parent'>
+                            <div class='myCanvas' style={{backgroundColor: '#FFD7BA' }}></div>
+                            <img class='human' src='/imgs/human.png' />
+                            <p class='info'>이채현<br/>AI Track</p>
+                        </div>
                     </div>
                 </div>
             </div>

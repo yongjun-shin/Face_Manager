@@ -24,6 +24,23 @@
     justify-content: center;
     margin-bottom: 39px;
 }
+.second .parent {
+    position: relative; 
+    display: inline-block;
+}
+.second .info {
+    position: absolute;
+    bottom: 0;
+    left:70px;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+}
+.second .human {
+    position: absolute; 
+    top: 0; 
+    left: 10px;
+}
 .second .line1-top {
     display: flex;
     justify-content: center;
