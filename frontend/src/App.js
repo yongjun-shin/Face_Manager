@@ -1,9 +1,14 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Main from './pages/Home/home.js'
 function App() {
     return (
-        <div>
-            <h1>Hello World!</h1>
-            <h1>Hello World2!</h1>
-        </div>
+        <BrowserRouter>
+            <div className='App'>
+                <Routes>
+                    <Route path="/" element={<Main/>} />
+                </Routes>
+            </div>
+        </BrowserRouter>
     );
 }
 
