@@ -1,8 +1,10 @@
+import FaceDetect from './pages/FaceDetect/facedetect';
+import './App.css';
+
 function App() {
     return (
         <div>
-            <h1>Hello World!</h1>
-            <h1>Hello World2!</h1>
+            <FaceDetect></FaceDetect>
         </div>
     );
 }
