@@ -36,7 +36,6 @@ function App() {
                 <Footer></Footer>
             </div>
 
-
             {/* <div>
                 <Navi/>
                 <Nav_my/>
