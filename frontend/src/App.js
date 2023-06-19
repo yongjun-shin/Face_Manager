@@ -33,6 +33,12 @@ function App() {
                     <Route path="/qna" element={<QnA/>} />
                     <Route path="/login" element={<Login/>} />
                     <Route path="/join" element={<Join/>} />
+                    <Route path="/about" element={<About/>} />
+
+                    <Route path="/member" element={<MemberInfo/>} />
+                    <Route path="/physiognomy" element={<Physiognomy/>} />
+                    <Route path="/createimage" element={<CreateImage/>} />
+                    <Route path="/history" element={<History/>} />
                 </Routes>
                 <Footer></Footer>
             </div>

@@ -21,8 +21,8 @@ export function Nav_my() {
     const location = useLocation();
 
     return (
-        <div style={{display:'flex', justifyContent:'center'}}>
-            <div style={{width:'1920px'}}>
+        <div >
+            <div style={{width:'244px'}}>
                 <Nav>
                     <a style={{fontWeight: 500, fontSize:'25px', marginLeft:'17px'}}>My Page</a>
                     <hr style={{border:'1px solid #61594B'}}/>
