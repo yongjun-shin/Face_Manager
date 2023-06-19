@@ -1,9 +1,56 @@
-import React from 'react';
+import React,{ useEffect, useState } from 'react';
 import './makeupmethod.css'
-import styled from 'styled-components';
+import styled, { keyframes }  from 'styled-components';
 
 
 function Makeup() {
+
+  const text_1 = "뭐뭐한"
+  const text_2 = "뭐뭐"
+
+  const fadeInAnimation = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
+
+const fadeInUp = keyframes`
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+}
+  to {
+    opacity: 1;
+    transform: translateZ(0);
+}
+`;
+
+const MainTextContainer = styled.div`
+  opacity: 0;
+  animation: ${fadeInAnimation} 1s ease-in forwards;
+`;
+
+const AdditionalTextContainer = styled.div`
+  opacity: 0;
+  animation: ${fadeInUp} 1s ease-in 0.5s forwards;
+  
+`;
+
+const Animation = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible2, setIsVisible2]= useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+        setIsVisible(true);
+      }, 1000);
+    setTimeout(() => {
+        setIsVisible2(true);
+      }, 500);
+  }, []);
 
   return (
     <div>
@@ -36,8 +83,38 @@ function Makeup() {
         저희는 끊임없이 나아가고자 합니다.
       </span>
     </div>
+    <div className='makeup-img-user'>
+    <MainTextContainer style={{ opacity: isVisible ? 1 : 0 }}>
+      <img className='userimage'  src='img/image 16.png' />
+    </MainTextContainer>
+    </div>
+    <div className='makeup-img-features'>
+    {isVisible2 && (
+      <AdditionalTextContainer>
+      <span className='makeup-img-features-brow'>
+        {text_1}<br></br>{text_2} 
+      </span>
+      <span className='makeup-img-features-eye'>
+        {text_1}<br></br>{text_2} 
+      </span>
+      <span className='makeup-img-features-nose'>
+        {text_1}<br></br>{text_2} 
+      </span>
+      <span className='makeup-img-features-clown'>
+        {text_1}<br></br>{text_2} 
+      </span>
+      <span className='makeup-img-features-lip'>
+        {text_1}<br></br>{text_2} 
+      </span>
+      <span className='makeup-img-features-face'>
+        {text_1}<br></br>{text_2} 
+      </span>
+      </AdditionalTextContainer>)}
+    </div>
   </div>
   );
+}
+  return <Animation />;
 }
 
 export default Makeup;

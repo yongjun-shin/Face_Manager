@@ -3,6 +3,7 @@
 
 body {
     background-color: #E8E5DF;
+    
   }
 
 .makeup-method-01{
@@ -36,8 +37,9 @@ color: #3A3A3A;
 
 .makeup-forme{
 position: absolute;
+width: 322px;
 height: 20px;
-left: 583px;
+left: calc(50% - 322px/2);
 top: 786px;
 }
 
@@ -87,4 +89,122 @@ line-height: 29px;
 color: rgba(79, 76, 68, 0.91);
   
 text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.makeup-img-user{
+position: absolute;
+width: 274px;
+height: 383px;
+left: calc(50% - 274px/2);
+top: 283px;
+
+}
+
+.makeup-img-features-brow{
+position: relative;
+width: 200px;
+height: 70px;
+left: calc(50% + 230px);
+top: 349px;
+
+font-family: 'Noto Serif KR';
+font-style: normal;
+font-weight: 600;
+font-size: 14px;
+line-height: 20px;
+text-align: center;
+
+color: #3A3A3A;
+
+
+}
+
+.makeup-img-features-eye{
+position: absolute;
+width: 200px;
+height: 70px;
+left: calc(50% - 173px*2);
+top: 349px;
+
+font-family: 'Noto Serif KR';
+font-style: normal;
+font-weight: 600;
+font-size: 14px;
+line-height: 20px;
+text-align: center;
+
+color: #3A3A3A;
+
+}
+
+.makeup-img-features-clown{
+position: absolute;
+width: 200px;
+height: 70px;
+left: calc(50% - 200px*2);
+top: 415px;
+
+font-family: 'Noto Serif KR';
+font-style: normal;
+font-weight: 600;
+font-size: 14px;
+line-height: 20px;
+text-align: center;
+
+color: #3A3A3A;
+  
+}
+
+.makeup-img-features-lip{
+position: absolute;
+width: 200px;
+height: 70px;
+left: calc(50% - 173px*2);
+top: 473px;
+
+font-family: 'Noto Serif KR';
+font-style: normal;
+font-weight: 600;
+font-size: 14px;
+line-height: 20px;
+text-align: center;
+
+color: #3A3A3A;
+  
+}
+
+.makeup-img-features-nose{
+position: absolute;
+width: 200px;
+height: 70px;
+left: calc(50% + 200px);
+top: 415px;
+
+font-family: 'Noto Serif KR';
+font-style: normal;
+font-weight: 600;
+font-size: 14px;
+line-height: 20px;
+text-align: center;
+
+color: #3A3A3A;
+  
+}
+
+.makeup-img-features-face{
+position: absolute;
+width: 200px;
+height: 70px;
+left: calc(50% + 150px);
+top: 473px;
+
+font-family: 'Noto Serif KR';
+font-style: normal;
+font-weight: 600;
+font-size: 14px;
+line-height: 20px;
+text-align: center;
+
+color: #3A3A3A;
+  
 }
