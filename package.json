@@ -1,9 +1,7 @@
 {
   "dependencies": {
-<<<<<<< HEAD
-    "styled-components": "^6.0.0-rc.3"
-=======
+
+    "styled-components": "^6.0.0-rc.3",
     "react-router-dom": "^6.12.1"
->>>>>>> 462f446389726a1ecebd8bb9df5c5c41a6051490
   }
 }

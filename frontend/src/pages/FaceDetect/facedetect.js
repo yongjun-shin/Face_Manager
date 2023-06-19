@@ -1,9 +1,11 @@
 import React from "react";
 import './facedetect.css';
+import Footer from '/Users/jyp/Desktop/KT_BigProject_07/frontend/src/components/footer.js'
 
 function FaceDetect() {
     return(
         <div>
+            <Footer></Footer>
             <Text></Text>
             <Body></Body>
         </div>

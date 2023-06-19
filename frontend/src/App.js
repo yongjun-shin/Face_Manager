@@ -1,7 +1,7 @@
 import Navi from '../src/components/nav.js';
 import Footer from '../src/components/footer.js';
-import Nav_my from './components/nav_mypage.js';
-import {Btn_black, Btn_beige, Btn_home} from './components/button.js';
+// import Nav_my from './components/nav_mypage.js';
+// import {Btn_black, Btn_beige, Btn_home} from './components/button.js';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home/home.js';
 import FaceDetect from './pages/FaceDetect/facedetect.js';
