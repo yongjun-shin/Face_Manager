@@ -8,6 +8,7 @@ const Nav = styled.nav`
     height: 274px;
     color: #3A3A3A;
     margin-top: 80px;
+
 `;
 const CustomLink = styled(Link)`
     color: inherit;
@@ -20,18 +21,22 @@ export function Nav_my() {
     const location = useLocation();
 
     return (
-        <Nav>
-            <a style={{fontWeight: 500, fontSize:'25px', marginLeft:'17px'}}>My Page</a>
-            <hr style={{border:'1px solid #61594B'}}/>
-            <CustomLink style={{fontSize:'15px'}} to={'/member'} isActive={location.pathname === "/member"}>회원정보</CustomLink>
-            <hr />
-            <CustomLink style={{fontSize:'15px'}} to={'/physiognomy'} isActive={location.pathname === "/physiognomy"}>관상 분석</CustomLink>
-            <hr />
-            <CustomLink style={{fontSize:'15px'}} to={'/createimage'} isActive={location.pathname === "/createimage"}>AI 이미지 생성</CustomLink>
-            <hr />
-            <CustomLink style={{fontSize:'15px'}} to={'/history'} isActive={location.pathname === "/history"}>히스토리</CustomLink>
-            <hr />
-        </Nav>
+        <div >
+            <div style={{width:'244px'}}>
+                <Nav>
+                    <a style={{fontWeight: 500, fontSize:'25px', marginLeft:'17px'}}>My Page</a>
+                    <hr style={{border:'1px solid #61594B'}}/>
+                    <CustomLink style={{fontSize:'15px'}} to={'/member'} isActive={location.pathname === "/member"}>회원정보</CustomLink>
+                    <hr />
+                    <CustomLink style={{fontSize:'15px'}} to={'/physiognomy'} isActive={location.pathname === "/physiognomy"}>관상 분석</CustomLink>
+                    <hr />
+                    <CustomLink style={{fontSize:'15px'}} to={'/createimage'} isActive={location.pathname === "/createimage"}>AI 이미지 생성</CustomLink>
+                    <hr />
+                    <CustomLink style={{fontSize:'15px'}} to={'/history'} isActive={location.pathname === "/history"}>히스토리</CustomLink>
+                    <hr />
+                </Nav>
+            </div>
+        </div>
     );
 }
 
