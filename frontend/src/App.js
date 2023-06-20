@@ -7,8 +7,10 @@ import Home from './pages/Home/home.js';
 import FaceDetect from './pages/FaceDetect/facedetect.js';
 import Pricing from './pages/Pricing/pricing.js';
 import QnA from './pages/QnA/qna.js';
-import Login from './pages/Login/login.js';
-import Join from './pages/Join/join.js';
+//import Login from './pages/Login/login.js';
+import Login from './pages/Login/login2.js';
+//import Join from './pages/Join/join.js';
+import Join from './pages/Join/join2.js';
 
 import MemberInfo from './pages/MemberInfo/member.js';
 import Physiognomy from './pages/Physiognomy/physiognomy.js';
