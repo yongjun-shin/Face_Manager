@@ -1,30 +1,6 @@
 import React, { useState } from 'react';
 import styled from "styled-components";
-
-const Black = styled.button`
-    width: 237px;
-    height: 46px;
-    background: #000000;
-    border-radius: 10px;
-    font-family: 'PT Serif';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 24px;
-    color: #FFFFFF;
-    cursor: pointer;
-    margin-bottom : 228px;
-    margin-top : 52px;
-
-    &:active {
-        background: #333333;
-    }
-`;
-
-export function BtnBlack({text, onClick}) {
-    return (
-        <Black onClick={onClick}>{text}</Black>
-    );
-}
+import {Btn_black} from '../../components/button.js';
 
 const Title = styled.h1`
     font-family: 'Noto Serif KR';
@@ -41,6 +17,7 @@ const InputContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    margin-top:24px;
 `;
 
 const InputLabel = styled.label`
@@ -76,15 +53,15 @@ const MemberRegistration = () => {
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
 
-    const handleJoin = () => {
-        // 가입 로직 (백엔드 통합 필요)
+    const btn_click = (event) => {
+        event.preventDefault();
     };
 
     return (
         <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
             <Title>회원 가입</Title>
             <InputContainer>
-                <InputLabel>email</InputLabel>
+                <InputLabel>Email</InputLabel>
                 <InputBox
                     type="email"
                     placeholder="이메일"
@@ -93,7 +70,7 @@ const MemberRegistration = () => {
                 />
             </InputContainer>
             <InputContainer>
-                <InputLabel>pw</InputLabel>
+                <InputLabel>Password</InputLabel>
                 <InputBox
                     type="password"
                     placeholder="비밀번호"
@@ -102,7 +79,7 @@ const MemberRegistration = () => {
                 />
             </InputContainer>
             <InputContainer>
-                <InputLabel>name</InputLabel>
+                <InputLabel>Name</InputLabel>
                 <InputBox
                     type="text"
                     placeholder="이름"
@@ -110,10 +87,7 @@ const MemberRegistration = () => {
                     onChange={(e) => setName(e.target.value)}
                 />
             </InputContainer>
-            <BtnBlack
-                onClick={handleJoin}
-                text="Join"
-            />
+            <Btn_black onClick={btn_click} text={'Join'} style={{fontSize:'24px', width:'237px', height:'46px', marginTop:'52px', marginBottom:'228px'}}/>
         </div>
     );
 };

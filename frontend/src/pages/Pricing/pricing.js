@@ -66,7 +66,7 @@ export function Pricing() {
                     </div>
                 </div>
             </div>
-            <div class='title'>
+            <div class='title_btn'>
                 <Btn_black text={'Pay'} style={{width:'157px', height:'43px', fontSize:'12px', backgroundColor:'#3A3A3A'}}></Btn_black>
             </div>
         </div>
