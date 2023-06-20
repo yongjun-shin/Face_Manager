@@ -7,14 +7,17 @@ import Home from './pages/Home/home.js';
 import FaceDetect from './pages/FaceDetect/facedetect.js';
 import Pricing from './pages/Pricing/pricing.js';
 import QnA from './pages/QnA/qna.js';
+
 //import Login from './pages/Login/login.js';
 import Login from './pages/Login/login2.js';
 //import Join from './pages/Join/join.js';
 import Join from './pages/Join/join2.js';
+import About from './pages/About/about.js';
 
 import MemberInfo from './pages/MemberInfo/member.js';
 import Physiognomy from './pages/Physiognomy/physiognomy.js';
 import CreateImage from './pages/CreateImage/createimage.js';
+import CreateImageResult from './pages/CreateImage/createimage_res.js';
 import History from './pages/History/history.js';
 import './App.css';
 
@@ -34,10 +37,16 @@ function App() {
                     <Route path="/qna" element={<QnA/>} />
                     <Route path="/login" element={<Login/>} />
                     <Route path="/join" element={<Join/>} />
+                    <Route path="/about" element={<About/>} />
+
+                    <Route path="/member" element={<MemberInfo/>} />
+                    <Route path="/physiognomy" element={<Physiognomy/>} />
+                    <Route path="/createimage" element={<CreateImage/>} />
+                    <Route path="/createimage_res" element={<CreateImageResult/>} />
+                    <Route path="/history" element={<History/>} />
                 </Routes>
                 <Footer></Footer>
             </div>
-
 
             {/* <div>
                 <Navi/>

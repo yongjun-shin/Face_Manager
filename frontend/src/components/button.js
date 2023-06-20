@@ -52,24 +52,37 @@ const Home = styled.button`
     }
 `;
 
-export function Btn_black({text, onClick}) {
+export function Btn_black({text, onClick, style}) {
     return (
-        <Black onClick={onClick}>{text}</Black>
+        <Black onClick={onClick} style={style}>{text}</Black>
     );
 }
-export function Btn_beige({text, onClick}) {
+export function Btn_beige({text, onClick, style}) {
     return (
-        <Beige onClick={onClick}>{text}</Beige>
+        <Beige onClick={onClick} style={style}>{text}</Beige>
     );
 }
-export function Btn_home({text, onClick}) {
+export function Btn_home({text, onClick, style}) {
     return (
-        <Home onClick={onClick}>
+        <Home onClick={onClick} style={style}>
             <div>
                 {text}
                 <Arrow style={{marginLeft:'13px'}}/>
             </div>
         </Home>
+    );
+}
+export function Btn_social({text, onClick, style, svg}) {
+
+    return (
+        <Black onClick={onClick} style={style}>
+            <div style={{display:'flex', justifyContent:'center'}}>
+                <div style={{marginRight:'13px'}}>
+                    {svg}
+                </div>
+                {text}
+            </div>
+        </Black>
     );
 }
 
