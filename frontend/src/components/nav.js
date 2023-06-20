@@ -9,6 +9,8 @@ const Nav = styled.nav`
   color: #3A3A3A;
   font-family: 'PT Serif';
   font-style: normal;
+  display: flex;
+  justify-content: center;
 `;
 const Div_items = styled.div`
     display: flex;
@@ -31,7 +33,7 @@ export function Navi() {
     return (
         <Nav>
             <Div_items>
-                <CustomLink style={{ fontWeight:'bold', fontSize:'26px', marginLeft:'250px'}} to={'/'} >Face Manager .</CustomLink>
+                <CustomLink style={{ fontWeight:'bold', fontSize:'26px'}} to={'/'} >Face Manager .</CustomLink>
                 <CustomLink style={{ fontSize:'18px', marginLeft:'184px'}} to={'/detect'} isActive={location.pathname === "/detect"}>Face Detect</CustomLink>
                 <CustomLink style={{ fontSize:'18px', marginLeft:'92px'}} to={'/pricing'} isActive={location.pathname === "/pricing"}>Pricing</CustomLink>
                 <CustomLink style={{ fontSize:'18px', marginLeft:'83px'}} to={'/qna'} isActive={location.pathname === "/qna"}>Q&A</CustomLink>

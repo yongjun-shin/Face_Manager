@@ -9,6 +9,7 @@ import Pricing from './pages/Pricing/pricing.js';
 import QnA from './pages/QnA/qna.js';
 import Login from './pages/Login/login.js';
 import Join from './pages/Join/join.js';
+import About from './pages/About/about.js';
 
 import MemberInfo from './pages/MemberInfo/member.js';
 import Physiognomy from './pages/Physiognomy/physiognomy.js';
@@ -32,10 +33,15 @@ function App() {
                     <Route path="/qna" element={<QnA/>} />
                     <Route path="/login" element={<Login/>} />
                     <Route path="/join" element={<Join/>} />
+                    <Route path="/about" element={<About/>} />
+
+                    <Route path="/member" element={<MemberInfo/>} />
+                    <Route path="/physiognomy" element={<Physiognomy/>} />
+                    <Route path="/createimage" element={<CreateImage/>} />
+                    <Route path="/history" element={<History/>} />
                 </Routes>
                 <Footer></Footer>
             </div>
-
 
             {/* <div>
                 <Navi/>
