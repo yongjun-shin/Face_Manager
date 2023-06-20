@@ -1,6 +1,7 @@
 .text{
     justify-content: center;
     align-items: center;
+    margin-top: 50px;
 }
 .h1 {
     left: calc(50% - 180px/2 - 0.5px);
@@ -29,21 +30,22 @@
 .html-Bpo{
     display: flex;
     justify-content: center;
+    margin-bottom: 100px;
 }
 .auto-group-qevz-p75 {
     align-items: center;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    position: absolute;
-    top: 18.6rem;
+    margin-top: 20px;
     }
   
 .upload_form{
     background-color: #e8e5df;
     border: solid 0.1rem #3a3a3a;
     box-sizing: border-box;
-    margin: 0rem 11.1rem 3.3rem 11rem;
+    margin-bottom: 120px;
+    margin-top: 100px;
     align-items: center;
     width: 730px;
     height: 40px;
@@ -58,7 +60,7 @@
     display: flex;
     flex-shrink: 0;
     font-family: Noto Serif KR, 'Source Sans Pro';
-    font-size: 1.5rem;
+    font-size: 20px;
     font-weight: 700;
     justify-content: center;
     line-height: 1.435;
@@ -73,7 +75,7 @@
     font-size: 2.4rem;
     font-weight: 400;
     line-height: 1.435;
-    margin-bottom: 4.8rem;
+    margin-bottom: 2.4rem;
     text-align: center;
     white-space: nowrap;
 }
@@ -234,6 +236,9 @@ input[type="radio"] {
 }
 
 /* 라디오 set4 시작 */
+.radioset4{
+    margin-bottom: 64px;
+}
 .radio-container4 {
     display: flex;
 }
@@ -468,5 +473,3 @@ input[type="radio"] {
     margin: 0rem 42.1rem 0rem 43.2rem;
     width: calc(100% - 85.3rem);
 }
-
-

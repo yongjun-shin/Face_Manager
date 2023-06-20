@@ -1,11 +1,10 @@
 import React from "react";
 import './facedetect.css';
-import Footer from '/Users/jyp/Desktop/KT_BigProject_07/frontend/src/components/footer.js'
+import Btn_black from '/Users/jyp/Desktop/KT_BigProject_07/frontend/src/components/button.js';
 
 function FaceDetect() {
     return(
         <div>
-            <Footer></Footer>
             <Text></Text>
             <Body></Body>
         </div>
@@ -110,6 +109,7 @@ function Body(){
                         </label>
                     </div>
                 </div>
+                <Btn_black class="btn_StartAnalysis" text={'분석시작'} style={{width:'237px', height:'46px', fontSize:'20px', marginBottom:'100px'}}></Btn_black>
             </div>
         </div>
     );
