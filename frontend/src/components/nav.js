@@ -27,6 +27,14 @@ const CustomLink2 = styled(Link)`
     text-decoration: none;
 `;
 
+let login = false;
+export function setLoginStatus(status) {
+    login = status;
+}
+export function getLoginStatus() {
+    return login;
+}
+
 export function Navi() {
     const location = useLocation();
 
@@ -43,7 +51,6 @@ export function Navi() {
     );
 }
 
-let login = false;
 function Nav_log() {
     let content = null;
     if(login === false){

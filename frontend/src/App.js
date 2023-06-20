@@ -14,6 +14,7 @@ import About from './pages/About/about.js';
 import MemberInfo from './pages/MemberInfo/member.js';
 import Physiognomy from './pages/Physiognomy/physiognomy.js';
 import CreateImage from './pages/CreateImage/createimage.js';
+import CreateImageResult from './pages/CreateImage/createimage_res.js';
 import History from './pages/History/history.js';
 import './App.css';
 
@@ -38,6 +39,7 @@ function App() {
                     <Route path="/member" element={<MemberInfo/>} />
                     <Route path="/physiognomy" element={<Physiognomy/>} />
                     <Route path="/createimage" element={<CreateImage/>} />
+                    <Route path="/createimage_res" element={<CreateImageResult/>} />
                     <Route path="/history" element={<History/>} />
                 </Routes>
                 <Footer></Footer>

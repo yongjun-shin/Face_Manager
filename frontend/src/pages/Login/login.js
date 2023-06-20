@@ -1,30 +1,10 @@
 import React, { useState } from 'react';
+import {Btn_black, Btn_social} from '../../components/button.js';
+import { setLoginStatus } from '../../components/nav.js';
+import { ReactComponent as Kakao } from "../svgs/kakao.svg";
+import { ReactComponent as Naver } from "../svgs/naver.svg";
+import { ReactComponent as Google } from "../svgs/google.svg";
 import styled from "styled-components";
-
-const Black = styled.button`
-    width: 237px;
-    height: 46px;
-    background: #000000;
-    border-radius: 10px;
-    font-family: 'PT Serif';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 24px;
-    color: #FFFFFF;
-    cursor: pointer;
-    margin-bottom : 228px;
-    margin-top : 52px;
-
-    &:active {
-        background: #333333;
-    }
-`;
-
-export function BtnBlack({text, onClick}) {
-    return (
-        <Black onClick={onClick}>{text}</Black>
-    );
-}
 
 const Title = styled.h1`
     font-family: 'Noto Serif KR';
@@ -41,6 +21,7 @@ const InputContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    margin-top:24px;
 `;
 
 const InputLabel = styled.label`
@@ -75,15 +56,19 @@ const MemberRegistration = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleJoin = () => {
-        // 가입 로직 (백엔드 통합 필요)
+    const btn_click = () => {
+        console.log(email);
+        console.log(password);
+        if(email === 'syj' && password === '1234') {
+            setLoginStatus(true);
+        }
     };
 
     return (
         <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
             <Title>로그인</Title>
             <InputContainer>
-                <InputLabel>email</InputLabel>
+                <InputLabel>Email</InputLabel>
                 <InputBox
                     type="email"
                     placeholder="이메일"
@@ -92,7 +77,7 @@ const MemberRegistration = () => {
                 />
             </InputContainer>
             <InputContainer>
-                <InputLabel>pw</InputLabel>
+                <InputLabel>Password</InputLabel>
                 <InputBox
                     type="password"
                     placeholder="비밀번호"
@@ -100,13 +85,14 @@ const MemberRegistration = () => {
                     onChange={(e) => setPassword(e.target.value)}
                 />
             </InputContainer>
-            <BtnBlack
-                onClick={handleJoin}
-                text="Login"
-            />
+            <Btn_black onClick={btn_click} text={'Login'} style={{fontSize:'24px', width:'237px', height:'46px', marginTop:'52px'}}/>
+            <div style={{marginTop:'60px', marginBottom:'212px', width:'664px', display:'flex', justifyContent:'space-between'}}>
+                <Btn_social text={'구글로 로그인'} onClick={btn_click} style={{fontSize:'13px', width:'192px', height:'46px'}} svg={<Google/>}/>
+                <Btn_social text={'네이버로 로그인'} onClick={btn_click} style={{fontSize:'13px', width:'192px', height:'46px'}} svg={<Naver/>}/>
+                <Btn_social text={'카카오로 로그인'} onClick={btn_click} style={{fontSize:'13px', width:'192px', height:'46px'}} svg={<Kakao/>}/>
+            </div>
         </div>
     );
 };
 
 export default MemberRegistration;
-

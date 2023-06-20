@@ -72,5 +72,18 @@ export function Btn_home({text, onClick, style}) {
         </Home>
     );
 }
+export function Btn_social({text, onClick, style, svg}) {
+
+    return (
+        <Black onClick={onClick} style={style}>
+            <div style={{display:'flex', justifyContent:'center'}}>
+                <div style={{marginRight:'13px'}}>
+                    {svg}
+                </div>
+                {text}
+            </div>
+        </Black>
+    );
+}
 
 export default Btn_black;
