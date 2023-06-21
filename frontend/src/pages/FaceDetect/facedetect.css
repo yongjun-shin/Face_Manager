@@ -231,3 +231,8 @@ p{
       }
 }
 /* 라디오 set 끝 */
+
+[type='radio']{
+    width: 13px;
+    height: 13px;
+}
