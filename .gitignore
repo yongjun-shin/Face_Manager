@@ -1,2 +1,6 @@
+# python #
 *.pyc
 __pycache__/
+
+# react #
+node_modules

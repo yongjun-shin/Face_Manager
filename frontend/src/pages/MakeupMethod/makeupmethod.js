@@ -50,7 +50,7 @@ const Animation = () => {
   }, []);
 
   return (
-    <div>
+    <div className='wrapper'>
     <div className="makeup-method-01">
         <span class="makeup-method-01_sub1">
           현업 메이크업 전문가의 조언을 받아 화장법을 제안합니다.

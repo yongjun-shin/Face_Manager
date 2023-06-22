@@ -6,6 +6,10 @@ body {
     
   }
 
+  .wrapper {
+    padding-bottom: 1000px; /* Footer의 높이에 해당하는 값 */
+  }
+  
 .makeup-method-01{
 position: absolute;
 width: 658px;
