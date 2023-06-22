@@ -13,18 +13,21 @@ const Container = styled.div`
 const ImageWrapper = styled.img`
   flex-shrink: 0;
   height: ${props => props.height};
-  margin-right: ${props => props.marginRight};
-  margin-left: 4.7rem;
-  object-fit: contain;
+  margin-left: ${props => props.imageMarginLeft};
+  object-fit: ${props => props.objectFit};
   vertical-align: top;
   width: ${props => props.width};
+  margin-top: 4rem;
 `;
 
 const TextWrapper = styled.div`
-  align-items: flex-end;
+  align-items: flex-start;
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
+  margin-top: 4rem;
+  vertical-align: text-top;
+  margin-left: ${props => props.textMarginLeft};
 `;
 
 const TitleText = styled.div`
@@ -39,8 +42,9 @@ const TitleText = styled.div`
   font-weight: 700;
   height: 3rem;
   line-height: 1.325;
-  margin-bottom: ${props => props.titleMarginBottom};
+  margin-bottom: 2.9rem;
   white-space: nowrap;
+  width: 17.2rem;
   font-family: 'PT Serif';
 `;
 
@@ -70,29 +74,29 @@ const Text3 = styled.div`
   font-size: 20px;
   font-weight: 400;
   line-height: 1.435;
-  margin-bottom: ${props => props.textMarginBottom};
+  margin-bottom: 5.6rem;
   text-align: right;
   white-space: pre-wrap;
 `;
 
-const TextBox = ({ marginRight, textMarginBottom, titleMarginBottom, imageUrl, imageWidth, imageHeight, title, text1, text2, text3, buttonText}) => {
+const TextBox2 = ({ textMarginLeft, objectFit, containerWidth, imageMarginLeft, imageUrl, imageWidth, imageHeight, title, text1, text2, text3, buttonText}) => {
   const navigate = useNavigate();
   const handleBtnClick = () => {
     navigate("/detect");
   };
 
   return (
-    <Container>
-      <ImageWrapper img src={imageUrl} width={imageWidth} height={imageHeight} marginRight={marginRight}></ImageWrapper>
-      <TextWrapper>
-        <TitleText titleMarginBottom={titleMarginBottom}>{title}</TitleText>
+    <Container width={containerWidth}>
+      <TextWrapper textMarginLeft={textMarginLeft}>
+        <TitleText>{title}</TitleText>
         <Text1>{text1}</Text1>
         <Text2>{text2}</Text2>
-        <Text3 textMarginBottom={textMarginBottom}>{text3}</Text3>
+        <Text3>{text3}</Text3>
         <Btn_home text={buttonText} onClick={handleBtnClick} style={{width: "235px", height: "52px", fontSize: "19px"}}/>
       </TextWrapper>
+      <ImageWrapper img src={imageUrl} width={imageWidth} height={imageHeight} objectFit={objectFit} imageMarginLeft={imageMarginLeft}></ImageWrapper>
     </Container>
   );
 };
 
-export default TextBox;
+export default TextBox2;
