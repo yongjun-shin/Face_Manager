@@ -3,10 +3,7 @@ import './makeupmethod.css'
 import styled, { keyframes }  from 'styled-components';
 
 
-function Makeup() {
-
-  const text_1 = "뭐뭐한"
-  const text_2 = "뭐뭐"
+function Makeup({text_1, text_2}) {
 
   const fadeInAnimation = keyframes`
   from {
@@ -115,6 +112,11 @@ const Animation = () => {
   );
 }
   return <Animation />;
+}
+
+Makeup.defaultProps = {
+  text_1: '뭐뭐한',
+  text_2: '뭐뭐'
 }
 
 export default Makeup;
