@@ -6,7 +6,11 @@
 .container .title {
     display: flex;
     justify-content: center;
-    
+}
+.container .title_btn {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 170px;
 }
 .container .title .title_txt {
     font-weight: bold;
@@ -22,10 +26,7 @@
     justify-content: space-between;
     margin-bottom: 48px;
 }
-/* .container .radio input[type='radio'] {
-    width: 20px;
-    height: 20px;
-} */
+
 [type='radio']{
     width: 20px;
     height: 20px;
