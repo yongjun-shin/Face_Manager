@@ -17,7 +17,7 @@ const ImageWrapper = styled.img`
   object-fit: ${props => props.objectFit};
   vertical-align: top;
   width: ${props => props.width};
-  margin-top: 4rem;
+  margin-top: 11rem;
 `;
 
 const TextWrapper = styled.div`
@@ -25,7 +25,7 @@ const TextWrapper = styled.div`
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
-  margin-top: 4rem;
+  margin-top: 11rem;
   vertical-align: text-top;
   margin-left: ${props => props.textMarginLeft};
 `;
@@ -79,10 +79,10 @@ const Text3 = styled.div`
   white-space: pre-wrap;
 `;
 
-const TextBox2 = ({ textMarginLeft, objectFit, containerWidth, imageMarginLeft, imageUrl, imageWidth, imageHeight, title, text1, text2, text3, buttonText}) => {
+const TextBox2 = ({ textMarginLeft, objectFit, containerWidth, imageMarginLeft, imageUrl, imageWidth, imageHeight, title, text1, text2, text3, buttonText, path}) => {
   const navigate = useNavigate();
   const handleBtnClick = () => {
-    navigate("/detect");
+    navigate(path);
   };
 
   return (

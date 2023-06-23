@@ -1,6 +1,7 @@
-import React from "react";
+import { Radio } from 'antd';
 import './facedetect.css';
 import Btn_black from '../../components/button.js';
+import React, { useState } from "react";
 
 function FaceDetect() {
     return(
@@ -20,6 +21,53 @@ function Text(){
     );
 }
 
+function RadioTitle(props){
+    return(
+        <p class="RadioTitle" style={{color: props.text_color}}>{props.content}</p>
+    )
+}
+
+function NewRadio(props){
+    const [selectedValue, setSelectedValue] = useState(""); // 선택된 값을 저장할 상태
+
+    const handleRadioChange = (event) => {
+      setSelectedValue(event.target.value); // 선택된 값 업데이트
+      console.log("selected Value:", event.target.value);
+    };
+
+    return(
+        <div class="NewRadioset">
+            <div class="Radio-container">
+                <label class='label_content1'>
+                    <div class="radio-content1" style={{backgroundColor: props.bg_color1}}>
+                        <input class="RadioBtn_content1" type='radio' name={props.name} value={props.value1} checked={selectedValue === props.value1}
+                            onChange={handleRadioChange} style={{accentColor: props.accentColor}}></input>
+                        <div class="content1">
+                            <p class="text_top1">{props.text_top1}</p>
+                            <p class="text_center1">{props.text_center1}</p>
+                            <p class="text_bottom1">{props.text_bottom1}</p>
+                        </div>
+                        <p class="text_description1">{props.description1}</p>
+                    </div>
+                </label>
+
+                <label class="label_content2">
+                    <div class="radio-content2" style={{backgroundColor: props.bg_color2}}>
+                        <p class="text_description2">{props.description2}</p>
+                        <div class="content2">
+                            <p class="text_top2">{props.text_top2}</p>
+                            <p class="text_center2">{props.text_center2}</p>
+                            <p class="text_bottom2">{props.text_bottom2}</p>
+                        </div>
+                        <input class="RadioBtn_content2" type='radio' name={props.name} value={props.value2} checked={selectedValue === props.value2}
+                            onChange={handleRadioChange} style={{accentColor: props.accentColor}}></input>
+                    </div>
+                </label>
+            </div>
+        </div>
+    )
+}
+
 function Body(){
     return(
         <div class="html-Bpo">
@@ -27,89 +75,39 @@ function Body(){
                 <div class="upload_form">
                     <input type="file" class="upload_photoform" accept="image/*" id="userPhoto" name="userPhoto"/>
                 </div>
+
                 <p class="text1">당신의 피부타입을 알려주세요.</p>
 
-                <p class="text_oil_dry_balance">유수분 밸런스</p>
+                <RadioTitle text_color="#537aa5" content="유수분 밸런스"></RadioTitle>
+                <NewRadio name="D_or_O" accentColor="#537aa5"
+                    value1="Dry" text_top1="D" text_center1="건성" text_bottom1="Dry"
+                    description1="피지 분비량과 수분 보유량 모두 적어 거칠고 각질과 주름이 잘 생기는 타입" bg_color1="#E9EEF4"
+                    value2="Oily" text_top2="O" text_center2="지성" text_bottom2="Oily"
+                    description2="피지 분비량이 많아 번들거리고 여드름이 자주 생기는 타입" bg_color2="#D5DBE9"></NewRadio>
 
-                <div class="radioset1">
-                    <div class="radio-container">
-                        <label class="label_dry">
-                        <div class="radio-content">
-                            <input class="radio_btn_dry" type="radio" name="D_or_O" value="dry"/>
-                            <p class="text_dry">D : 건성</p>
-                        </div>
-                        </label>
+                <RadioTitle text_color="#7E7F83" content="피부 민감도"></RadioTitle>
+                <NewRadio name="S_or_R" accentColor="#7E7F83"
+                    value1="Sensitive" text_top1="S" text_center1="민감성" text_bottom1="Sensitive"
+                    description1="피부가 얇고 섬세해 외부 자극에 쉽게 반응하는 타입" bg_color1="#EEEEF0"
+                    value2="Resistant" text_top2="R" text_center2="저항성" text_bottom2="Resistant"
+                    description2="피지 분비량이 많아 번들거리고 여드름이 자주 생기는 타입" bg_color2="#DDDDDD"></NewRadio>
+               
 
-                        <label class="label_oily">
-                        <div class="radio-content">
-                            <input class="radio_btn_oily" type="radio" name="D_or_O" value="oily" />
-                            <p class="text_oily">O : 지성</p>
-                        </div>
-                        </label>
-                    </div>
-                </div>
-
-                <p class="text_sensitivity">피부 민감도</p>
-
-                <div class="radioset2">
-                    <div class="radio-container2">
-                        <label class="label_sensitive">
-                        <div class="radio-content">
-                            <input class="radio_btn_sensitive" type="radio" name="S_or_R" value="sensitive" />
-                            <p class="text_sensitive">S : 민감성</p>
-                        </div>
-                        </label>
-
-                        <label class="label_resistance">
-                        <div class="radio-content">
-                            <input class="radio_btn_resistance" type="radio" name="S_or_R" value="resistance" />
-                            <p class="text_resistance">R : 저항성</p>
-                        </div>
-                        </label>
-                    </div>
-                </div>
+               <RadioTitle text_color="#288E9A" content="멜라닌 색소 활성도"></RadioTitle>
+                <NewRadio name="P_or_N" accentColor="#288E9A"
+                    value1="Pigment" text_top1="P" text_center1="민감성" text_bottom1="Pigment"
+                    description1="멜라닌 활성도가 높아 기미, 주근깨 혹은 잡티 등 눈에 보이는 색소가 많은 타입" bg_color1="#EAEFF3"
+                    value2="Non-Pigment" text_top2="N" text_center2="비색소성" text_bottom2="Non-Pigment"
+                    description2="멜라닌 활성도가 낮아 눈에 보이는 색소가 적은 타입" bg_color2="#D3E0E6"></NewRadio>
                 
-
-                <p class="text_melanin">멜라닌 색소 활성도</p>
-
-                <div class="radioset3">
-                    <div class="radio-container3">
-                        <label class="label_pigment">
-                        <div class="radio-content">
-                            <input class="radio_btn_pigment" type="radio" name="P_or_N" value="pigment" />
-                            <p class="text_pigment">P : 민감성</p>
-                        </div>
-                        </label>
-
-                        <label class="label_nonpigment">
-                        <div class="radio-content">
-                            <input class="radio_btn_nonpigment" type="radio" name="P_or_N" value="nonpigment" />
-                            <p class="text_nonpigment">N : 비색소성</p>
-                        </div>
-                        </label>
-                    </div>
-                </div>
-
-                <p class="text_tension">피부 탄력도 및 주름</p>
-
-                <div class="radioset4">
-                    <div class="radio-container4">
-                        <label class="label_wrinkle">
-                        <div class="radio-content">
-                            <input class="radio_btn_wrinkle" type="radio" name="W_or_T" value="wrinkle" />
-                            <p class="text_wrinkle">W : 주름</p>
-                        </div>
-                        </label>
-
-                        <label class="label_tight">
-                        <div class="radio-content">
-                            <input class="radio_btn_tight" type="radio" name="W_or_T" value="Tight" />
-                            <p class="text_tight">T : 탱탱함</p>
-                        </div>
-                        </label>
-                    </div>
-                </div>
-                <Btn_black class="btn_StartAnalysis" text={'분석시작'} style={{width:'237px', height:'46px', fontSize:'20px', marginBottom:'100px'}}></Btn_black>
+                <RadioTitle text_color="#515FA8" content="피부 탄력도 및 주름"></RadioTitle>
+                <NewRadio name="W_or_T" accentColor="#515FA8"
+                    value1="Wrinkle" text_top1="W" text_center1="주름" text_bottom1="Wrinkle"
+                    description1="피부 결이 고르지 않고 주름이 많은 타입" bg_color1="#E8E8F4"
+                    value2="Tight" text_top2="T" text_center2="탱탱함" text_bottom2="Tight"
+                    description2="피부 결이 고르고 주름이 적어 탄력이 있는 타입" bg_color2="#D2D3E8"></NewRadio>
+                
+                <Btn_black class="btn_StartAnalysis" text={'분석시작'} style={{width:'237px', height:'46px', fontSize:'20px', marginBottom:'100px', marginTop:'20px'}}></Btn_black>
             </div>
         </div>
     );
