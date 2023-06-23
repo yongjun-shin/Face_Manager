@@ -1,3 +1,6 @@
+
+import React from 'react';
+
 import Navi from '../src/components/nav.js';
 import Footer from '../src/components/footer.js';
 import Nav_my from './components/nav_mypage.js';
@@ -5,6 +8,7 @@ import {Btn_black, Btn_beige, Btn_home} from './components/button.js';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home/home.js';
 import FaceDetect from './pages/FaceDetect/facedetect.js';
+import Makeup from './pages/MakeupMethod/makeupmethod.js';
 import Pricing from './pages/Pricing/pricing.js';
 import QnA from './pages/QnA/qna.js';
 
@@ -21,18 +25,21 @@ import CreateImageResult from './pages/CreateImage/createimage_res.js';
 import History from './pages/History/history.js';
 import './App.css';
 
+
 function App() {
     const btn_click = (event) => {
         event.preventDefault();
     };
 
     return (
+
         <BrowserRouter>
             <div>
                 <Navi/>
                 <Routes>
                     <Route path="/" element={<Home/>} />
                     <Route path="/detect" element={<FaceDetect/>} />
+                    <Route path="/makeup" element={<Makeup />} />
                     <Route path="/pricing" element={<Pricing/>} />
                     <Route path="/qna" element={<QnA/>} />
                     <Route path="/login" element={<Login/>} />
@@ -47,8 +54,9 @@ function App() {
                 </Routes>
                 <Footer></Footer>
             </div>
+            </BrowserRouter>
 
-            {/* <div>
+            /* <div>
                 <Navi/>
                 <Nav_my/>
                 <Routes>
@@ -73,9 +81,10 @@ function App() {
                     <Btn_home text={'내 얼굴 인식하기'} onClick={btn_click}></Btn_home>
                 </div>
                 <Footer></Footer>
-            </div> */}
-        </BrowserRouter>
+            </div> */
+
     );
-}
+  }
+  
 
 export default App;
