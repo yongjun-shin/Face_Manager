@@ -80,7 +80,7 @@ function Nav_log() {
     auth?
     content = (<div style={{ fontWeight:'bold', fontSize:'18px', marginLeft:'80px'}} >
     <CustomLink2 onClick={handleLogout} style={{ marginRight:'24px'}}>Logout</CustomLink2>
-    <CustomLink2 to={'/mypage'}>MyPage</CustomLink2>
+    <CustomLink2 to={'/member'}>MyPage</CustomLink2>
 </div>)
 
     :
