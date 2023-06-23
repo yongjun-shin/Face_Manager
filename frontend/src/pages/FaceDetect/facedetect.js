@@ -1,6 +1,6 @@
 import { Radio } from 'antd';
 import './facedetect.css';
-import Btn_black from '/Users/jyp/Desktop/KT_BigProject_07/frontend/src/components/button.js';
+import Btn_black from '../../components/button.js';
 import React, { useState } from "react";
 
 function FaceDetect() {
