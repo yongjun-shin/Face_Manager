@@ -1,9 +1,11 @@
 import React from "react";
 import TextBox from "../../components/textbox.js"
+import Ani1 from "../../components/animation1.js";
 
 function Main(){
     return(
     <div className="wrapper" style={{zoom:0.5, marginTop:'100px'}}>
+        <Ani1 />
         <TextBox
         imageUrl="https://media1.popsugar-assets.com/files/thumbor/7MDRnJvNXKszKV5tadaInw69VBA/fit-in/728xorig/filters:format_auto-!!-:strip_icc-!!-/2018/07/12/695/n/1922153/3fd80f315b47769b5568e5.71527235_.jpg"
         title="Makeup Method"

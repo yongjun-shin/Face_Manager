@@ -1,6 +1,6 @@
 import React from "react";
 import './facedetect.css';
-import Btn_black from '/Users/jyp/Desktop/KT_BigProject_07/frontend/src/components/button.js';
+import Btn_black from '../../components/button.js';
 
 function FaceDetect() {
     return(
