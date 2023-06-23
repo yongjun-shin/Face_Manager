@@ -32,7 +32,7 @@ const Box = styled(Face)`
 export function Ani1() {
 
     return (
-        <div style={{display:'flex', justifyContent:'center' }}>
+        <div style={{display:'flex', justifyContent:'center'}}>
          
             <Box></Box>
            

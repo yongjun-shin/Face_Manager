@@ -1,3 +1,4 @@
+import Slide from "../../components/slide/slide.js"
 import React from "react";
 import TextBox from "../../components/textbox.js"
 import TextBox2 from "../../components/textbox2.js"
