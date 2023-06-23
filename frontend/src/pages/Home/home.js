@@ -1,10 +1,12 @@
 import React from "react";
 import TextBox from "../../components/textbox.js"
 import TextBox2 from "../../components/textbox2.js"
+import Slide from "../../components/slide/slide.js"
 
 function Main(){
     return(
     <div className="wrapper" styles={{zoom:0.5, marginTop: "100px"}}>
+        <Slide></Slide>
         <TextBox2
         imageUrl="https://i.pinimg.com/474x/45/26/ac/4526ac70ec7c25ae7962a7da072e32f2.jpg"
         title="Face Detect"
