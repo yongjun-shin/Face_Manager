@@ -2,26 +2,52 @@ import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import { Input } from 'antd';
 import styled from 'styled-components';
+import {Btn_black} from '../../components/button.js';
 
-const SignupDiv = styled.div`
-  position: relative;
-  left: 40%;
-  padding: 3rem;
-    form {
-    width: 320px;
-    display: inline-block;
-    label {
-      margin-bottom: 1rem;
-    }
-    input {
-      margin-bottom: 1.5rem;
-      &[type=submit] {
-        background: black;
-        color: white;
-        margin-top: 1rem;
-      }
-    }
-  }
+const Title = styled.h1`
+    font-family: 'Noto Serif KR';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 43px;
+    text-decoration: underline;
+    margin-top: 58px;
+    margin-bottom: 53px;
+`;
+
+const InputContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top:24px;
+`;
+
+const InputLabel = styled.label`
+    width: 60px;
+    height: 19px;
+    margin-left: 12px; /* 수정된 부분: 왼쪽 마진을 10px로 설정 */
+    left: 388px;
+    top: 244px;
+    font-family: 'PT Serif';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 20px;
+    margin-bottom: 5px;
+`;
+
+const InputBox = styled.input`
+    margin: 10px;
+    width: 664px;
+    height: 46px;
+    background: #E8E5DF;
+    border: 3px solid #000000;
+    border-radius: 10px;
+    font-family: 'PT Serif';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 20px;
 `;
 
 export function Join() {
@@ -58,9 +84,9 @@ export function Join() {
     }
     
 
-    Axios.post('/signup/auth/register/', user)
+    Axios.post('http://localhost:8000/signup/auth/register/', user)
       .then(res => {
-        if (res.data.key) {
+        if (res.data['access']) {
           localStorage.clear()
           localStorage.setItem('token', res.data.key)
           // 사용하려면 App.js에서 /로 라우팅해야 한다
@@ -75,45 +101,56 @@ export function Join() {
       })
       .catch(err => {
         console.clear()
+        console.log(err)
         alert('error!!')
       })
   }
 
   return (
-    <SignupDiv>
-      <h1>회원가입</h1>
-      <br />
-      {errors === true && <h2>Cannot signup with provided credentials</h2>}
-      <form onSubmit={onSubmit}>
-        <label htmlFor='email'>이메일 주소:</label>
-        <Input
-          type='email'
-          value={email}
-          onChange={onChangeEmail}
-          required
+<div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+    
+    <Title>회원 가입</Title>
+    {errors === true && <h2>Cannot signup with provided credentials</h2>}
+    <form onSubmit={onSubmit}>
+    <InputContainer>
+        <InputLabel>Email</InputLabel>
+        <InputBox
+            type="email"
+            placeholder="이메일"
+            value={email}
+            onChange={onChangeEmail}
+            required
         />
-        <label htmlFor='password1'>비밀번호(소문자, 숫자, 특수문자 포함 8~16자):</label>
-        <Input
-          type='password'
-          value={password1}
-          onChange={onChangePwd1}
-          minLength='8'
-          pattern='^(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&])[a-z\d$@$!%*#?&]{8,16}$'
-          required
+    </InputContainer>
+    <InputContainer>
+        <InputLabel>Password</InputLabel>
+        <InputBox
+            type='password'
+            placeholder="비밀번호"
+            value={password1}
+            onChange={onChangePwd1}
+            minLength='8'
+            pattern='^(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&])[a-z\d$@$!%*#?&]{8,16}$'
+            required
         />
-        <br />
-        <label htmlFor='password2'>비밀번호 확인(소문자, 숫자, 특수문자 포함 8~16자):</label>
-        <Input
-          type='password'
-          value={password2}
-          onChange={onChangePwd2}
-          minLength='8'
-          pattern='^(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&])[a-z\d$@$!%*#?&]{8,16}$'
-          required
+    </InputContainer>
+    <InputContainer>
+        <InputLabel>Name</InputLabel>
+        <InputBox
+            type='password'
+            placeholder="비밀번호 확인"
+            value={password2}
+            onChange={onChangePwd2}
+            minLength='8'
+            pattern='^(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&])[a-z\d$@$!%*#?&]{8,16}$'
+            required
         />
-        <Input type='submit' size="large" value='가입하기' />
-      </form>
-    </SignupDiv>
+    </InputContainer>
+    <div style={{display:'flex', justifyContent:'center'}}>
+    <Btn_black type='submit' text={'Join'} style={{fontSize:'24px', width:'237px', height:'46px', marginTop:'52px', marginBottom:'228px'}}/>
+    </div>
+</form>
+</div>
   )
 };
 
