@@ -95,4 +95,4 @@ const MemberRegistration = () => {
     );
 };
 
-export default MemberRegistration;
+export default Login;

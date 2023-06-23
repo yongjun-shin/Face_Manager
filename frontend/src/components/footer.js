@@ -10,6 +10,7 @@ const Foot = styled.footer`
     color: #3A3A3A;
     font-family: 'PT Serif';
     font-style: normal;
+
 `;
 const About = styled.div`
     width: 940px;

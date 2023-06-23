@@ -1,2 +1,10 @@
+# python #
 *.pyc
 __pycache__/
+
+# react #
+node_modules
+
+# database #
+*.sqlite3
+migrations/
