@@ -23,7 +23,7 @@ const InputContainer = styled.div`
 `;
 
 const InputLabel = styled.label`
-    width: 60px;
+    width: 160px;
     height: 19px;
     margin-left: 12px; /* 수정된 부분: 왼쪽 마진을 10px로 설정 */
     left: 388px;
@@ -135,7 +135,7 @@ export function Join() {
         />
     </InputContainer>
     <InputContainer>
-        <InputLabel>Name</InputLabel>
+        <InputLabel>Password Confirm</InputLabel>
         <InputBox
             type='password'
             placeholder="비밀번호 확인"

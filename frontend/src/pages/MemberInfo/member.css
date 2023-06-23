@@ -17,6 +17,10 @@
 .member .second {
     margin-top: 100px;
 }
+.member .second .box_con {
+    width: 780px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
 .member .second .box {
     width: 780px;
     background-color: #DED8CC;
@@ -24,11 +28,47 @@
     font-size: 15px;
 }
 .member .second .box_in {
+    height: 25px;
     flex:1;
     display: flex;
     justify-content: center;
 }
 
 .member .third {
-    margin-top: 100px;
+    margin-top: 150px;
+    margin-bottom: 200px;
+}
+
+.skin {
+    width: 780px;
+    height: 405px;
+    background-color: #DED8CC;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.skin .skin_con {
+    width: 650px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.skin .line {
+    display: flex;
+    align-items: center;
+    width: 650px;
+    font-size: 17px;
+}
+.skin .circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 61px;
+    font-size: 25px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
 }

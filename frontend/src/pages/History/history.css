@@ -1,0 +1,10 @@
+.history {
+    display: flex;
+    justify-content: center;
+    font-family: 'Noto Serif KR';
+    color: #3A3A3A;
+}
+.history .history_con {
+    width: 1680px;
+    display: flex;
+}
