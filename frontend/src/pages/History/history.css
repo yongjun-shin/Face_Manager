@@ -8,3 +8,27 @@
     width: 1680px;
     display: flex;
 }
+.history .history_con .recommend {
+    margin-top: 80px;
+    margin-bottom: 150px;
+}
+.history .history_con .recommend .title {
+    font-size:24px; 
+    margin-left:20px; 
+    margin-bottom: 15px;
+}
+.history .history_con .recommend .fadein {
+    margin-right:150px;
+    overflow: hidden;
+    animation: fadein 3s ease-in-out;
+}
+@keyframes fadein{
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: none;
+    }
+}
