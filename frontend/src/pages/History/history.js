@@ -10,7 +10,7 @@ const P = styled.p`
 `;
 
 export function History() {
-    let name = null;
+    let name = localStorage.getItem('username');
     if (name === null){
         name = '홍길동';
     }

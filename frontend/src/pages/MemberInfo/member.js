@@ -122,11 +122,11 @@ export function MemberInfo() {
         img = (<MemberImg style={{width:'150px', height:'150px'}}/>)
     }
     // 이름, email, 회원등급도 데이터베이스에 받아오면 대체
-    let name = null;
+    let name = localStorage.getItem('username');
     if (name === null){
         name = '홍길동';
     }
-    let email = null;
+    let email = localStorage.getItem('email');
     if (email === null){
         email = 'popobaboya@gmail.com';
     }

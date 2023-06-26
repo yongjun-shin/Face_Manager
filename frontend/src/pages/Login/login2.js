@@ -67,12 +67,15 @@ export function Login() {
       password: password
     }
     Axios.post('http://localhost:8000/signup/auth/login/', user)
+    //Axios.post('http://localhost:8000/user/login/', user)
       .then(res => {
         console.log(res.data['access'])
         if (res.data['access']) {
           console.log(1)
           localStorage.clear()
           localStorage.setItem('token', res.data['access'])
+          localStorage.setItem('username', res.data['user']['username'])
+          localStorage.setItem('email', res.data['user']['email'])
           // 사용하려면 App.js에서 /로 라우팅해야 한다
           window.location.replace('/')
         } else {

@@ -51,10 +51,15 @@ const InputBox = styled.input`
 `;
 
 export function Join() {
+  const [username, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password1, setPassword1] = useState('')
   const [password2, setPassword2] = useState('')
   const [errors, setErrors] = useState(false)
+
+  const onChangeName = (e) => {
+    setName(e.target.value)
+  }
 
   const onChangeEmail = (e) => {
     setEmail(e.target.value)
@@ -72,6 +77,7 @@ export function Join() {
     e.preventDefault()
 
     const user = {
+      username: username,
       email: email,
       password1: password1,
       password2: password2
@@ -90,8 +96,11 @@ export function Join() {
           localStorage.clear()
           localStorage.setItem('token', res.data.key)
           // 사용하려면 App.js에서 /로 라우팅해야 한다
+          localStorage.setItem('username', res.data['user']['username'])
+          localStorage.setItem('email', res.data['user']['email'])
           window.location.replace('/')
         } else {
+          setName('')
           setEmail('')
           setPassword1('')
           setPassword2('')
@@ -100,7 +109,6 @@ export function Join() {
         }
       })
       .catch(err => {
-        console.clear()
         console.log(err)
         alert('error!!')
       })
@@ -112,6 +120,16 @@ export function Join() {
     <Title>회원 가입</Title>
     {errors === true && <h2>Cannot signup with provided credentials</h2>}
     <form onSubmit={onSubmit}>
+    <InputContainer>
+        <InputLabel>Username</InputLabel>
+        <InputBox
+            type="text"
+            placeholder="이름"
+            value={username}
+            onChange={onChangeName}
+            required
+        />
+    </InputContainer>
     <InputContainer>
         <InputLabel>Email</InputLabel>
         <InputBox
