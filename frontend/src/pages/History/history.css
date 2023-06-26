@@ -8,9 +8,12 @@
     width: 1680px;
     display: flex;
 }
+.history .history_con .makeup {
+    margin-bottom: 450px;
+}
 .history .history_con .recommend {
     margin-top: 80px;
-    margin-bottom: 150px;
+    margin-bottom: 350px;
 }
 .history .history_con .recommend .title {
     font-size:24px; 

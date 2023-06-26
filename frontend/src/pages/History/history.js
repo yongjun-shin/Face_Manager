@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Nav_my from "../../components/nav_mypage";
 import Recommend from "../../components/recommendation";
+import Makeup from "../MakeupMethod/makeupmethod";
 import './history.css';
 
 const P = styled.p`
@@ -20,6 +21,9 @@ export function History() {
             <div className='history_con'>
                 <Nav_my/>
                 <div style={{marginLeft:'166px'}}>
+                    <div className="makeup">
+                        <Makeup />
+                    </div>
                     <div className="recommend">
                         <p className="title">화장품 추천</p>
                         <div style={{display:'flex', justifyContent:'center', alignItems:'center'}}>

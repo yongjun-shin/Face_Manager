@@ -5,7 +5,7 @@ import Ani1 from "../../components/animation1.js";
 
 function Main(){
     return(
-    <div className="wrapper" style={{marginTop: "100px", display:'flex', justifyContent:'center'}}>
+    <div className="homewrapper" style={{marginTop: "100px", display:'flex', justifyContent:'center', paddingBottom: "0"}}>
         <div>
             <Ani1 />
             <TextBox2
@@ -18,8 +18,9 @@ function Main(){
             imageHeight="24.8rem"
             objectFit="cover"
             buttonText="내 얼굴 인식하기"
-            imageMarginLeft="2.3rem"
-            textMarginLeft="6rem"
+            imageMarginLeft="3.3rem"
+            textMarginLeft="3rem"
+            path="/detect"
             />
             <TextBox
             imageUrl="https://media1.popsugar-assets.com/files/thumbor/7MDRnJvNXKszKV5tadaInw69VBA/fit-in/728xorig/filters:format_auto-!!-:strip_icc-!!-/2018/07/12/695/n/1922153/3fd80f315b47769b5568e5.71527235_.jpg"
@@ -33,6 +34,7 @@ function Main(){
             titleMarginBottom="6.9rem"
             textMarginBottom="10.6rem"
             marginRight="2rem"
+            path="/makeup"
             />
             <TextBox
             imageUrl="https://vrthumb.imagetoday.co.kr/2023/02/16/ta0180t000056.jpg"
@@ -44,6 +46,7 @@ function Main(){
             buttonText="화장품 추천받기"
             textMarginBottom="37px"
             marginRight="2rem"
+            path="/history"
             />
             <TextBox2
             imageUrl="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcREtLYrSZEViY1BHfepYIrf6Z3cxQUsL9huSOthG0uuKq15DD3J"
@@ -56,7 +59,8 @@ function Main(){
             objectFit="contain"
             buttonText="화장 확인해보기"
             imageMarginLeft="5.3rem"
-            textMarginLeft="5rem"
+            textMarginLeft="3rem"
+            path="/history"
             />
             <TextBox
             imageUrl="https://cdn.thinkdoctor.co.kr/news/photo/202010/6571_11816_741.jpg"
@@ -69,7 +73,8 @@ function Main(){
             objectFit="contain"
             buttonText="화장 확인해보기"
             textMarginBottom="2rem"
-            marginRight="7rem"
+            marginRight="8rem"
+            path="/physiognomy"
             />
         </div>
     </div>)
