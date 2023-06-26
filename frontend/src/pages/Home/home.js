@@ -5,7 +5,7 @@ import Ani1 from "../../components/animation1.js";
 
 function Main(){
     return(
-    <div className="wrapper" style={{marginTop: "100px", display:'flex', justifyContent:'center', paddingBottom: "0"}}>
+    <div className="homewrapper" style={{marginTop: "100px", display:'flex', justifyContent:'center', paddingBottom: "0"}}>
         <div>
             <Ani1 />
             <TextBox2
