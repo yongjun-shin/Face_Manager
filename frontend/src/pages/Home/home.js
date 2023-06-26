@@ -46,7 +46,7 @@ function Main(){
             buttonText="화장품 추천받기"
             textMarginBottom="37px"
             marginRight="2rem"
-            path="#"
+            path="/history"
             />
             <TextBox2
             imageUrl="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcREtLYrSZEViY1BHfepYIrf6Z3cxQUsL9huSOthG0uuKq15DD3J"

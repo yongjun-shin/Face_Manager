@@ -1,7 +1,6 @@
 import { Radio } from 'antd';
 import './facedetect.css';
 import Btn_black from '../../components/button.js';
-import React, { useState } from "react";
 import React, { useContext, useState } from "react";
 import { RadioProvider } from './RadioContext';
 import { RadioContext } from './RadioContext';

@@ -70,6 +70,7 @@ function Nav_log() {
     let token = localStorage.getItem('token')
 
     Axios.post('http://localhost:8000/signup/auth/logout/', token)
+    //Axios.post('http://localhost:8000/user/logout/', token)
       .then(res => {
         localStorage.clear()
         // 사용하려면 App.js에서 /로 라우팅해야 한다
@@ -77,6 +78,8 @@ function Nav_log() {
       });
   }
     let content = null;
+    // let content2 = null;
+    // content2?
     auth?
     content = (<div style={{ fontWeight:'bold', fontSize:'18px', marginLeft:'80px'}} >
     <CustomLink2 onClick={handleLogout} style={{ marginRight:'24px'}}>Logout</CustomLink2>

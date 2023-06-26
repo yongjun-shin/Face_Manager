@@ -22,3 +22,9 @@ urlpatterns = [
     path('api/', include('post.urls')),
     path('signup/', include('signup.urls')),
 ]
+
+# urlpatterns = [
+#     path('admin/', admin.site.urls),
+#     path('user/', include('signup.urls')),
+
+#  ]
