@@ -32,7 +32,10 @@ const CustomLink = styled(Link)`
 export function Footer(){
     const scrollToTop = () => {
         window.scrollTo(0, 0);
-      };
+    };
+    const goWeb = (url) => {
+        window.open(url, "_blank","noopener")
+    };
     return (
         <div style={{display:'flex', justifyContent:'center', marginBottom: '34px'}}>
             <Foot>
@@ -45,8 +48,7 @@ export function Footer(){
                     <a style={{fontWeight:700, fontSize:'22px'}}>Connect with us</a>
                     <br/>
                     <div style={{marginTop:'8px'}}>
-                        <Foot1/>
-                        <Foot2 style={{marginLeft:'18.46px'}}/>
+                        <Foot2 onClick={() => goWeb('https://github.com/AIVLE-School-Third-Big-Project/KT_BigProject_07')} style={{cursor:'pointer'}}/>
                     </div>
                 </Connect>
                 <Navigations>
