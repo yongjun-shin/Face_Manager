@@ -77,7 +77,11 @@ const Text3 = styled.div`
 
 const TextBox = ({ marginRight, textMarginBottom, titleMarginBottom, imageUrl, imageWidth, imageHeight, title, text1, text2, text3, buttonText, path }) => {
   const navigate = useNavigate();
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+  };
   const handleBtnClick = () => {
+    scrollToTop();
     navigate(path);
   };
 
