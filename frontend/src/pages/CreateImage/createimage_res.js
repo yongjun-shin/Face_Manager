@@ -4,6 +4,9 @@ import { ReactComponent as MemberImg } from '../svgs/member_info.svg';
 import { Btn_black } from '../../components/button.js';
 import './createimage.css'
 
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
+
 const P = styled.p`
     font-size: 26px;
 `;
@@ -15,9 +18,26 @@ const Div = styled.div`
     display: flex;
     justify-content: center;
 `;
+function saveAsPdf() {
+    const element = document.getElementById('after_img');
+    const pdf = new jsPDF();
+    const pdfWidth = pdf.internal.pageSize.getWidth();
+    const pdfHeight = pdf.internal.pageSize.getHeight();
+  
+    html2canvas(element, { useCORS: true }).then(canvas => {
+      const imgData = canvas.toDataURL('image/png');
+      const imgWidth = pdfWidth * 0.6; // 이미지를 원하는 크기로 조정합니다.
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+  
+      pdf.addImage(imgData, 'PNG', (pdfWidth - imgWidth) / 2, (pdfHeight - imgHeight) / 2, imgWidth, imgHeight);
+  
+      pdf.save('ImageCreate.pdf');
+    });
+  }
+
 export function CreateImageResult() {
     let before = (<Member />)
-    let after = (<Member />)
+    let after = (<Member/>)
     return (
         <div class='create'>
             <div class='create_con'>
@@ -38,14 +58,16 @@ export function CreateImageResult() {
                         </div>
                         <hr style={{height:'300px', width:'.1vw', borderWidth:'0', backgroundColor:'#3A3A3A'}}/>
                         <div>
-                            {after}
+                            <div id='after_img'>
+                                {after}
+                            </div>
                             <Div>
                                 <p>After</p>
                             </Div>
                         </div>
                     </div>
                     <Div>
-                    <Btn_black style={{width:'170px', height:'60px', fontSize:'20px'}} text={'Save'}/>
+                        <Btn_black style={{width:'170px', height:'60px', fontSize:'20px'}} text={'Save'} onClick={saveAsPdf}/>
                     </Div>
                 </div>
             </div>
