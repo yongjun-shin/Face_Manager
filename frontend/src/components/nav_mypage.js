@@ -30,7 +30,7 @@ export function Nav_my() {
                     <hr />
                     <CustomLink style={{fontSize:'15px'}} to={'/physiognomy'} isActive={location.pathname === "/physiognomy"}>관상 분석</CustomLink>
                     <hr />
-                    <CustomLink style={{fontSize:'15px'}} to={'/createimage'} isActive={location.pathname === "/createimage"}>AI 이미지 생성</CustomLink>
+                    <CustomLink style={{fontSize:'15px'}} to={'/createimage'} isActive={location.pathname === "/createimage" || location.pathname === "/createimage_res"}>AI 이미지 생성</CustomLink>
                     <hr />
                     <CustomLink style={{fontSize:'15px'}} to={'/history'} isActive={location.pathname === "/history"}>히스토리</CustomLink>
                     <hr />

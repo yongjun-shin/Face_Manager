@@ -3,6 +3,9 @@ from django.contrib.auth.models import AbstractUser
 
 class CustomUser(AbstractUser):
     # Any extra fields would go here
+    # img 
+    # create_img
+    # skin_type
     
     def __str__(self):
         return self.email

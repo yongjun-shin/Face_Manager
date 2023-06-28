@@ -30,6 +30,12 @@ const CustomLink = styled(Link)`
 `;
 
 export function Footer(){
+    const scrollToTop = () => {
+        window.scrollTo(0, 0);
+    };
+    const goWeb = (url) => {
+        window.open(url, "_blank","noopener")
+    };
     return (
         <div style={{display:'flex', justifyContent:'center', marginBottom: '34px'}}>
             <Foot>
@@ -42,18 +48,17 @@ export function Footer(){
                     <a style={{fontWeight:700, fontSize:'22px'}}>Connect with us</a>
                     <br/>
                     <div style={{marginTop:'8px'}}>
-                        <Foot1/>
-                        <Foot2 style={{marginLeft:'18.46px'}}/>
+                        <Foot2 onClick={() => goWeb('https://github.com/AIVLE-School-Third-Big-Project/KT_BigProject_07')} style={{cursor:'pointer'}}/>
                     </div>
                 </Connect>
                 <Navigations>
                     <a style={{fontWeight:700, fontSize:'22px'}}>Navigations</a>
                     <br/>
                     <div style={{display:'flex', justifyContent:'space-between', fontSize:'15px', fontWeight:600, fontFamily:'Noto Serif KR'}}>
-                        <CustomLink to={'/'}>Face Manager .</CustomLink>
-                        <CustomLink to={'/detect'}>Face Detect</CustomLink>
-                        <CustomLink to={'/pricing'}>Pricing</CustomLink>
-                        <CustomLink to={'/qna'}>Q & A</CustomLink>
+                        <CustomLink to={'/'} onClick={scrollToTop}>Face Manager .</CustomLink>
+                        <CustomLink to={'/detect'} onClick={scrollToTop}>Face Detect</CustomLink>
+                        <CustomLink to={'/pricing'} onClick={scrollToTop}>Pricing</CustomLink>
+                        <CustomLink to={'/qna'} onClick={scrollToTop}>Q & A</CustomLink>
                     </div>
                 </Navigations>
                 <hr style={{marginTop:'33.73px', border:'1px solid #3A3A3A'}} />

@@ -8,3 +8,29 @@
     width: 1680px;
     display: flex;
 }
+.create .create_con .in {
+    margin-top: 80px;
+    margin-left: 166px;
+    margin-bottom: 350px;
+    width: 750px;
+}
+.create .create_con .in .title {
+    display: flex;
+    justify-content: center;
+    font-family:'PT Serif'; 
+    font-weight: bold;
+    margin-top: 100px;
+}
+.create .create_con .in .example {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    margin-bottom: 200px;
+}
+.create .create_con .in .beaf {
+    display: flex;
+    justify-content: center;
+    font-family:'PT Serif'; 
+    font-weight: bold;
+}
