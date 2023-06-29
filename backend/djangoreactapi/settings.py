@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     
     'webpack_loader',
     "post",
-    "signup"
+    "signup",
 ]
 
 MIDDLEWARE = [
@@ -144,7 +144,6 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = 'signup.CustomUser'
-
 
 # Django All Auth config. Add all of this.
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

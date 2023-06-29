@@ -31,7 +31,7 @@
 }
 .second .info {
     position: absolute;
-    bottom: 0;
+    bottom: 15px;
     left:70px;
     font-size: 14px;
     font-weight: 600;
