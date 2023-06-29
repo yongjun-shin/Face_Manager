@@ -24,7 +24,8 @@ import CreateImage from './pages/CreateImage/createimage.js';
 import CreateImageResult from './pages/CreateImage/createimage_res.js';
 import History from './pages/History/history.js';
 import './App.css';
-
+import BoardCreate from './components/boardcreate.js';
+import BoardEdit from './components/boardedit.js';
 
 function App() {
     const btn_click = (event) => {
@@ -45,12 +46,13 @@ function App() {
                     <Route path="/login" element={<Login/>} />
                     <Route path="/join" element={<Join/>} />
                     <Route path="/about" element={<About/>} />
-
                     <Route path="/member" element={<MemberInfo/>} />
                     <Route path="/physiognomy" element={<Physiognomy/>} />
                     <Route path="/createimage" element={<CreateImage/>} />
                     <Route path="/createimage_res" element={<CreateImageResult/>} />
                     <Route path="/history" element={<History/>} />
+                    <Route path="/createboard" element={<BoardCreate/>} />
+                    <Route path="/editboard" element={<BoardEdit/>} />
                 </Routes>
                 <Footer></Footer>
             </div>
