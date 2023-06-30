@@ -109,25 +109,27 @@ function Body(props){
             const formData = new FormData();
             formData.append('userPhoto', selectedFile);
             
-            // 파일 업로드 요청
-            fetch('http://127.0.0.1:8000/admin/post/', {
-                method: 'POST',
-                body: formData,
-            })
-                .then((response) => {
-                    if (response.ok) {
-                        console.log('File uploaded successfully.');
-                        navigate('/makeup');
-                    } else {
-                        console.log('Data sent send data');
-                        navigate('/makeup');
-                    }
-                })
-                .catch((error) => {
-                    console.error('Error uploading file:', error);
-                    navigate('/makeup');
-                });
-        }
+                // 파일 업로드 요청
+    fetch('http://127.0.0.1:8000/admin/post/', {
+        method: 'POST',
+        body: formData,
+      })
+        .then((response) => {
+          if (response.ok) {
+            console.log('File uploaded successfully.');
+            return response.json(); // 이미지 URL을 서버에서 응답으로 전달하도록 수정
+          } else {
+            console.log('Data sent send data');
+            throw new Error('Data sent, but an error occurred during upload.'); // 업로드 중에 오류 발생 시 에러 처리
+          }
+        })
+        .then((data) => {
+          setUserImage(data.url); // 이미지 URL을 상태 변수에 저장
+        })
+        .catch((error) => {
+          console.error('Error uploading file:', error);
+        });
+    };
     };
 
     return(
@@ -156,7 +158,7 @@ function Body(props){
 
             <RadioTitle text_color="#288E9A" content="멜라닌 색소 활성도"></RadioTitle>
                 <NewRadio name="P_or_N" accentColor="#288E9A"
-                    value1="Pigment" text_top1="P" text_center1="민감성" text_bottom1="Pigment"
+                    value1="Pigment" text_top1="P" text_center1="색소성" text_bottom1="Pigment"
                     description1="멜라닌 활성도가 높아 기미, 주근깨 혹은 잡티 등 눈에 보이는 색소가 많은 타입" bg_color1="#EAEFF3"
                     value2="Non-Pigment" text_top2="N" text_center2="비색소성" text_bottom2="Non-Pigment"
                     description2="멜라닌 활성도가 낮아 눈에 보이는 색소가 적은 타입" bg_color2="#D3E0E6" ></NewRadio>
