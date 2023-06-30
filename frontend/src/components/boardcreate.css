@@ -1,0 +1,47 @@
+.name-input{
+    font-size: 16px;
+    line-height: 1.5;
+    border: none;
+    background: #FFFFFF;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.08);
+    border-radius: 5px;
+    width: 200px;
+    padding: .5em 1em .5em .5em;
+    margin-right: 10px;
+    font-family: "Noto Serif KR";
+    } 
+    
+    .name-input::placeholder{
+      color: #838D99;
+      font-family: "Noto Serif KR";
+    }
+    
+    .name-input:focus {
+      outline: none;
+      box-shadow: 0 4px 10px 0 rgba(0,0,0,0.16);
+    }
+
+.content-input{
+    font-size: 16px;
+    line-height: 1.5;
+    border: none;
+    background: #FFFFFF;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.08);
+    border-radius: 5px;
+    width: 570px;
+    height: 300px;
+    padding: .5em 1em .5em .5em;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    font-family: "Noto Serif KR";
+    } 
+    
+    .content-input::placeholder{
+        color: #838D99;
+        font-family: "Noto Serif KR";
+    }
+    
+    .content-input:focus {
+        outline: none;
+        box-shadow: 0 4px 10px 0 rgba(0,0,0,0.16);
+    }
