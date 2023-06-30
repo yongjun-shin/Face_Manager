@@ -24,6 +24,8 @@ import CreateImage from './pages/CreateImage/createimage.js';
 import CreateImageResult from './pages/CreateImage/createimage_res.js';
 import History from './pages/History/history.js';
 import './App.css';
+
+import Exer from './pages/Exer/exer.js';
 import BoardCreate from './components/boardcreate.js';
 import BoardEdit from './components/boardedit.js';
 
@@ -46,6 +48,9 @@ function App() {
                     <Route path="/login" element={<Login/>} />
                     <Route path="/join" element={<Join/>} />
                     <Route path="/about" element={<About/>} />
+
+                    <Route path="/exer" element={<Exer/>} />
+
                     <Route path="/member" element={<MemberInfo/>} />
                     <Route path="/physiognomy" element={<Physiognomy/>} />
                     <Route path="/createimage" element={<CreateImage/>} />

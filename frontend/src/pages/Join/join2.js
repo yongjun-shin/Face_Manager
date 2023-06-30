@@ -89,7 +89,7 @@ export function Join() {
       return false
     }
     
-
+    
     Axios.post('http://localhost:8000/signup/auth/register/', user)
       .then(res => {
         if (res.data['access']) {
