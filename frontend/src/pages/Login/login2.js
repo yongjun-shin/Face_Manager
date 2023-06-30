@@ -71,15 +71,14 @@ export function Login() {
       .then(res => {
         console.log(res.data['access'])
         if (res.data['access']) {
-          console.log(1)
           localStorage.clear()
           localStorage.setItem('token', res.data['access'])
+          localStorage.setItem('pk', res.data['user']['pk'])
           localStorage.setItem('username', res.data['user']['username'])
           localStorage.setItem('email', res.data['user']['email'])
           // 사용하려면 App.js에서 /로 라우팅해야 한다
           window.location.replace('/')
         } else {
-          console.log(2)
           setEmail('')
           setPassword('')
           localStorage.clear()
