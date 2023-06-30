@@ -21,10 +21,13 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('post.urls')),
     path('signup/', include('signup.urls')),
+    path('ai/', include('ai.urls')),
+    path('qna/', include('qna.urls')),
+    path('pricing/', include('pricing.urls')),
 ]
 
-# urlpatterns = [
-#     path('admin/', admin.site.urls),
-#     path('user/', include('signup.urls')),
-
-#  ]
+# 개발환에서 media 파일 경로 지정
+from django.conf.urls.static import static
+from django.conf import settings
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
