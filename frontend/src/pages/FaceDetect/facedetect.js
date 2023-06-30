@@ -104,6 +104,7 @@ function Body(props){
 
     // 파일 업로드 요청 함수
     const handleSubmit = () => {
+        console.clear()
         if (selectedFile) {
             console.log('Selected File:', selectedFile);
             const formData = new FormData();
