@@ -45,7 +45,8 @@ export function Navi() {
         <Nav>
             <Div_items>
                 <CustomLink style={{ fontWeight:'bold', fontSize:'26px'}} to={'/'} >Face Manager .</CustomLink>
-                <CustomLink style={{ fontSize:'18px', marginLeft:'184px'}} to={'/detect'} isActive={location.pathname === "/detect"}>Face Detect</CustomLink>
+                <CustomLink style={{ fontSize:'18px', marginLeft:'184px'}} to={'/about'} isActive={location.pathname === "/about"}>About</CustomLink>
+                <CustomLink style={{ fontSize:'18px', marginLeft:'90px'}} to={'/detect'} isActive={location.pathname === "/detect"}>Face Detect</CustomLink>
                 <CustomLink style={{ fontSize:'18px', marginLeft:'92px'}} to={'/pricing'} isActive={location.pathname === "/pricing"}>Pricing</CustomLink>
                 <CustomLink style={{ fontSize:'18px', marginLeft:'83px'}} to={'/qna'} isActive={location.pathname === "/qna"}>Q&A</CustomLink>
                 <Nav_log></Nav_log>
