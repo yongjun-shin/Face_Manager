@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 import Btn_black from './button';
 
 const ModalContainer = styled.div`
@@ -92,7 +93,27 @@ export function Modal(props) {
         const minutes = String(now.getMinutes()).padStart(2, '0'); // 분도 두 자리 숫자로 만듦
         const time = `${year}-${month}-${day} ${hours}:${minutes}`;
 
-        console.log(buy, price, time, pay);
+        const pk = localStorage.getItem('pk')
+        const name = localStorage.getItem('username')
+        const data = {
+            date: time,
+            pay_type: buy,
+            method: pay,
+            price: price,
+            user_name: name,
+            user_id: pk
+        }
+        console.log(data);
+        
+        axios.post('http://127.0.0.1:8000/pricing/', data)
+            .then(response => {
+                console.log('Data submitted successfully');
+                close();
+            })
+            .catch(error => {
+                console.error('Failed to submit data:', error);
+            });
+
         close();
     };
 
