@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import "../components/boardview.css"
 import { Btn_beige } from "../components/button.js";
 import styled from "styled-components";
 import { Link } from 'react-router-dom';
+import TableRow from './tablerow';
 
 const TableWrapper = styled.div`
     display: flex;
@@ -13,19 +14,23 @@ const TableWrapper = styled.div`
     margin-bottom: 160px;
 `;
 
-const BtnWrapper = styled.div`
-    display: flex;
-    justify-content: space-between;
-    margin-left: 143px;
-    margin-right: 10px;
-`;
-
 const BoardView = () => {
+    const [tableData, setTableData] = useState([]);
+    
     const [activeIndex, setActiveIndex] = useState(0);
-
     const handleItemClick = (index) => {
         setActiveIndex(index);
     };
+
+    // useEffect(() => {
+    //     // 서버로부터 데이터 가져오기
+    //     axios.get("localhost:8000/qna/")
+    //         .then(response => {
+    //             // 응답 처리
+    //             console.log(response.data);
+    //             setTableData(response.data);
+    //         })
+    // }, []);
 
     return(
         <TableWrapper>
@@ -37,71 +42,14 @@ const BoardView = () => {
                     <th>문의 제목</th> 
                     <th class="th-actions"></th>
                 </tr>
-                    
-                <tr class="table-tbody-tr">
-                    <td>강동원</td>
-                    <td>가격 정책 문의</td>
-                    <td>
-                    <BtnWrapper>
-                    <Link to="/editboard">
-                    <Btn_beige text="Edit" style={{boxShadow: "none", width:"60px", height:"30px", fontSize: "12px"}} />
-                    </Link>
-                    <Btn_beige text="Delete" style={{boxShadow: "none", width:"60px", height:"30px", fontSize: "12px"}} />
-                    </BtnWrapper>
-                    </td>
-                </tr>
-                    
-                <tr class="table-tbody-tr">
-                    <td>김태희</td>
-                    <td>얼굴인식 문의</td>
-                    <td>
-                    <BtnWrapper>
-                    <Link to="/editboard">
-                    <Btn_beige text="Edit" style={{boxShadow: "none", width:"60px", height:"30px", fontSize: "12px"}} />
-                    </Link>
-                    <Btn_beige text="Delete" style={{boxShadow: "none", width:"60px", height:"30px", fontSize: "12px"}} />
-                    </BtnWrapper>
-                    </td>
-                </tr>
-
-                <tr class="table-tbody-tr">
-                    <td>홍길동</td>
-                    <td>로그인 문의</td>
-                    <td>
-                    <BtnWrapper>
-                    <Link to="/editboard">
-                    <Btn_beige text="Edit" style={{boxShadow: "none", width:"60px", height:"30px", fontSize: "12px"}} />
-                    </Link>
-                    <Btn_beige text="Delete" style={{boxShadow: "none", width:"60px", height:"30px", fontSize: "12px"}} />
-                    </BtnWrapper>
-                    </td>
-                </tr>
-
-                <tr class="table-tbody-tr">
-                    <td>전정국</td>
-                    <td>회원탈퇴 문의</td>
-                    <td>
-                    <BtnWrapper>
-                    <Link to="/editboard">
-                    <Btn_beige text="Edit" style={{boxShadow: "none", width:"60px", height:"30px", fontSize: "12px"}} />
-                    </Link>
-                    <Btn_beige text="Delete" style={{boxShadow: "none", width:"60px", height:"30px", fontSize: "12px"}} />
-                    </BtnWrapper>
-                    </td>
-                </tr>
-
-                <tr class="table-tbody-tr">
-                    <td>김석진</td>
-                    <td>회원탈퇴 문의</td>
-                    <td>
-                    <BtnWrapper>
-                    <Link to="/editboard">
-                    <Btn_beige text="Edit" style={{boxShadow: "none", width:"60px", height:"30px", fontSize: "12px"}} />
-                    </Link>
-                    <Btn_beige text="Delete" style={{boxShadow: "none", width:"60px", height:"30px", fontSize: "12px"}} />
-                    </BtnWrapper>
-                    </td>
-                </tr>
+                <TableRow authorName="강동원" titleName="회원가입 문의"/>
+                <TableRow authorName="김태희" titleName="회원가입 문의"/>
+                <TableRow authorName="홍길동" titleName="회원가입 문의"/>
+                <TableRow authorName="전정국" titleName="회원가입 문의"/>
+                <TableRow authorName="김석진" titleName="회원가입 문의"/>
+                {/* {tableData.map((data) => (
+                <TableRow authorName={data.username} titleName={data.title} />
+                ))};  */}
             </table>
         </div>
         <div className='input-wrapper'> 

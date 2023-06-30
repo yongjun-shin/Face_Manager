@@ -44,6 +44,7 @@
   .input-wrapper{
     display: flex;
     align-items: center;
+    padding-top: 20px;
   }
 
   .input-elevated{
@@ -76,7 +77,7 @@
   .pagi-wrapper {
     place-items: center;
     text-align: center;
-    margin-top: 15px;
+    margin-top: 20px;
     padding: 0;
     outline: none;
     font-family: "Noto Serif KR";
