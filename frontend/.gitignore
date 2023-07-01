@@ -21,3 +21,8 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+media/post_images/
+media/ai/
+image_gen/*.zip
+
