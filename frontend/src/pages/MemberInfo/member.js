@@ -1,20 +1,51 @@
 import styled from "styled-components";
 import Nav_my from '../../components/nav_mypage.js';
+import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
 import { ReactComponent as MemberImg } from '../svgs/member_info.svg';
 import { Btn_home } from "../../components/button.js";
 import './member.css';
 
-function Boxes() {
-    const data = [
-      // {
-      //   date: '2023-05-08 09:35',
-      //   payment: 'Express',
-      //   method: '신용카드',
-      //   amount: '$2.00/per',
-      // }
-    ];
+
+
+function Boxes(props) {
     let pay_history = null;
+    const pk = localStorage.getItem('pk')
+
+    const getDataByUserId = async (userId) => {
+      try {
+        const response = await axios.get(`http://localhost:8000/pricing/`);
+        const d = response.data;
+        const filteredData = d.filter(item => item.user_id === userId);
+    
+        return filteredData;
+      } catch (error) {
+        console.error(error);
+        throw error;
+      }
+    };
+    
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const filteredData = await getDataByUserId(pk);
+          const selectedData = filteredData.map(item => {
+            const { date, method, pay_type, price } = item;
+            return { date, method, pay_type, price };
+          });
+          setData(selectedData);
+          //localStorage.setItem('rank', selectedData.length > 0 ? selectedData[selectedData.length - 1].pay_type : 'None');
+        } catch (error) {
+          // 에러 처리
+        }
+      };
+
+      fetchData();
+    }, [pk]);
+
     if(data.length === 0){
       pay_history = (<div className="box">
         <div className="box_in">
@@ -37,13 +68,13 @@ function Boxes() {
             <p>{item.date}</p>
           </div>
           <div className="box_in">
-            <p>{item.payment}</p>
+            <p>{item.pay_type}</p>
           </div>
           <div className="box_in">
             <p>{item.method}</p>
           </div>
           <div className="box_in">
-            <p>{item.amount}</p>
+            <p>{item.price}</p>
           </div>
         </div>
       )));
@@ -196,11 +227,11 @@ export function MemberInfo() {
     if (email === null){
         email = 'popobaboya@gmail.com';
     }
-    let rank = null;
+    let rank = localStorage.getItem('rank');
     if (rank === null){
         rank = 'None';
     }
-
+    console.log(rank);
     return (
         <div class='member'>
             <div class='member_con'>
