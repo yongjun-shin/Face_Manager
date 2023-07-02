@@ -108,7 +108,6 @@ export function Modal(props) {
         axios.post('http://127.0.0.1:8000/pricing/', data)
             .then(response => {
                 console.log('Data submitted successfully');
-                localStorage.setItem('rank', data.pay_type);
                 close();
             })
             .catch(error => {

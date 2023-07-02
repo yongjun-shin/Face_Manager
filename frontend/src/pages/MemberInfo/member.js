@@ -37,7 +37,6 @@ function Boxes(props) {
             return { date, method, pay_type, price };
           });
           setData(selectedData);
-          //localStorage.setItem('rank', selectedData.length > 0 ? selectedData[selectedData.length - 1].pay_type : 'None');
         } catch (error) {
           // 에러 처리
         }
@@ -45,6 +44,14 @@ function Boxes(props) {
 
       fetchData();
     }, [pk]);
+
+    useEffect(() => {
+      if (data.length > 0) {
+        props.setRank(data[data.length - 1].pay_type);
+      } else {
+        props.setRank('None');
+      }
+    }, [data, props.setRank]);
 
     if(data.length === 0){
       pay_history = (<div className="box">
@@ -111,8 +118,8 @@ const Div = styled.div`
   display: flex;
   justify-content: center;
 `
-function Skin() {
-  let type = null;
+function Skin(props) {
+  const [type, setType] = useState(null);
   let type2 = 'dsnt';
   //type = 'dsnt';
   let color = ['#537AA5', '#7E7F83', '#288E9A', '#515FA8'];
@@ -128,6 +135,48 @@ function Skin() {
     scrollToTop();
     navigate('/detect');
   }
+
+  const [data2, setData2] = useState([]);
+  const pk = localStorage.getItem('pk')
+  const getDataByUserId = async (userId) => {
+    try {
+      const response = await axios.get(`http://localhost:8000/api/faceinput/`);
+      const d = response.data;
+      const filteredData = d.filter(item => item.user_id === userId);
+      return filteredData;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const filteredData = await getDataByUserId(pk);
+        const selectedData = filteredData.map(item => {
+          let { image, type_list } = item;
+          return { image, type_list };
+        });
+        setData2(selectedData);
+      } catch (error) {
+        // 에러 처리
+      }
+    };
+
+    fetchData();
+  }, [pk]);
+
+  useEffect(() => {
+    if (data2.length > 0) {
+      setType(data2[data2.length - 1].type_list);
+      localStorage.setItem('type', data2[data2.length - 1].type_list);
+      props.setImg(<img src={data2[data2.length-1].image} alt="이미지" style={{width:'150px', height:'150px'}}/>);
+    } else {
+      setType(null);
+      props.setImg(<MemberImg style={{width:'150px', height:'150px'}}/>);
+    }
+  }, [data2, setType, props.setImg]);
 
   if(type === null){
     skin_history = (
@@ -213,25 +262,20 @@ const P = styled.p`
 `;
 
 export function MemberInfo() {
-    // 추후 데이터베이스에서 image 받아오면 img변수에 데이터 삽입
-    let img = null;
-    if (img === null){
-        img = (<MemberImg style={{width:'150px', height:'150px'}}/>)
-    }
-    // 이름, email, 회원등급도 데이터베이스에 받아오면 대체
+    const [img, setImg] = useState(<MemberImg style={{width:'150px', height:'150px'}}/>);
+
     let name = localStorage.getItem('username');
     if (name === null){
         name = '홍길동';
     }
+
     let email = localStorage.getItem('email');
     if (email === null){
         email = 'popobaboya@gmail.com';
     }
-    let rank = localStorage.getItem('rank');
-    if (rank === null){
-        rank = 'None';
-    }
-    console.log(rank);
+
+    let [rank, setRank] = useState('None');
+
     return (
         <div class='member'>
             <div class='member_con'>
@@ -245,11 +289,11 @@ export function MemberInfo() {
                     </div>
                     <div class='second'>
                         <P>결제내역</P>
-                        <Boxes />
+                        <Boxes setRank={setRank}/>
                     </div>
                     <div class='third'>
                         <P>피부타입</P>
-                        <Skin />
+                        <Skin setImg={setImg}/>
                     </div>
                 </div>
             </div>
