@@ -37,6 +37,7 @@ class FaceInputSerializer(serializers.ModelSerializer):
         model = FaceInput
         fields = (
             'id',
+            'eyelid',
             'do',
             'sr',
             'pn',
