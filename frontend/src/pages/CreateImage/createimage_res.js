@@ -3,6 +3,7 @@ import Nav_my from '../../components/nav_mypage.js';
 import { ReactComponent as MemberImg } from '../svgs/member_info.svg';
 import React, { useState, useEffect } from 'react';
 import { Btn_black } from '../../components/button.js';
+import axios from "axios";
 import './createimage.css'
 
 import html2canvas from 'html2canvas';
@@ -39,6 +40,43 @@ function saveAsPdf() {
 export function CreateImageResult() {
     const [before, setBefore] = useState(<Member />);
     const [after, setAfter] = useState(<Member/>);
+    const [data, setData] = useState([]);
+
+    const pk = localStorage.getItem('pk')
+    const getDataByUserId = async (userId) => {
+        try {
+            const response = await axios.get(`http://localhost:8000/api/faceinput/`);
+            const d = response.data;
+            const filteredData = d.filter(item => item.user_id === userId);
+            return filteredData;
+        } catch (error) {
+            console.error(error);
+            throw error;
+        }
+    };
+
+    useEffect(() => {
+        const fetchData = async () => {
+        try {
+            const filteredData = await getDataByUserId(pk);
+            const selectedData = filteredData.map(item => {
+            let { image } = item;
+            return { image };
+            });
+            setData(selectedData);
+        } catch (error) {
+            // 에러 처리
+        }
+        };
+
+        fetchData();
+    }, [pk]);
+
+    useEffect(() => {
+        if (data.length > 0) {
+            setBefore(<img src={`http://127.0.0.1:8000${data[data.length-1].image}`} alt="이미지" style={{width:'230px', height:'230px'}}/>);
+        }
+    }, [data, setBefore]);
     return (
         <div class='create'>
             <div class='create_con'>

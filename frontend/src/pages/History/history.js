@@ -17,7 +17,7 @@ function Rec() {
     let title= null;
     let path = null;
     let type = localStorage.getItem('type');
-    
+
     if (type === 'dspt'){
         url = [
         "https://atelierb.co.kr/web/product/big/202306/3ad0f9e656234a2214e6485dbc7cf515.jpg",
@@ -32,19 +32,19 @@ function Rec() {
         ]
     } else if (type === 'dsnt'){
         url = [
-            "https://torridtr9977.cdn-nhncommerce.com/data/goods/20/10/43/98/98_detail_022.jpg",
+            "https://shop-phinf.pstatic.net/20230623_278/1687487694633T4BDW_PNG/3756189462385503_1826091338.png?type=m510",
             "https://snature.kr/web/product/big/202306/25d299f88da9a4f263f1d8aaf5289a9a.jpg",
             "https://www.illiyoon.com/media/catalog/product/cache/8fbc8cb69acb0a868c4ed180904d3a72/0/1/0103__350.jpg",
         ]
-        title = ["[토리든]다이브인 저분자 히알루론산 마스크", "[에스네이처]아쿠아 오아시스 토너", "[일리윤]세라마이드 아토 로션"]
+        title = ["코코드메르 스킨 코드 세럼 05 DSNT", "[에스네이처]아쿠아 오아시스 토너", "[일리윤]세라마이드 아토 로션"]
         path = [
-            "https://www.torriden.com/goods/goods_view.php?goodsNo=98",
+            "https://smartstore.naver.com/cocodemer_official/products/8757094249?NaPm=ct%3Dljm8qgs0%7Cci%3Db0bac9399d43999c617540bde1b0abb3a599d39d%7Ctr%3Dsls%7Csn%3D5096097%7Chk%3Dc438065246da16614a00fea2841eec04a75c2f47",
             "https://snature.kr/product/detail.htmlproduct_no=79&cate_no=75&display_group=1",
             "https://www.illiyoon.com/products/ceramide-ato-lotion-350ml.html",
         ]
-    } else if (type === 'dspw'){
+    } else if (type === 'dspw'){ 
         url = [
-            "https://beplaitr6500.cdn-nhncommerce.com/data/goods/20/06/27/1000000059/t50_1000000059_detail_083.jpg",
+            "https://beplaitr6500.cdn-nhncommerce.com/data/goods/20/06/27/1000000059/1000000059_detail_09.jpg",
             "https://images-kr.amoremall.com/products/001251000002/001251000002_01.jpg?1655894334214&format=webp&resize=550:550&shrink=550:550",
             "https://droracle.co.kr/web/product/extra/big/202305/e248e32182f0f5a4cee4341d8fc26f3f.jpg",
         ]
@@ -58,7 +58,7 @@ function Rec() {
             "https://www.amoremall.com/kr/ko/product/detail?onlineProdSn=53199&onlineProdCode=001251000002",
             "https://droracle.co.kr/product/2023-화해-어워드-1위-레티노타이트닝-비타민a레티놀-앰플-30ml그린티진정-마스크팩-10매-증정/661/",
         ]
-    } else if (type === 'dsnw'){
+    } else if (type === 'dsnw'){ 
         url = [
             "http://wellage.co.kr/web/product/extra/big/202009/e8e662cabaf5c1ac6f88d089b1ca4bf5.jpg",
             "https://cdn-pro-web-40-6.cdn-nhncommerce.com/dalbapiedmot_godomall_com/data/goods/22/01/02/1000000100/1000000100_detail_07.png",
@@ -93,8 +93,8 @@ function Rec() {
     } else if (type === 'osnt'){
         url = [
             "https://m.roundlab.co.kr/web/product/big/202204/a9d58d7c6e3bde2980dbaf8548300bd7.jpg",
-            "https://torridtr9977.cdn-nhncommerce.com/data/goods/21/08/31/132/132_detail_085.jpg",
-            "https://torridtr9977.cdn-nhncommerce.com/data/goods/22/04/17//143/143_detail_021.jpg",
+            "./imgs/osnt_2.jpg",
+            "./imgs/osnt_3.jpg",
         ]
         title = [
             "[라운드랩]1025 독도 토너",
@@ -154,10 +154,10 @@ function Rec() {
             "https://cosnori.com/product/코스노리-화이트닝드레스-미백-톤업크림-20192020-화해-1위-톤업크림/19/",
             "https://clubclio.co.kr/shop/goodsView/0000003511",
         ]
-    } else if (type === 'ornt'){ // 1, 2
+    } else if (type === 'ornt'){
         url = [
             "https://beplaitr6500.cdn-nhncommerce.com/data/goods/20/09/36/1000000078/t50_1000000078_detail_025.jpg",
-            "https://itshanbul3.cdn-nhncommerce.com/data/goods/21/11/47/1000001132/1000001132_detail_090.png",
+            "./imgs/ornt_2.png",
             "https://snature.kr/web/product/big/202211/7fef6ef9806552a2cc1eff3907ab40b7.jpg",
         ]
         title = [
@@ -204,8 +204,8 @@ function Rec() {
         ]
     } else if (type === 'drpt'){
         url = [
-            "https://itshanbul3.cdn-nhncommerce.com/data/goods/22/12/52/1000001454/1000001454_detail_073.png",
-            "https://itshanbul3.cdn-nhncommerce.com/data/goods/22/12/52/1000001453/1000001453_detail_076.png",
+            "./imgs/drpt_1.png",
+            "./imgs/drpt_2.png",
             "https://cdn-pro-web-211-225.cdn-nhncommerce.com/makeprem1_godomall_com/data/goods/22/03/10/1000000148/1000000148_detail_080.jpg",
         ]
         title = [
@@ -252,7 +252,7 @@ function Rec() {
         ]
     } else if (type === 'drnw'){
         url = [
-            "https://numbuztr5812.cdn-nhncommerce.com/data/goods/21/02/07/1000000060/1000000060_detail_116.jpg",
+            "./imgs/drnw_1.jpg",
             "https://www.sidmool.com/shopimages/sidmool/0220020000212.jpg?1665729130",
             "https://sitem.ssgcdn.com/83/98/84/item/1000508849883_i1_1100.jpg",
         ]
