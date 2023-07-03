@@ -111,6 +111,8 @@ function Body() {
         })
         .then(function (response) {
             console.log('database part well done');
+            //localStorage.setItem('img', image_val);
+            //localStorage.setItem('type', type_val);
             Axios.post("http://127.0.0.1:8000/ai/", form_data, {
                 headers: {
                     'content-type' : 'multipart/from-data'
