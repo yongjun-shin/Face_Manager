@@ -78,6 +78,9 @@ const [imgSrc, setImgSrc] = useState('');
   };
   
   return (
+
+    
+    
     <div className='wrapper' ref={pdfRef}>
     <div className='container'>
     <div className="makeup-method-01">
