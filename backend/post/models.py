@@ -22,6 +22,7 @@ class Review(models.Model):
     content = models.TextField()
 
 class FaceInput(models.Model):
+    eyelid = models.CharField(max_length=20, null=True)
     do = models.CharField(max_length=20)
     sr = models.CharField(max_length=20)
     pn = models.CharField(max_length=20)

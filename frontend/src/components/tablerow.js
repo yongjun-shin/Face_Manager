@@ -29,15 +29,20 @@ const titles = [ '구독 문의', '로그인 문의', '회원가입 문의', '�
 const usernames = [ '홍길동', '김태희', '전정국', '이채현'] 
 
 const TableRow = ({ authorName, titleName, setTitle, setUsername, setContent, idx }) => {
-    // const handleDelete = () => {
-    //     axios.delete(`http://127.0.0.1:8000/qna/`, data)
-    //       .then(response => {
-    //         props.setTitle(data.title)
-    //         props.setUsername(data.username)
-    //       })
-    //     setTitle(titles)
-    //     setUsername(usernames)
-    //   };
+    const handleDelete = () => {
+        // axios.delete(`http://127.0.0.1:8000/qna/`, data)
+        //   .then(response => {
+        //     props.setTitle(data.title);
+        //     props.setUsername(data.username);
+        //   })
+        // setTitle(titles)
+        // setUsername(usernames)
+
+        // .catch(error => {
+        //     console.log("error!");
+        //     console.log(error);
+        //   });
+      };
 
     return (
         <TableDataWrapper>
@@ -49,9 +54,9 @@ const TableRow = ({ authorName, titleName, setTitle, setUsername, setContent, id
             <Btn_beige onClick={() => {
                 // axios.get(`http://127.0.0.1:8000/qna?idx=${idx}`)
                 // .then((res) => {
-                //     setTitle(res.data['title'])
-                //     setUsername(res.data['username'])
-                //     setContent(res.data['content'])
+                //     setTitle(res.data.title)
+                //     setUsername(res.data.username)
+                //     setContent(res.data.content)
                 // })
             }} text="Edit" style={{boxShadow: "none", width:"60px", height:"30px", fontSize: "12px"}} />
             </Link>

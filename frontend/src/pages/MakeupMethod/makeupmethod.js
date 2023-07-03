@@ -5,7 +5,7 @@ import MakeUpCard from '../../components/makeupcard.js';
 import { Btn_black } from "../../components/button.js";
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
-
+import Axios from 'axios';
 function Makeup() {
 
 const fadeInAnimation = keyframes`
@@ -62,6 +62,9 @@ const MainTextContainer = styled.div`
   };
   
   return (
+
+    
+    
     <div className='wrapper' ref={pdfRef}>
     <div className='container'>
     <div className="makeup-method-01">

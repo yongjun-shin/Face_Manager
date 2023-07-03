@@ -40,21 +40,21 @@ const BoardCreate = ({}) => {
         var content_val = document.getElementById("content").value;
         var user_id_val = localStorage.getItem('pk');
 
-        console.log(username_val, title_val, content_val, user_id_val);
+        console.log(username_val, title_val, content_val, user_id_val)
         
-        // Axios.post("http://127.0.0.1:8000/qna/", {
-        //     user_name : username_val,
-        //     title : title_val,
-        //     content : content_val,
-        //     user_id : user_id_val
-        // })
-        // .then(function (response) {
-        //     //window.location.replace('/qna')
-        // })
-        // .catch(function (error) {
-        //     console.log("error!");
-        //     console.log(error);
-        // });
+        Axios.post("http://127.0.0.1:8000/qna/", {
+            user_name : username_val,
+            title : title_val,
+            content : content_val,
+            user_id : user_id_val
+        })
+        .then(function (response) {
+            window.location.replace('/qna')
+        })
+        .catch(function (error) {
+            console.log("error!");
+            console.log(error);
+        });
     }
 
     return (

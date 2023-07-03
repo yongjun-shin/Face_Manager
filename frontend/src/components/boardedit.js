@@ -42,13 +42,13 @@ const BoardEdit = (props) => {
           content: document.querySelector('.content-input').value,
         };
 
-        // axios.put("http://127.0.0.1:8000/qna/", updatedData)
-        //   .then(response => {
-        //     console.log(response.data);
-        //     setTitle(updatedData.title);
-        //     setUserName(updatedData.username);
-        //     props.setContent(updatedData.content);
-        //   })
+        axios.put("http://127.0.0.1:8000/qna/", updatedData)
+          .then(response => {
+            console.log(response.data);
+            setTitle(updatedData.title);
+            setUserName(updatedData.username);
+            props.setContent(updatedData.content);
+          })
         };
 
     return (

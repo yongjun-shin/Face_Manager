@@ -25,13 +25,13 @@ const BoardView = (props) => {
     const handleItemClick = (index) => {
         setActiveIndex(index);
     };
-    // useEffect(() => {
-    //     axios.get("http://127.0.0.1:8000/qna/")
-    //         .then(response => {
-    //             console.log(response.data);
-    //         })
-    // }, []);
-    // console.log(title, username);
+    useEffect(() => {
+        axios.get("http://127.0.0.1:8000/qna/")
+            .then(response => {
+                console.log(response.data);
+            })
+    }, []);
+    console.log(title, username);
 
     return(
         <TableWrapper>
