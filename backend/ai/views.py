@@ -3,6 +3,16 @@ from rest_framework import generics
 
 from .models import AiResult
 from .serializers import AiResultSerializer
+from .models import FaceShapeMethod
+from .models import EyeMethod_eyelid
+from .models import EyeMethod_len
+from .models import EyeMethod_angle
+from .models import LipMethod_len
+from .models import LipMethod_thick
+from .models import NoseMethod_nos
+from .models import NoseMethod_len
+from .models import MakeupText
+from .serializers import MakeupTextSerializer
 
 from rest_framework import status
 from rest_framework.views import APIView
@@ -25,13 +35,71 @@ from datetime import datetime
 import os
 import shutil
 
-class AiResultList(APIView):
-    
-    #model_weights = model.load_weights('media/ai/EfficientNetB6.h5')
-    #model.weights = model_weights
+class AiResultDetail(APIView):
     def get(self, request):
         airesults = AiResult.objects.all()
+        serializer = AiResultSerializer(airesults, many=True)
+        return Response(serializer.data)
+    
+    def put(self, request):
+        data = request.data
+        id = data['user_id']
+        query = AiResult.objects.filter(user_id = id).values()
+        query = query[len(query)-1]
+        print(query)
         
+        query2 = FaceInput.objects.filter(user_id = id).values()
+        query2 = query2[len(query2)-1]
+        print(query2)
+        img_path = query2['image']
+        
+        eye_lid = query['eye_lid']
+        eye_len = query['eye_len']
+        eye_angle = query['eye_angle']
+        lip_len = query['lip_len']
+        lip_thick = query['lip_thick']
+        nostril = query['nostril']
+        nose_len = query['nose_len']
+        face_shape = query['face_shape']
+        
+        q_face = FaceShapeMethod.objects.filter(shape = face_shape).values()[0]
+        #print(q_face)
+        q_eyelid = EyeMethod_eyelid.objects.filter(eyelid = eye_lid).values()[0]
+        #print(q_eyelid)
+        q_eyelen = EyeMethod_len.objects.filter(leng = eye_len).values()[0]
+        #print(q_eyelen)
+        q_eyeangle = EyeMethod_angle.objects.filter(angle = eye_angle).values()[0]
+        #print(q_eyeangle)
+        q_liplen = LipMethod_len.objects.filter(leng = lip_len).values()[0]
+        #print(q_liplen)
+        q_lipthick = LipMethod_thick.objects.filter(thickness=lip_thick).values()[0]
+        #print(q_lipthick)
+        q_nosenos = NoseMethod_nos.objects.filter(wideness=nostril).values()[0]
+        #print(q_nosenos)
+        q_noselen = NoseMethod_len.objects.filter(leng=nose_len).values()[0]
+        #print(q_noselen)
+        
+        result_data = MakeupText(
+            user_id = id,
+            eye_lid = q_eyelid,
+            eye_len = q_eyelen,
+            eye_angle = q_eyeangle,
+            lip_len = q_liplen,
+            lip_thick = q_lipthick,
+            nostril = q_nosenos,
+            nose_len = q_noselen,
+            face_shape = q_face,
+        )
+        result_data = MakeupTextSerializer(result_data)
+        
+        return Response(data = result_data, status=status.HTTP_201_CREATED)
+        
+        
+class AiResultList(APIView):
+    
+    def get(self, request):        
+        
+        airesults = AiResult.objects.all()
         serializer = AiResultSerializer(airesults, many=True)
         return Response(serializer.data)
 
@@ -39,7 +107,7 @@ class AiResultList(APIView):
         print()
         data = request.data
         #print(data)
-        image = data['image']
+        #image = data['image']
         id = data['user_id']
         
         #print(data['do'])
@@ -80,6 +148,7 @@ class AiResultList(APIView):
         
         result_data = AiResult(
             user_id = id,
+            eye_lid = query['eyelid'],
             eye_len = result['eye_len'],
             eye_angle = result['eye_angle'],
             lip_len = result['lip_len'],
@@ -123,11 +192,11 @@ def Face_Analysis(points):
         d_y = d[0, 1]
 
         if (d_x-a_x)/(c_x-b_x) >2.2:
-            return('Short eye')
+            return('short')
         elif 2.0<= (d_x-a_x)/(c_x-b_x) <= 2.2:
-            return('Golden ratio eye')
+            return('golden')
         else:
-            return('Long eye')
+            return('long')
 
 
     def Eyes_Angle_Classification(points):
@@ -141,11 +210,11 @@ def Face_Analysis(points):
         c_y = c[0, 1]
 
         if math.degrees(math.atan((c_y-b_y)/(c_x-b_x))) > 5:
-            return('Up eyes')
+            return('up')
         elif 4<= math.degrees(math.atan((c_y-b_y)/(c_x-b_x))) <= 5:
-            return('Golden Ratio eyes')
+            return('golden')
         else:
-            return('Down Eyes')
+            return('down')
 
     def Lip_Length_Classification(points):
         a = points[36]
@@ -166,11 +235,11 @@ def Face_Analysis(points):
         d_y = d[0, 1]
 
         if (d_x-c_x)/(b_x-a_x) > 1.6:
-            return('Short Lip')
+            return('short')
         elif 1.4 <= (d_x-c_x)/(b_x-a_x) <= 1.6:
-            return('Golden Ration Lip')
+            return('golden')
         else:
-            return('Long Lip')
+            return('long')
 
     def Lip_Thickness_Classification(points):
         a = points[48]
@@ -191,11 +260,11 @@ def Face_Analysis(points):
         d_y = d[0, 1]
 
         if (b_x-a_x)/(d_y-c_y) > 3.1:
-            return('Thin Lip')
+            return('thin')
         elif 2.9 <= (b_x-a_x)/(d_y-c_y) <= 3.1:
-            return('Golden Ration Lip')
+            return('golden')
         else:
-            return('Thick Lip')
+            return('thick')
 
     def Nostrils_Classification(points):
         a = points[39]
@@ -216,11 +285,11 @@ def Face_Analysis(points):
         d_y = d[0, 1]
 
         if (b_x-a_x)/(d_x-c_x) > 1.1:
-            return('Narrow Nostrils')
+            return('narrow')
         elif 0.9 <= (b_x-a_x)/(d_x-c_x) <= 1.1:
-            return('Golden Ratio Nostrils')
+            return('golden')
         else:
-            return('Wide Nostrils')
+            return('wide')
 
     def Nose_Length_Classification(points):
         a = points[21]
@@ -241,11 +310,11 @@ def Face_Analysis(points):
         d_y = d[0, 1]
 
         if (b_y-a_y)/(d_y-c_y) > 1.1:
-            return('Long Nose')
+            return('long')
         elif 0.9 <= (b_y-a_y)/(d_y-c_y) <= 1.1:
-            return('Golden Ratio Nose')
+            return('golden')
         else:
-            return('Short Nose')
+            return('short')
 
     result = {}
     result['nose_len'] = Nose_Length_Classification(points)
@@ -290,8 +359,8 @@ def Face_Shape(img):
     pred = model.predict(img)
 
     predicted_class_idx = np.argmax(pred, axis=-1)
-    class_dict = {0:'Heart', 1:'Oblong', 2:'Oval', 3:'Round', 4:'Square'}
-
+    #class_dict = {0:'heart', 1:'oblong', 2:'oval', 3:'round', 4:'square'}
+    class_dict = {0:'계란형', 1:'긴형', 2:'역삼각형', 3:'둥근형', 4:'각진형'}
     return(class_dict[predicted_class_idx[0]])
     
 class AiDetect():

@@ -119,9 +119,7 @@ const Div = styled.div`
   justify-content: center;
 `
 function Skin(props) {
-  const [type, setType] = useState(null);
   let type2 = 'dsnt';
-  //type = 'dsnt';
   let color = ['#537AA5', '#7E7F83', '#288E9A', '#515FA8'];
   let content = [];
   let content2 = ['피지 분비량과 수분 보유량 모두 적어 거칠고 각질과 주름이 잘 생기는 타입', '피부가 얇고 섬세해 외부 자극에 쉽게 반응하는 타입', '멜라닌 활성도가 낮아 눈에 보이는 색소가 적은 타입', '피부 결이 고르고 주름이 적어 탄력이 있는 타입']
@@ -136,8 +134,9 @@ function Skin(props) {
     navigate('/detect');
   }
 
-  const [data2, setData2] = useState([]);
+  const [data, setData] = useState([]);
   const pk = localStorage.getItem('pk')
+
   const getDataByUserId = async (userId) => {
     try {
       const response = await axios.get(`http://localhost:8000/api/faceinput/`);
@@ -158,24 +157,25 @@ function Skin(props) {
           let { image, type_list } = item;
           return { image, type_list };
         });
-        setData2(selectedData);
+        
+        setData(selectedData);
       } catch (error) {
         // 에러 처리
       }
     };
 
     fetchData();
-  }, [pk]);
+  }, [pk, setData]);
 
   useEffect(() => {
-    if (data2.length > 0) {
-      setType(data2[data2.length - 1].type_list);
-      localStorage.setItem('type', data2[data2.length - 1].type_list);
-      props.setImg(<img src={`http://127.0.0.1:8000${data2[data2.length-1].image}`} alt="이미지" style={{width:'150px', height:'150px'}}/>);
+    if (data.length > 0) {
+      props.setType(data[data.length - 1].type_list);
+      localStorage.setItem('type', data[data.length - 1].type_list);
+      props.setImg(<img src={`http://127.0.0.1:8000${data[data.length-1].image}`} alt="이미지" style={{width:'150px', height:'150px'}}/>);
     }
-  }, [data2, setType, props.setImg]);
+  }, [data, props.setType, props.setImg]);
 
-  if(type === null){
+  if(props.type === null){
     skin_history = (
       <div>
         <div style={{display:'flex', alignItems:'center', marginBottom:'20px', width:'680px'}}>
@@ -203,31 +203,31 @@ function Skin(props) {
       </div>
     );
   } else {
-      if(type[0] === 'd'){
+      if(props.type[0] === 'd'){
         content.push('피지 분비량과 수분 보유량 모두 적어 거칠고 각질과 주름이 잘 생기는 타입');
       }
-      else if(type[0] === 'o'){
+      else if(props.type[0] === 'o'){
         content.push('피지 분비량이 많아 번들거리고 여드름이 자주 생기는 타입');
       }
     
-      if(type[1] === 's'){
+      if(props.type[1] === 's'){
         content.push('피부가 얇고 섬세해 외부 자극에 쉽게 반응하는 타입');
       }
-      else if(type[1] === 'r'){
+      else if(props.type[1] === 'r'){
         content.push('피부 장벽이 견고해 외부적인 스트레스에 대해 견디는 힘이 강한 타입');
       }
     
-      if(type[2] === 'n'){
+      if(props.type[2] === 'n'){
         content.push('멜라닌 활성도가 낮아 눈에 보이는 색소가 적은 타입');
       }
-      else if(type[2] === 'p'){
+      else if(props.type[2] === 'p'){
         content.push('멜라닌 활성도가 높아 기미, 주근깨 혹은 잡티 등 눈에 보이는 색소가 많은 타입');
       }
     
-      if(type[3] === 't'){
+      if(props.type[3] === 't'){
         content.push('피부 결이 고르고 주름이 적어 탄력이 있는 타입');
       }
-      else if(type[3] === 'w'){
+      else if(props.type[3] === 'w'){
         content.push('피부 결이 고르지 않고 주름이 많은 타입');
       }
 
@@ -235,7 +235,7 @@ function Skin(props) {
       content.map((item, index) => (
         <div key={index} className='line'>
           <div className="circle" style={{backgroundColor: color[index%color.length]}}>
-            <p>{type[index].toUpperCase()}</p>
+            <p>{props.type[index].toUpperCase()}</p>
           </div>
           <p>{item}</p>
         </div>
@@ -259,7 +259,12 @@ const P = styled.p`
 `;
 
 export function MemberInfo() {
-    const [img, setImg] = useState(<MemberImg style={{width:'150px', height:'150px'}}/>);
+    const [img, setImg] = useState(localStorage.getItem('img'));
+    const [type, setType] = useState(localStorage.getItem('type'));
+    
+    if (img === null){
+      setImg(<MemberImg style={{width:'150px', height:'150px'}}/>);
+    }
 
     let name = localStorage.getItem('username');
     if (name === null){
@@ -290,7 +295,7 @@ export function MemberInfo() {
                     </div>
                     <div class='third'>
                         <P>피부타입</P>
-                        <Skin setImg={setImg}/>
+                        <Skin setImg={setImg} setType={setType} type={type}/>
                     </div>
                 </div>
             </div>

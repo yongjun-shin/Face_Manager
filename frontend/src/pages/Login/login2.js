@@ -67,7 +67,6 @@ export function Login() {
       password: password
     }
     Axios.post('http://localhost:8000/signup/auth/login/', user)
-    //Axios.post('http://localhost:8000/user/login/', user)
       .then(res => {
         console.log(res.data['access'])
         if (res.data['access']) {
