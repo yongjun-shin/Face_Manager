@@ -46,14 +46,14 @@ export function CreateImage() {
                     </div>
                     <div className="example">
                         <div>
-                            <Member />
+                            <img src='./imgs/before.jpg'/>
                             <Div>
                                 <p>Before</p>
                             </Div>
                         </div>
                         <hr style={{height:'300px', width:'.1vw', borderWidth:'0', backgroundColor:'#3A3A3A'}}/>
                         <div>
-                            <Member />
+                            <img src='./imgs/after.jpg'/>
                             <Div>
                                 <p>After</p>
                             </Div>

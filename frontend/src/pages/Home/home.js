@@ -62,20 +62,6 @@ function Main(){
             textMarginLeft="3rem"
             path="/history"
             />
-            <TextBox
-            imageUrl="https://cdn.thinkdoctor.co.kr/news/photo/202010/6571_11816_741.jpg"
-            title="Physiognomy"
-            text1="나는 어떤 사람일까?"
-            text2="AI 로 얼굴 특징을 파악해 관상을 봐드립니다."
-            text3="당신의 성격과 기질을 알아보세요."
-            imageWidth="28.3rem"
-            imageHeight="21rem"
-            objectFit="contain"
-            buttonText="화장 확인해보기"
-            textMarginBottom="2rem"
-            marginRight="8rem"
-            path="/physiognomy"
-            />
         </div>
     </div>)
 }
