@@ -154,7 +154,7 @@ function Body() {
                 })
                 .then(function (response) {
                     console.log('ai part well done');
-                    navigate('/makeup');
+                    window.location = "http://localhost:3000/makeup/";
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -224,7 +224,7 @@ function Body() {
                     value2="tight" text_top2="T" text_center2="탱탱함" text_bottom2="Tight"
                     description2="피부 결이 고르고 주름이 적어 탄력이 있는 타입" bg_color2="#D2D3E8"></NewRadio>
 
-                <Btn_black onClick={() => navigate('/makeup')} type="submit" class="btn_StartAnalysis" text={'분석시작'} style={{
+                <Btn_black onClick={uploadModule} type="submit" class="btn_StartAnalysis" text={'분석시작'} style={{
                     width: '237px', height: '46px', fontSize: '20px', marginBottom: '100px', marginTop: '20px'
                 }}></Btn_black>
             </div>

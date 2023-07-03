@@ -1,4 +1,4 @@
-import React,{ useEffect, useState, useRef} from 'react';
+import React,{ useEffect, useState, useRef, useCallback} from 'react';
 import './makeupmethod.css'
 import styled, { keyframes }  from 'styled-components';
 import MakeUpCard from '../../components/makeupcard.js';
@@ -37,11 +37,12 @@ const MainTextContainer = styled.div`
 const [isVisible, setIsVisible] = useState(false);
 const [imgSrc, setImgSrc] = useState('');
 
-  
+useEffect(() => {
   // Call your API to get the image data
   axios.get('http://127.0.0.1:8000/api/faceinput/')
     .then((response) => {
-      const image = response.data[0].image;
+      const length = response.data.length;
+      const image = response.data[length - 1].image;
       const url = `http://127.0.0.1:8000${image}`; // You might need to replace with your server's URL
       setImgSrc(url);
     })
@@ -49,34 +50,31 @@ const [imgSrc, setImgSrc] = useState('');
       console.log(error);
     });
 
+  setTimeout(() => {
+    setIsVisible(true);
+  }, 1000);
 
-  const Animation = () => {
+}, []); // The empty array makes sure the effect only runs once on mount
 
-    useEffect(() => {
-      setTimeout(() => {
-          setIsVisible(true);
-        }, 1000);
-    }, []);
 
   const pdfRef = useRef();
-  const downloadPDF = () => {
+  const downloadPDF = useCallback(() => {
     const input = pdfRef.current;
     const { offsetHeight, scrollHeight } = input;
     html2canvas(input).then((canvas) => {
-      const imgData = canvas.toDataURL('image/png');
-      const pdf = new jsPDF('p', 'mm', 'a4', true);
-      const pdfWidth = pdf.internal.pageSize.getWidth();
-      const pdfHeight = pdf.internal.pageSize.getHeight();
-      const imgWidth = canvas.width;
-      const imgHeight = canvas.height;
-      const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
-      const imgX = (pdfWidth - imgWidth * ratio) / 2;
-      const imgY = 10;
-      pdf.addImage(imgData, 'PNG', imgX, imgY, imgWidth * ratio, imgHeight * ratio);
-      pdf.save('makeupmethod.pdf');
+        const imgData = canvas.toDataURL('image/png');
+        const pdf = new jsPDF('p', 'mm', 'a4', true);
+        const pdfWidth = pdf.internal.pageSize.getWidth();
+        const pdfHeight = pdf.internal.pageSize.getHeight();
+        const imgWidth = canvas.width;
+        const imgHeight = canvas.height;
+        const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
+        const imgX = (pdfWidth - imgWidth * ratio) / 2;
+        const imgY = 10;
+        pdf.addImage(imgData, 'PNG', imgX, imgY, imgWidth * ratio, imgHeight * ratio);
+        pdf.save('makeupmethod.pdf');
     });
-  };
-  
+}, [pdfRef]);
   return (
 
     
@@ -119,13 +117,17 @@ const [imgSrc, setImgSrc] = useState('');
     </div>
     <MakeUpCard
     title="eye."
-    text="둥근 눈매에 속쌍꺼풀이 매력적인 당신에게 추천드려요!"
+    text="쌍꺼풀"
+    text0="긴눈"
+    text1="뭐시기눈"
     text2="- 아이라인 대신 진한색의 섀도우를 사용해 눈매를 강조해보세요"
     text3="- 속눈썹 뿌리를 강하게 올려 바짝 올려보세요"
     />
     <MakeUpCard
     title="lip."
-    text="도톰한 보통크기의 입술이 매력적인 당신에게 추천드려요!"
+    text="입술"
+    text0="두툼입술"
+    text1="뭐시기입술"
     text2="- 짙은색을 피하고 밝은톤의 립제품을 사용해보세요"
     text3="- 입술 라인을 스머지해 자연스로운 분위기를 연출해보세요"
     />
@@ -133,7 +135,5 @@ const [imgSrc, setImgSrc] = useState('');
   </div>
   );
 };
-  return <Animation />;
-};
 
-export default Makeup;
+export default React.memo(Makeup);
