@@ -100,45 +100,13 @@ function Nav_log() {
     }, [])
 
     const btn_click = () => {
-        // const [data, setData] = useState([]);
-        // const pk = localStorage.getItem('pk')
-        
-        // const getDataByUserId = async (userId) => {
-        //     try {
-        //         const response = await Axios.get(`http://localhost:8000/api/faceinput/`);
-        //         const d = response.data;
-        //         const filteredData = d.filter(item => item.user_id === userId);
-        //         return filteredData;
-        //     } catch (error) {
-        //         console.error(error);
-        //         throw error;
-        //     }
-        // };
-    
-        // const fetchData = async () => {
-        //     try {
-        //       const filteredData = await getDataByUserId(pk);
-        //       const selectedData = filteredData.map(item => {
-        //         let { image, type_list } = item;
-        //         return { image, type_list };
-        //       });
-          
-        //       setData(selectedData);
-        //     } catch (error) {
-        //       // 에러 처리
-        //     }
-        // };
-          
-        // useEffect(() => {
-        // fetchData();
-        // }, [pk]);
-        
         console.log(data);
         if (data.length > 0) {
             localStorage.setItem('type', data[data.length - 1].type_list);
             localStorage.setItem('img', <img src={`http://127.0.0.1:8000${data[data.length-1].image}`} alt="이미지" style={{width:'150px', height:'150px'}}/>);
         }
     }
+    
     // fetch to axios 수정 
     const handleLogout = () => {
         let token = localStorage.getItem('token')
@@ -156,7 +124,7 @@ function Nav_log() {
     auth?
     content = (<div style={{ fontWeight:'bold', fontSize:'18px', marginLeft:'80px'}} >
         <CustomLink2 onClick={handleLogout} style={{ marginRight:'24px'}}>Logout</CustomLink2>
-        <CustomLink2 to={'/member'} onClick={btn_click}>MyPage</CustomLink2>
+        <CustomLink2 to={'/member'} >MyPage</CustomLink2>
     </div>)
 
     :
