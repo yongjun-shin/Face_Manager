@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import "../components/boardview.css"
 import { Btn_beige } from "../components/button.js";
 import styled from "styled-components";
 import { Link } from 'react-router-dom';
+import TableRow from './tablerow';
+import axios from "axios";
 
 const TableWrapper = styled.div`
     display: flex;
@@ -13,19 +15,23 @@ const TableWrapper = styled.div`
     margin-bottom: 160px;
 `;
 
-const BtnWrapper = styled.div`
-    display: flex;
-    justify-content: space-between;
-    margin-left: 143px;
-    margin-right: 10px;
-`;
+const BoardView = (props) => {   
+    const titles = ['가입 문의', '구독 문의', '로그인 문의', '회원가입 문의', '회원탈퇴 문의']
+    const usernames = ['김철수', '홍길동', '김태희', '전정국', '이채현']
+    const [title, setTitle] = useState(titles);
+    const [username, setUsername] = useState(usernames);
 
-const BoardView = () => {
     const [activeIndex, setActiveIndex] = useState(0);
-
     const handleItemClick = (index) => {
         setActiveIndex(index);
     };
+    useEffect(() => {
+        axios.get("http://127.0.0.1:8000/qna/")
+            .then(response => {
+                console.log(response.data);
+            })
+    }, []);
+    console.log(title, username);
 
     return(
         <TableWrapper>
@@ -37,79 +43,14 @@ const BoardView = () => {
                     <th>문의 제목</th> 
                     <th class="th-actions"></th>
                 </tr>
-                    
-                <tr class="table-tbody-tr">
-                    <td>강동원</td>
-                    <td>가격 정책 문의</td>
-                    <td>
-                    <BtnWrapper>
-                    <Link to="/editboard">
-                    <Btn_beige text="Edit" style={{boxShadow: "none", width:"60px", height:"30px", fontSize: "12px"}} />
-                    </Link>
-                    <Btn_beige text="Delete" style={{boxShadow: "none", width:"60px", height:"30px", fontSize: "12px"}} />
-                    </BtnWrapper>
-                    </td>
-                </tr>
-                    
-                <tr class="table-tbody-tr">
-                    <td>김태희</td>
-                    <td>얼굴인식 문의</td>
-                    <td>
-                    <BtnWrapper>
-                    <Link to="/editboard">
-                    <Btn_beige text="Edit" style={{boxShadow: "none", width:"60px", height:"30px", fontSize: "12px"}} />
-                    </Link>
-                    <Btn_beige text="Delete" style={{boxShadow: "none", width:"60px", height:"30px", fontSize: "12px"}} />
-                    </BtnWrapper>
-                    </td>
-                </tr>
-
-                <tr class="table-tbody-tr">
-                    <td>홍길동</td>
-                    <td>로그인 문의</td>
-                    <td>
-                    <BtnWrapper>
-                    <Link to="/editboard">
-                    <Btn_beige text="Edit" style={{boxShadow: "none", width:"60px", height:"30px", fontSize: "12px"}} />
-                    </Link>
-                    <Btn_beige text="Delete" style={{boxShadow: "none", width:"60px", height:"30px", fontSize: "12px"}} />
-                    </BtnWrapper>
-                    </td>
-                </tr>
-
-                <tr class="table-tbody-tr">
-                    <td>전정국</td>
-                    <td>회원탈퇴 문의</td>
-                    <td>
-                    <BtnWrapper>
-                    <Link to="/editboard">
-                    <Btn_beige text="Edit" style={{boxShadow: "none", width:"60px", height:"30px", fontSize: "12px"}} />
-                    </Link>
-                    <Btn_beige text="Delete" style={{boxShadow: "none", width:"60px", height:"30px", fontSize: "12px"}} />
-                    </BtnWrapper>
-                    </td>
-                </tr>
-
-                <tr class="table-tbody-tr">
-                    <td>김석진</td>
-                    <td>회원탈퇴 문의</td>
-                    <td>
-                    <BtnWrapper>
-                    <Link to="/editboard">
-                    <Btn_beige text="Edit" style={{boxShadow: "none", width:"60px", height:"30px", fontSize: "12px"}} />
-                    </Link>
-                    <Btn_beige text="Delete" style={{boxShadow: "none", width:"60px", height:"30px", fontSize: "12px"}} />
-                    </BtnWrapper>
-                    </td>
-                </tr>
+                {title.map((title, idx) => (
+                <TableRow setContent={props.setContent} setTitle={setTitle} setUsername={setUsername} authorName={username[idx]} titleName={title} idx={idx} />
+                ))}
             </table>
         </div>
-        <div className='input-wrapper'> 
-            <input class="input-elevated" type="text" placeholder="Search"></input>
             <Link to="/createboard">
-                <Btn_beige text="Create" style={{ boxShadow: "none", width: "80px", height: "40px", fontSize: "15px" }} />
+                <Btn_beige text="Create" style={{ marginTop: "20px", boxShadow: "none", width: "80px", height: "40px", fontSize: "15px" }} />
             </Link>
-        </div>
         <div class="pagi-wrapper">
             <ul class="pagination">
                 <li className={activeIndex === 0 ? "active" : ""}><a href="#" onClick={() => handleItemClick(0)}>Previous</a></li>
