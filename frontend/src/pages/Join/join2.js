@@ -89,15 +89,16 @@ export function Join() {
       return false
     }
     
-
+    
     Axios.post('http://localhost:8000/signup/auth/register/', user)
       .then(res => {
         if (res.data['access']) {
           localStorage.clear()
-          localStorage.setItem('token', res.data.key)
-          // 사용하려면 App.js에서 /로 라우팅해야 한다
+          localStorage.setItem('token', res.data['access'])
+          localStorage.setItem('pk', res.data['user']['pk'])
           localStorage.setItem('username', res.data['user']['username'])
           localStorage.setItem('email', res.data['user']['email'])
+          // 사용하려면 App.js에서 /로 라우팅해야 한다
           window.location.replace('/')
         } else {
           setName('')

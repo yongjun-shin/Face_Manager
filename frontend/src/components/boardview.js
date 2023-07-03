@@ -4,6 +4,7 @@ import { Btn_beige } from "../components/button.js";
 import styled from "styled-components";
 import { Link } from 'react-router-dom';
 import TableRow from './tablerow';
+import axios from "axios";
 
 const TableWrapper = styled.div`
     display: flex;
@@ -14,23 +15,23 @@ const TableWrapper = styled.div`
     margin-bottom: 160px;
 `;
 
-const BoardView = () => {
-    const [tableData, setTableData] = useState([]);
-    
+const BoardView = (props) => {   
+    const titles = ['가입 문의', '구독 문의', '로그인 문의', '회원가입 문의', '회원탈퇴 문의']
+    const usernames = ['김철수', '홍길동', '김태희', '전정국', '이채현']
+    const [title, setTitle] = useState(titles);
+    const [username, setUsername] = useState(usernames);
+
     const [activeIndex, setActiveIndex] = useState(0);
     const handleItemClick = (index) => {
         setActiveIndex(index);
     };
-
     // useEffect(() => {
-    //     // 서버로부터 데이터 가져오기
-    //     axios.get("localhost:8000/qna/")
+    //     axios.get("http://127.0.0.1:8000/qna/")
     //         .then(response => {
-    //             // 응답 처리
     //             console.log(response.data);
-    //             setTableData(response.data);
     //         })
     // }, []);
+    // console.log(title, username);
 
     return(
         <TableWrapper>
@@ -42,22 +43,14 @@ const BoardView = () => {
                     <th>문의 제목</th> 
                     <th class="th-actions"></th>
                 </tr>
-                <TableRow authorName="강동원" titleName="회원가입 문의"/>
-                <TableRow authorName="김태희" titleName="회원가입 문의"/>
-                <TableRow authorName="홍길동" titleName="회원가입 문의"/>
-                <TableRow authorName="전정국" titleName="회원가입 문의"/>
-                <TableRow authorName="김석진" titleName="회원가입 문의"/>
-                {/* {tableData.map((data) => (
-                <TableRow authorName={data.username} titleName={data.title} />
-                ))};  */}
+                {title.map((title, idx) => (
+                <TableRow setContent={props.setContent} setTitle={setTitle} setUsername={setUsername} authorName={username[idx]} titleName={title} idx={idx} />
+                ))}
             </table>
         </div>
-        <div className='input-wrapper'> 
-            <input class="input-elevated" type="text" placeholder="Search"></input>
             <Link to="/createboard">
-                <Btn_beige text="Create" style={{ boxShadow: "none", width: "80px", height: "40px", fontSize: "15px" }} />
+                <Btn_beige text="Create" style={{ marginTop: "20px", boxShadow: "none", width: "80px", height: "40px", fontSize: "15px" }} />
             </Link>
-        </div>
         <div class="pagi-wrapper">
             <ul class="pagination">
                 <li className={activeIndex === 0 ? "active" : ""}><a href="#" onClick={() => handleItemClick(0)}>Previous</a></li>

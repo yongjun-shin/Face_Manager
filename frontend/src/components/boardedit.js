@@ -31,23 +31,25 @@ const ContentWrapper = styled.div`
     align-items: center;
 `;
 
-const BoardEdit = () => {
+const BoardEdit = (props) => {
     const [username, setUserName] = useState('');
     const [title, setTitle] = useState('');
-    const [content, setContent] = useState('');
-  
-    // useEffect(() => {
-    //   // 서버로부터 데이터 가져오기
-    //   axios.get("localhost:8000/qna/", data)
-    //     .then(response => {
-    //       // 응답 처리
-    //       const data = response.data;
-    //       setUserName(data.username);
-    //       setTitle(data.title);
-    //       setContent(data.content);
-    //     })
-    //     console.log(data);
-    // }, []);
+
+    const handleEdit = () => {
+        const updatedData = {
+          username: document.querySelector('.name-input').value,
+          title: document.querySelectorAll('.name-input')[1].value,
+          content: document.querySelector('.content-input').value,
+        };
+
+        // axios.put("http://127.0.0.1:8000/qna/", updatedData)
+        //   .then(response => {
+        //     console.log(response.data);
+        //     setTitle(updatedData.title);
+        //     setUserName(updatedData.username);
+        //     props.setContent(updatedData.content);
+        //   })
+        };
 
     return (
         <CreateWrapper>
@@ -55,17 +57,17 @@ const BoardEdit = () => {
             <TitleWrapper>
                 <InputWrapper>
                     <h1 style={{fontSize: "15px", color: "#3A3A3A", marginRight: "15px"}}>작성자명</h1>
-                    <input /* value={username} onChange={(e) => setUserName(e.target.value)} */ class="name-input" type="text" placeholder="작성자명을 입력하세요"></input>
+                    <input value={username}  class="name-input" type="text" placeholder="작성자명을 입력하세요"></input>
                 </InputWrapper>
                 <InputWrapper>
                     <h1 style={{fontSize: "15px", color: "#3A3A3A", marginRight: "15px"}}>제목</h1>
-                    <input /* value={title} onChange={(e) => setTitle(e.target.value)} */ class="name-input" type="text" placeholder="제목을 입력하세요"></input>
+                    <input value={title}  class="name-input" type="text" placeholder="제목을 입력하세요"></input>
                 </InputWrapper>
             </TitleWrapper>
             <ContentWrapper>
-                <textarea /* value={content} onChange={(e) => setContent(e.target.value)} */ class="content-input" type="text" placeholder="문의 내용을 입력하세요. 문의 답변은 이메일로 전송됩니다."></textarea>
+                <textarea value={props.content}  class="content-input" type="text" placeholder="문의 내용을 입력하세요. 문의 답변은 이메일로 전송됩니다."></textarea>
                 <Link to="/qna">
-                    <Btn_beige text="Edit" style={{ boxShadow: "none", width: "80px", height: "40px", fontSize: "15px" }} />
+                    <Btn_beige onClick={handleEdit} text="Edit" style={{ boxShadow: "none", width: "80px", height: "40px", fontSize: "15px" }} />
                 </Link>
             </ContentWrapper>
         </CreateWrapper>

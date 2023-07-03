@@ -1,6 +1,6 @@
 
 import React from 'react';
-
+import { useState } from 'react';
 import Navi from '../src/components/nav.js';
 import Footer from '../src/components/footer.js';
 import Nav_my from './components/nav_mypage.js';
@@ -24,6 +24,8 @@ import CreateImage from './pages/CreateImage/createimage.js';
 import CreateImageResult from './pages/CreateImage/createimage_res.js';
 import History from './pages/History/history.js';
 import './App.css';
+
+import Exer from './pages/Exer/exer.js';
 import BoardCreate from './components/boardcreate.js';
 import BoardEdit from './components/boardedit.js';
 
@@ -31,6 +33,7 @@ function App() {
     const btn_click = (event) => {
         event.preventDefault();
     };
+    const [content, setContent] = useState();
 
     return (
 
@@ -42,17 +45,20 @@ function App() {
                     <Route path="/detect" element={<FaceDetect/>} />
                     <Route path="/makeup" element={<Makeup />} />
                     <Route path="/pricing" element={<Pricing/>} />
-                    <Route path="/qna" element={<QnA/>} />
+                    <Route path="/qna" element={<QnA setContent={setContent}/>} />
                     <Route path="/login" element={<Login/>} />
                     <Route path="/join" element={<Join/>} />
                     <Route path="/about" element={<About/>} />
+
+                    <Route path="/exer" element={<Exer/>} />
+
                     <Route path="/member" element={<MemberInfo/>} />
                     <Route path="/physiognomy" element={<Physiognomy/>} />
                     <Route path="/createimage" element={<CreateImage/>} />
                     <Route path="/createimage_res" element={<CreateImageResult/>} />
                     <Route path="/history" element={<History/>} />
                     <Route path="/createboard" element={<BoardCreate/>} />
-                    <Route path="/editboard" element={<BoardEdit/>} />
+                    <Route path="/editboard" element={<BoardEdit content={content}/>} />
                 </Routes>
                 <Footer></Footer>
             </div>
