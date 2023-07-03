@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Nav_my from '../../components/nav_mypage.js';
 import { ReactComponent as MemberImg } from '../svgs/member_info.svg';
+import React, { useState, useEffect } from 'react';
 import { Btn_black } from '../../components/button.js';
 import './createimage.css'
 
@@ -36,8 +37,8 @@ function saveAsPdf() {
   }
 
 export function CreateImageResult() {
-    let before = (<Member />)
-    let after = (<Member/>)
+    const [before, setBefore] = useState(<Member />);
+    const [after, setAfter] = useState(<Member/>);
     return (
         <div class='create'>
             <div class='create_con'>
