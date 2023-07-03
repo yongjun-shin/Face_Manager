@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import Axios from 'axios';
 
 function FaceDetect() {
+    
     return (
         <div>
             <Text></Text>
@@ -77,6 +78,10 @@ function NewRadio(props) {
 }
 
 function Body() {
+    const navigate = useNavigate();
+
+    const [selectedFile, setSelectedFile] = useState(null);
+    const [userImage, setUserImage] = useState(null);
 
     const uploadModule = async (e) => {
         var do_val = document.getElementById("do").getAttribute("value");
@@ -90,7 +95,7 @@ function Body() {
         console.log(type_val)
         console.log(image_val);
 
-<<<<<<< HEAD
+
     // 파일 업로드 요청 함수
     const handleSubmit = () => {
         if (selectedFile) {
@@ -120,7 +125,7 @@ function Body() {
         });
     };
     };
-=======
+
 
         let form_data = new FormData();
         form_data.append('do', do_val);
@@ -145,6 +150,7 @@ function Body() {
                 })
                 .then(function (response) {
                     console.log('ai part well done');
+                    navigate('/makeup');
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -167,12 +173,12 @@ function Body() {
     }
 
     return (
->>>>>>> aaec23aaff6de85424da76d3502d36a4b5320835
+
 
         <div class="html-Bpo">
             <div class="auto-group-qevz-p75">
                 <div class="upload_form">
-                    <input type="file" class="upload_photoform" accept="image/*" id="userPhoto" name="userPhoto" />
+                <input type="file" class="upload_photoform" accept="image/*" id="userPhoto" name="userPhoto" onChange={(e) => setSelectedFile(e.target.files[0])} alt="User photo upload" />
                 </div>
 
                 <p class="text1">당신의 피부타입을 알려주세요.</p>
@@ -191,16 +197,11 @@ function Body() {
                     value2="resistant" text_top2="R" text_center2="저항성" text_bottom2="Resistant"
                     description2="피지 분비량이 많아 번들거리고 여드름이 자주 생기는 타입" bg_color2="#DDDDDD"></NewRadio>
 
-<<<<<<< HEAD
-            <RadioTitle text_color="#288E9A" content="멜라닌 색소 활성도"></RadioTitle>
-                <NewRadio name="P_or_N" accentColor="#288E9A"
-                    value1="Pigment" text_top1="P" text_center1="색소성" text_bottom1="Pigment"
-=======
 
                 <RadioTitle text_color="#288E9A" content="멜라닌 색소 활성도"></RadioTitle>
                 <NewRadio id="pn" name="P_or_N" accentColor="#288E9A"
                     value1="pigment" text_top1="P" text_center1="민감성" text_bottom1="Pigment"
->>>>>>> aaec23aaff6de85424da76d3502d36a4b5320835
+
                     description1="멜라닌 활성도가 높아 기미, 주근깨 혹은 잡티 등 눈에 보이는 색소가 많은 타입" bg_color1="#EAEFF3"
                     value2="non-pigment" text_top2="N" text_center2="비색소성" text_bottom2="Non-Pigment"
                     description2="멜라닌 활성도가 낮아 눈에 보이는 색소가 적은 타입" bg_color2="#D3E0E6"></NewRadio>
@@ -212,7 +213,7 @@ function Body() {
                     value2="tight" text_top2="T" text_center2="탱탱함" text_bottom2="Tight"
                     description2="피부 결이 고르고 주름이 적어 탄력이 있는 타입" bg_color2="#D2D3E8"></NewRadio>
 
-                <Btn_black onClick={uploadModule} type="submit" class="btn_StartAnalysis" text={'분석시작'} style={{
+                <Btn_black onClick={() => navigate('/makeup')} type="submit" class="btn_StartAnalysis" text={'분석시작'} style={{
                     width: '237px', height: '46px', fontSize: '20px', marginBottom: '100px', marginTop: '20px'
                 }}></Btn_black>
             </div>

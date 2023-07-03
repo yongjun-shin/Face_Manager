@@ -5,6 +5,7 @@ import MakeUpCard from '../../components/makeupcard.js';
 import { Btn_black } from "../../components/button.js";
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
+import axios from 'axios';
 
 function Makeup() {
 
@@ -33,8 +34,23 @@ const MainTextContainer = styled.div`
   animation: ${fadeInAnimation} 1s ease-in forwards;
 `;
 
+const [isVisible, setIsVisible] = useState(false);
+const [imgSrc, setImgSrc] = useState('');
+
+  
+  // Call your API to get the image data
+  axios.get('http://127.0.0.1:8000/api/faceinput/')
+    .then((response) => {
+      const image = response.data[0].image;
+      const url = `http://127.0.0.1:8000${image}`; // You might need to replace with your server's URL
+      setImgSrc(url);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+
+
   const Animation = () => {
-    const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
       setTimeout(() => {
@@ -72,7 +88,7 @@ const MainTextContainer = styled.div`
         <span class="makeup-method-01_sub2">Makeup Method</span>
     </div>
     <MainTextContainer style={{ opacity: isVisible ? 1 : 0 }}>
-      <img className='userimage' src='img/image 16.png' />
+    <img className='userimage' src={imgSrc} />
     </MainTextContainer>
     <div className='makeup-forme'>
       <span className="makeup-forme-01">
