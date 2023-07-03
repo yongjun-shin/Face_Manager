@@ -10,17 +10,19 @@ import Axios from 'axios';
 
 function FaceDetect() {
     return (
-        <div>
-            <Text></Text>
-            <Body></Body>
-        </div>
+        <RadioProvider>
+            <div>
+                <Text></Text>
+                <Body></Body>
+            </div>
+        </RadioProvider>
     );
 }
 
 function Text() {
     return (
         <div class="text">
-            <h1 class="h1">얼굴 분석 결과를 등록하고</h1>
+            <h1 class="h1">얼굴 사진을 등록하고</h1>
             <h5 class="h5">화장법 추천을 받아보세요.</h5>
         </div>
     );
@@ -79,6 +81,7 @@ function NewRadio(props) {
 function Body() {
 
     const uploadModule = async (e) => {
+        var eye_val = document.getElementById("ox").getAttribute("value");
         var do_val = document.getElementById("do").getAttribute("value");
         var sr_val = document.getElementById("sr").getAttribute("value");
         var pn_val = document.getElementById("pn").getAttribute("value");
@@ -86,12 +89,13 @@ function Body() {
         var type_val = do_val[0] + sr_val[0] + pn_val[0] + wt_val[0]
         var image_val = document.getElementById("userPhoto").files[0];
         var pk_val = getpk();
-        console.log(do_val, sr_val, pn_val, wt_val);
+        console.log(eye_val, do_val, sr_val, pn_val, wt_val);
         console.log(type_val)
         console.log(image_val);
 
 
         let form_data = new FormData();
+        form_data.append('eyelid', eye_val);
         form_data.append('do', do_val);
         form_data.append('sr', sr_val);
         form_data.append('pn', pn_val);
@@ -142,6 +146,13 @@ function Body() {
                 <div class="upload_form">
                     <input type="file" class="upload_photoform" accept="image/*" id="userPhoto" name="userPhoto" />
                 </div>
+
+                <p class="text1">당신은 쌍커풀을 가지고 있나요?</p>
+                <NewRadio id="ox" name="O_or_X" accentColor="#C0BDB6"
+                    value1="yes" text_top1="O" text_center1="있음" text_bottom1="Yes"
+                    description1="쌍커풀을 가지고 있습니다." bg_color1="#D3CFC8"
+                    value2="no" text_top2="X" text_center2="없음" text_bottom2="No"
+                    description2="쌍커풀을 가지고 있지 않습니다." bg_color2="#D3CFC8" ></NewRadio>
 
                 <p class="text1">당신의 피부타입을 알려주세요.</p>
 
