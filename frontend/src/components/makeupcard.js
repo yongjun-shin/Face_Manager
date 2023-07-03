@@ -4,7 +4,7 @@ import styled from "styled-components";
 const TitleText = styled.div`
   color:#3A3A3A;
   font-weight: bold;
-  width:137px;
+  width:250px;
   height:70px;
   font-family:PT Serif;
   font-size:40px;
@@ -34,12 +34,12 @@ const MethodBoxText2 = styled.div`
 const MethodBoxText3 = styled.div`
 `;
 
-const MakeUpCard = ({title, text, text2, text3}) => {
+const MakeUpCard = ({title, text,text0, text1, text2, text3}) => {
   return (
     <div>
     <TitleText>{title}</TitleText>
     <MethodBox>
-      <MethodBoxText>{text}</MethodBoxText>
+      <MethodBoxText>{text}, {text0}, {text1}</MethodBoxText>
       <MethodBoxText2>{text2}</MethodBoxText2>
       <MethodBoxText3>{text3}</MethodBoxText3>
     </MethodBox>

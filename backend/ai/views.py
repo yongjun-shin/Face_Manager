@@ -92,7 +92,7 @@ class AiResultDetail(APIView):
         )
         result_data = MakeupTextSerializer(result_data)
         
-        return Response(data = result_data, status=status.HTTP_201_CREATED)
+        return Response(data = result_data.data, status=status.HTTP_201_CREATED)
         
         
 class AiResultList(APIView):
@@ -125,7 +125,7 @@ class AiResultList(APIView):
         detector = dlib.get_frontal_face_detector()
 
         #print(img)
-        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+        gray = cv2.cvtColor(img, cv2.COLO01R_BGR2GRAY)
         rects = detector(gray, 1)
 
         print("cv2 start")
@@ -360,7 +360,7 @@ def Face_Shape(img):
 
     predicted_class_idx = np.argmax(pred, axis=-1)
     #class_dict = {0:'heart', 1:'oblong', 2:'oval', 3:'round', 4:'square'}
-    class_dict = {0:'계란형', 1:'긴형', 2:'역삼각형', 3:'둥근형', 4:'각진형'}
+    class_dict = {0:'역삼각형', 1:'긴형', 2:'계란형', 3:'둥근형', 4:'각진형'}
     return(class_dict[predicted_class_idx[0]])
     
 class AiDetect():
