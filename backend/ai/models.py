@@ -14,15 +14,15 @@ class AiResult(models.Model):
     face_shape = models.TextField()
 
 class MakeupText(models.Model):
-    user_id = models.CharField(max_length=10, null=True)
-    eye_lid = models.CharField(max_length=30, null=True)
-    eye_len = models.CharField(max_length=30)
-    eye_angle = models.CharField(max_length=30)
-    lip_len = models.CharField(max_length=30)
-    lip_thick = models.CharField(max_length=30)
-    nostril = models.CharField(max_length=30)
-    nose_len = models.CharField(max_length=30)
-    face_shape = models.CharField(max_length=30)
+    user_id = models.JSONField(null=True)
+    eye_lid = models.JSONField(null=True)
+    eye_len = models.JSONField()
+    eye_angle = models.JSONField()
+    lip_len = models.JSONField()
+    lip_thick = models.JSONField()
+    nostril = models.JSONField()
+    nose_len = models.JSONField()
+    face_shape = models.JSONField()
 
 class FaceShapeMethod(models.Model):
     shape = models.CharField(max_length=10)
