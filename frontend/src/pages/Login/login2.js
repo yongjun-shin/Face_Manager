@@ -59,6 +59,10 @@ export function Login() {
   const [password, setPassword] = useState('')
   const [errors, setErrors] = useState(false)
   
+  const handleGoogleLogin = () => {
+    
+  }
+
   const onSubmit = (e) => {
     e.preventDefault()
 
@@ -124,7 +128,7 @@ export function Login() {
         </div>
       </form>
       <div style={{ marginTop: '60px', marginBottom: '212px', width: '664px', display: 'flex', justifyContent: 'space-between' }}>
-        <Btn_social text={'구글로 로그인'} style={{ fontSize: '13px', width: '192px', height: '46px' }} svg={<Google />} />
+        <Btn_social text={'구글로 로그인'} style={{ fontSize: '13px', width: '192px', height: '46px' }} svg={<Google />} onClick={handleGoogleLogin}/>
         <Btn_social text={'네이버로 로그인'} style={{ fontSize: '13px', width: '192px', height: '46px' }} svg={<Naver />} />
         <Btn_social text={'카카오로 로그인'} style={{ fontSize: '13px', width: '192px', height: '46px' }} svg={<Kakao />} />
       </div>
