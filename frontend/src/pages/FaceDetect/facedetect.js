@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import Axios from 'axios';
 
 function FaceDetect() {
+    
     return (
         <RadioProvider>
             <div>
@@ -79,6 +80,10 @@ function NewRadio(props) {
 }
 
 function Body() {
+    const navigate = useNavigate();
+
+    const [selectedFile, setSelectedFile] = useState(null);
+    const [userImage, setUserImage] = useState(null);
 
     const uploadModule = async (e) => {
         var eye_val = document.getElementById("ox").getAttribute("value");
@@ -92,6 +97,37 @@ function Body() {
         console.log(eye_val, do_val, sr_val, pn_val, wt_val);
         console.log(type_val)
         console.log(image_val);
+
+
+    // 파일 업로드 요청 함수
+    const handleSubmit = () => {
+        if (selectedFile) {
+            console.log('Selected File:', selectedFile);
+            const formData = new FormData();
+            formData.append('userPhoto', selectedFile);
+            
+                // 파일 업로드 요청
+    fetch('http://127.0.0.1:8000/admin/post/', {
+        method: 'POST',
+        body: formData,
+      })
+        .then((response) => {
+          if (response.ok) {
+            console.log('File uploaded successfully.');
+            return response.json(); // 이미지 URL을 서버에서 응답으로 전달하도록 수정
+          } else {
+            console.log('Data sent send data');
+            throw new Error('Data sent, but an error occurred during upload.'); // 업로드 중에 오류 발생 시 에러 처리
+          }
+        })
+        .then((data) => {
+          setUserImage(data.url); // 이미지 URL을 상태 변수에 저장
+        })
+        .catch((error) => {
+          console.error('Error uploading file:', error);
+        });
+    };
+    };
 
 
         let form_data = new FormData();
@@ -120,6 +156,7 @@ function Body() {
                 })
                 .then(function (response) {
                     console.log('ai part well done');
+                    window.location = "http://localhost:3000/makeup/";
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -143,10 +180,11 @@ function Body() {
 
     return (
 
+
         <div class="html-Bpo">
             <div class="auto-group-qevz-p75">
                 <div class="upload_form">
-                    <input type="file" class="upload_photoform" accept="image/*" id="userPhoto" name="userPhoto" />
+                <input type="file" class="upload_photoform" accept="image/*" id="userPhoto" name="userPhoto" onChange={(e) => setSelectedFile(e.target.files[0])} alt="User photo upload" />
                 </div>
 
                 <p class="text1">당신은 쌍커풀을 가지고 있나요?</p>
@@ -176,6 +214,7 @@ function Body() {
                 <RadioTitle text_color="#288E9A" content="멜라닌 색소 활성도"></RadioTitle>
                 <NewRadio id="pn" name="P_or_N" accentColor="#288E9A"
                     value1="pigment" text_top1="P" text_center1="민감성" text_bottom1="Pigment"
+
                     description1="멜라닌 활성도가 높아 기미, 주근깨 혹은 잡티 등 눈에 보이는 색소가 많은 타입" bg_color1="#EAEFF3"
                     value2="non-pigment" text_top2="N" text_center2="비색소성" text_bottom2="Non-Pigment"
                     description2="멜라닌 활성도가 낮아 눈에 보이는 색소가 적은 타입" bg_color2="#D3E0E6"></NewRadio>
