@@ -119,21 +119,20 @@ class AiResultList(APIView):
         # print(image)
 
         query = FaceInput.objects.filter(user_id=id).values()
-        print(query)
         query = query[len(query) - 1]
         print(query)
 
         img_path = query["image"]
-        print("img_path", img_path)
+        # print(img_path)
         img = cv2.imread(img_path)
-        print("img=", img)
-        print()
+
         predictor = dlib.shape_predictor(
             "media/ai/shape_predictor_68_face_landmarks.dat"
         )
         detector = dlib.get_frontal_face_detector()
 
-        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+        # print(img)
+        gray = cv2.cvtColor(img, cv2.COLO01R_BGR2GRAY)
         rects = detector(gray, 1)
 
         print("cv2 start")
@@ -373,7 +372,7 @@ def Face_Shape(img):
 
     predicted_class_idx = np.argmax(pred, axis=-1)
     # class_dict = {0:'heart', 1:'oblong', 2:'oval', 3:'round', 4:'square'}
-    class_dict = {0: "계란형", 1: "긴형", 2: "역삼각형", 3: "둥근형", 4: "각진형"}
+    class_dict = {0: "역삼각형", 1: "긴형", 2: "계란형", 3: "둥근형", 4: "각진형"}
     return class_dict[predicted_class_idx[0]]
 
 

@@ -158,12 +158,12 @@ const getDataByUserId = () => {
     <div className='makeup-img-user'>
     </div>
     </div>
+    <div className='makeupcard'>
     <MakeUpCard
     title="eye."
-    //text={eye_lid}
-    text={eye_len}
-    text0={eye_len[7]}
-    text1={eye_angle ? eye_angle.eyeangle : ''}
+    text={eye_lid}
+    text0={eye_len}
+    text1={eye_angle}
     text2=""
     text3=""
     />
@@ -175,6 +175,23 @@ const getDataByUserId = () => {
     text2="- 짙은색을 피하고 밝은톤의 립제품을 사용해보세요"
     text3="- 입술 라인을 스머지해 자연스로운 분위기를 연출해보세요"
     />
+    <MakeUpCard
+    title="Nose."
+    text="입술"
+    text0="두툼입술"
+    text1="뭐시기입술"
+    text2="- 짙은색을 피하고 밝은톤의 립제품을 사용해보세요"
+    text3="- 입술 라인을 스머지해 자연스로운 분위기를 연출해보세요"
+    />
+    <MakeUpCard
+    title="Face."
+    text="입술"
+    text0="두툼입술"
+    text1="뭐시기입술"
+    text2="- 짙은색을 피하고 밝은톤의 립제품을 사용해보세요"
+    text3="- 입술 라인을 스머지해 자연스로운 분위기를 연출해보세요"
+    />
+    </div>
     <Btn_black text={"PDF로 저장하기"} onClick={downloadPDF} style={{backgroundColor: "#3A3A3A", width: "180px", fontSize: "20px", fontFamily: "Noto Serif KR", borderRadius: "4.185303688049316px"}}/>
   </div>
   );
