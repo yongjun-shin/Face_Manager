@@ -75,10 +75,53 @@ useEffect(() => {
         pdf.save('makeupmethod.pdf');
     });
 }, [pdfRef]);
-  return (
+
+const [d, setData] = useState(null);
+const [eye_lid, setEyelid] = useState(null);
+const [eye_len, setEyelen] = useState(null);
+const [eye_angle, setEyeangle] = useState(null);
+const [lip_len, setLiplen] = useState(null);
+const [lip_thick, setLipthick] = useState(null);
+const [nostril, setNostril] = useState(null);
+const [nose_len, setNoselen] = useState(null);
+const [face_shape, setFaceshape] = useState(null);
+
+const pk = localStorage.getItem('pk')
+
+useEffect(() => {
+  getDataByUserId()
+}, []);
+
+const getDataByUserId = () => {
+  axios.put("http://localhost:8000/ai/getdata/", {
+    user_id: pk
+  }).then((response) => {
+    console.log(response)
+    const data = response.data;
 
     
-    
+    setEyelid(data['eye_lid']);
+    setEyelen(data['eye_len']);
+    setEyeangle(data['eye_angle']);
+    setLiplen(data['lip_len']);
+    setLipthick(data['lip_thick']);
+    setNostril(data['nostril']);
+    setNoselen(data['nose_len']);
+    setFaceshape(data['face_shape']);
+
+    console.log("eye_lid:", data['eye_lid'])
+    console.log("face shape:", data['face_shape'])
+
+    // console.log("eye_lid:", eye_lid)
+    // console.log("face shape:", face_shape)
+  })
+    .catch((error) => {
+      console.log(error)
+    });
+}
+
+  
+  return (  
     <div className='wrapper' ref={pdfRef}>
     <div className='container'>
     <div className="makeup-method-01">
@@ -117,11 +160,12 @@ useEffect(() => {
     </div>
     <MakeUpCard
     title="eye."
-    text="쌍꺼풀"
-    text0="긴눈"
-    text1="뭐시기눈"
-    text2="- 아이라인 대신 진한색의 섀도우를 사용해 눈매를 강조해보세요"
-    text3="- 속눈썹 뿌리를 강하게 올려 바짝 올려보세요"
+    //text={eye_lid}
+    text={eye_len}
+    text0={eye_len[7]}
+    text1={eye_angle ? eye_angle.eyeangle : ''}
+    text2=""
+    text3=""
     />
     <MakeUpCard
     title="lip."

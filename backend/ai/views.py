@@ -99,7 +99,7 @@ class AiResultDetail(APIView):
         )
         result_data = MakeupTextSerializer(result_data)
 
-        return Response(data=result_data, status=status.HTTP_201_CREATED)
+        return Response(data=result_data.data, status=status.HTTP_201_CREATED)
 
 
 class AiResultList(APIView):
