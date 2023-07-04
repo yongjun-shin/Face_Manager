@@ -34,12 +34,12 @@ const MethodBoxText2 = styled.div`
 const MethodBoxText3 = styled.div`
 `;
 
-const MakeUpCard = ({title, text, text2, text3}) => {
+const MakeUpCard = ({title, text,text0, text1, text2, text3}) => {
   return (
     <div>
     <TitleText>{title}</TitleText>
     <MethodBox>
-      <MethodBoxText>{text}</MethodBoxText>
+      <MethodBoxText>{text}, {text0}, {text1}</MethodBoxText>
       <MethodBoxText2>{text2}</MethodBoxText2>
       <MethodBoxText3>{text3}</MethodBoxText3>
     </MethodBox>

@@ -96,4 +96,7 @@ body {
 
 .userimage{
   margin-top: 40px;
+  width: 274px;
+  height: 383px;
+  object-fit: cover;
 }
