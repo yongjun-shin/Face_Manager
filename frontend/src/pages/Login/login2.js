@@ -96,32 +96,32 @@ export function Login() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <form onSubmit={onSubmit}>
-      <div style={{display:'flex', justifyContent:'center'}}>
-      <Title>로그인</Title>
-      </div>
-      {errors === true && <h2>Cannot log in with provided credentials</h2>}
-      <InputContainer>
-        <InputLabel>Email</InputLabel>
-        <InputBox
-          type="email"
-          placeholder="이메일"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-        />
-      </InputContainer>
-      <InputContainer>
-        <InputLabel>Password</InputLabel>
-        <InputBox
-          type="password"
-          placeholder="비밀번호"
-          value={password}
-          required
-          onChange={e => setPassword(e.target.value)}
-        />
-      </InputContainer> 
-      <div style={{display:'flex', justifyContent:'center'}}>
-      <Btn_black type='submit' text={'Login'} style={{ fontSize: '24px', width: '237px', height: '46px', marginTop: '52px'}} />
-      </div>
+        <div style={{display:'flex', justifyContent:'center'}}>
+          <Title>로그인</Title>
+        </div>
+        {errors === true && <h2>Cannot log in with provided credentials</h2>}
+        <InputContainer>
+          <InputLabel>Email</InputLabel>
+          <InputBox
+            type="email"
+            placeholder="이메일"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+          />
+        </InputContainer>
+        <InputContainer>
+          <InputLabel>Password</InputLabel>
+          <InputBox
+            type="password"
+            placeholder="비밀번호"
+            value={password}
+            required
+            onChange={e => setPassword(e.target.value)}
+          />
+        </InputContainer> 
+        <div style={{display:'flex', justifyContent:'center'}}>
+          <Btn_black type='submit' text={'Login'} style={{ fontSize: '24px', width: '237px', height: '46px', marginTop: '52px'}} />
+        </div>
       </form>
       <div style={{ marginTop: '60px', marginBottom: '212px', width: '664px', display: 'flex', justifyContent: 'space-between' }}>
         <Btn_social text={'구글로 로그인'} style={{ fontSize: '13px', width: '192px', height: '46px' }} svg={<Google />} />

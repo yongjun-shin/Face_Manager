@@ -49,7 +49,7 @@ export function Pricing() {
             </div>
             <div class='title'>
                 <div class='radio'>
-                    <div class={`box ${selectedBox === 'std' ? 'checked' : ''}`} style={{backgroundColor:'#EBD4D4'}}>
+                    <div class={`box ${selectedBox === 'std' ? 'checked' : ''}`} style={{backgroundColor:'#EBD4D4'}} onClick={() => handleRadioChange('std')}>
                         <div class='box_in'>
                             <input type='radio' id='std' name='radio_group' checked={selectedBox==='std'} onChange={() => handleRadioChange('std')}/>
                             <div>
@@ -63,7 +63,7 @@ export function Pricing() {
                             </div>
                         </div>
                     </div>
-                    <div class={`box ${selectedBox === 'exp' ? 'checked' : ''}`} style={{backgroundColor:'#EDC3C3'}}>
+                    <div class={`box ${selectedBox === 'exp' ? 'checked' : ''}`} style={{backgroundColor:'#EDC3C3'}} onClick={() => handleRadioChange('exp')}>
                         <div class='box_in'>
                             <input type='radio' id='exp' name='radio_group' checked={selectedBox==='exp'} onChange={() => handleRadioChange('exp')}/>
                             <div>
@@ -77,7 +77,7 @@ export function Pricing() {
                             </div>
                         </div>
                     </div>
-                    <div class={`box ${selectedBox === 'pre' ? 'checked' : ''}`} style={{backgroundColor:'#E9ABAB'}}>
+                    <div class={`box ${selectedBox === 'pre' ? 'checked' : ''}`} style={{backgroundColor:'#E9ABAB'}} onClick={() => handleRadioChange('pre')}>
                         <div class='box_in'>
                             <input type='radio' id='pre' name='radio_group' checked={selectedBox==='pre'} onChange={() => handleRadioChange('pre')}/>
                             <div>
