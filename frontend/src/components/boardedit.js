@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import { Btn_beige } from "../components/button.js";
 import "../components/boardcreate.css";
@@ -32,23 +32,27 @@ const ContentWrapper = styled.div`
 `;
 
 const BoardEdit = (props) => {
-    const [username, setUserName] = useState('');
-    const [title, setTitle] = useState('');
 
     const handleEdit = () => {
         const updatedData = {
-          username: document.querySelector('.name-input').value,
+          user_id: localStorage.getItem('pk'),
+          user_name: document.querySelectorAll('.name-input')[0].value,
           title: document.querySelectorAll('.name-input')[1].value,
           content: document.querySelector('.content-input').value,
         };
 
-        axios.put("http://127.0.0.1:8000/qna/", updatedData)
+        axios.put(`http://127.0.0.1:8000/qna/${props.id}/`, updatedData)
           .then(response => {
             console.log(response.data);
-            setTitle(updatedData.title);
-            setUserName(updatedData.username);
+            props.setTitle(updatedData.title);
+            props.setUserName(updatedData.user_name);
             props.setContent(updatedData.content);
           })
+
+          .catch(function (error) {
+            console.log("error!");
+            console.log(error);
+        });
         };
 
     return (
@@ -57,15 +61,15 @@ const BoardEdit = (props) => {
             <TitleWrapper>
                 <InputWrapper>
                     <h1 style={{fontSize: "15px", color: "#3A3A3A", marginRight: "15px"}}>작성자명</h1>
-                    <input value={username}  class="name-input" type="text" placeholder="작성자명을 입력하세요"></input>
+                    <input defaultValue={props.username}  className="name-input" type="text" placeholder="작성자명을 입력하세요"></input>
                 </InputWrapper>
                 <InputWrapper>
                     <h1 style={{fontSize: "15px", color: "#3A3A3A", marginRight: "15px"}}>제목</h1>
-                    <input value={title}  class="name-input" type="text" placeholder="제목을 입력하세요"></input>
+                    <input defaultValue={props.title}  className="name-input" type="text" placeholder="제목을 입력하세요"></input>
                 </InputWrapper>
             </TitleWrapper>
             <ContentWrapper>
-                <textarea value={props.content}  class="content-input" type="text" placeholder="문의 내용을 입력하세요. 문의 답변은 이메일로 전송됩니다."></textarea>
+                <textarea defaultValue={props.content}  className="content-input" type="text" placeholder="문의 내용을 입력하세요. 문의 답변은 이메일로 전송됩니다."></textarea>
                 <Link to="/qna">
                     <Btn_beige onClick={handleEdit} text="Edit" style={{ boxShadow: "none", width: "80px", height: "40px", fontSize: "15px" }} />
                 </Link>

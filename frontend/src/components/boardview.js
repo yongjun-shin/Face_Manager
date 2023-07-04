@@ -15,23 +15,25 @@ const TableWrapper = styled.div`
     margin-bottom: 160px;
 `;
 
-const BoardView = (props) => {   
-    const titles = ['가입 문의', '구독 문의', '로그인 문의', '회원가입 문의', '회원탈퇴 문의']
-    const usernames = ['김철수', '홍길동', '김태희', '전정국', '이채현']
-    const [title, setTitle] = useState(titles);
-    const [username, setUsername] = useState(usernames);
+const BoardView = (props) => { 
+    const fetchQnA = () => {
+        axios.get(`http://127.0.0.1:8000/qna/`)
+          .then(response => {
+            setData(response.data);
+          })
+          .catch(function (error) {
+            console.log("error!");
+            console.log(error);
+          });
+      };
+      
+    useEffect(fetchQnA, []);
 
+    const [data, setData] = useState([]);
     const [activeIndex, setActiveIndex] = useState(0);
     const handleItemClick = (index) => {
         setActiveIndex(index);
     };
-    useEffect(() => {
-        axios.get("http://127.0.0.1:8000/qna/")
-            .then(response => {
-                console.log(response.data);
-            })
-    }, []);
-    console.log(title, username);
 
     return(
         <TableWrapper>
@@ -39,17 +41,17 @@ const BoardView = (props) => {
         <div class="table-content-table">
             <table class="w-100">
                 <tr class="table-thead-tr">
+                    <th>작성 번호</th>
                     <th>작성자</th>
                     <th>문의 제목</th> 
-                    <th class="th-actions"></th>
                 </tr>
-                {title.map((title, idx) => (
-                <TableRow setContent={props.setContent} setTitle={setTitle} setUsername={setUsername} authorName={username[idx]} titleName={title} idx={idx} />
+                {data.map((data) => (
+                <TableRow fetchQnA={fetchQnA} setId={props.setId} setTitle={props.setTitle} setUsername={props.setUsername}  setContent={props.setContent} authorName={data.user_name} titleName={data.title} id={data.id}/>
                 ))}
             </table>
         </div>
             <Link to="/createboard">
-                <Btn_beige text="Create" style={{ marginTop: "20px", boxShadow: "none", width: "80px", height: "40px", fontSize: "15px" }} />
+                <Btn_beige text="Create" style={{ marginTop: "20px", boxShadow: "none", width: "80px", height: "40px", fontSize: "15px", marginBottom: "230px" }} />
             </Link>
         <div class="pagi-wrapper">
             <ul class="pagination">

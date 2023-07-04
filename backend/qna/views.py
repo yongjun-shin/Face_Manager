@@ -37,7 +37,7 @@ class QnaDetail(APIView):
     
     def put(self, request, pk, format=None):
         qna = self.get_object(pk)
-        serializer = QnaSerializer(review, data=request.data)
+        serializer = QnaSerializer(qna, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
