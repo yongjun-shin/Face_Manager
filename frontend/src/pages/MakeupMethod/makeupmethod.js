@@ -136,8 +136,8 @@ function Makeup() {
     setlenLip(data['lip_len']['lip']);
 
     setLipthick(data['lip_thick']['thickness']);
-    setthickLip(data['lip-thick']['lip']);
-
+    setthickLip(data['lip_thick']['lip']);
+    console.log(data['lip_thick']['lip']);
     setNostril(data['nostril']['wideness']);
     setwidNose(data['nostril']['nose']);
 
@@ -223,7 +223,7 @@ function Makeup() {
         text6={angleeyeline}
         text7={anglemascara}
       />
-
+      
       <MakeUpCard_Lip
         title="lip."
         obj1={      

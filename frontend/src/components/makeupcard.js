@@ -11,7 +11,7 @@ const TitleText = styled.div`
   letter-spacing:0;
 `;
 
-const MethodBox = styled.div`
+const MethodBox_Eye = styled.div`
   border: 1px solid #3A3A3A;
   font-family:Noto Serif KR;
   color:#3A3A3A;
@@ -20,6 +20,45 @@ const MethodBox = styled.div`
   overflow: visible;
   width: 600px;
   height: 725px;
+  padding: 25px;
+  margin-bottom: 50px;
+`;
+
+const MethodBox_Lip = styled.div`
+  border: 1px solid #3A3A3A;
+  font-family:Noto Serif KR;
+  color:#3A3A3A;
+  font-weight: regular;
+  box-sizing: border-box;
+  overflow: visible;
+  width: 600px;
+  height: 400px;
+  padding: 25px;
+  margin-bottom: 50px;
+`;
+
+const MethodBox_Nose = styled.div`
+  border: 1px solid #3A3A3A;
+  font-family:Noto Serif KR;
+  color:#3A3A3A;
+  font-weight: regular;
+  box-sizing: border-box;
+  overflow: visible;
+  width: 600px;
+  height: 250px;
+  padding: 25px;
+  margin-bottom: 50px;
+`;
+
+const MethodBox_Face = styled.div`
+  border: 1px solid #3A3A3A;
+  font-family:Noto Serif KR;
+  color:#3A3A3A;
+  font-weight: regular;
+  box-sizing: border-box;
+  overflow: visible;
+  width: 600px;
+  height: 400px;
   padding: 25px;
   margin-bottom: 50px;
 `;
@@ -37,7 +76,7 @@ const MakeUpCard_Eye = ({title, obj1, obj2, obj3, text1, text2, text3, text4, te
   return (
     <div>
     <TitleText>{title}</TitleText>
-    <MethodBox>
+    <MethodBox_Eye>
       <MethodBoxText>{obj1}</MethodBoxText>
       <MethodBoxText2>- 섀도우 : {text1}</MethodBoxText2>
       <br></br>
@@ -54,7 +93,7 @@ const MakeUpCard_Eye = ({title, obj1, obj2, obj3, text1, text2, text3, text4, te
       <MethodBoxText2>- 아이라인 : {text6}</MethodBoxText2>
       <br></br>
       <MethodBoxText2>- 마스카라 : {text7}</MethodBoxText2>
-    </MethodBox>
+    </MethodBox_Eye>
     </div>
   );
 };
@@ -63,13 +102,13 @@ const MakeUpCard_Lip = ({title, obj1, obj2, text1, text2}) => {
     return (
       <div>
       <TitleText>{title}</TitleText>
-      <MethodBox>
+      <MethodBox_Lip>
         <MethodBoxText>{obj1}</MethodBoxText>
         <MethodBoxText2>- {text1}</MethodBoxText2>
         <br></br>
         <MethodBoxText>{obj2}</MethodBoxText>
         <MethodBoxText2>- {text2}</MethodBoxText2>
-      </MethodBox>
+      </MethodBox_Lip>
       </div>
     );
 
@@ -79,13 +118,13 @@ const MakeUpCard_Nose = ({title, obj1, obj2, text1, text2}) => {
   return (
     <div>
     <TitleText>{title}</TitleText>
-    <MethodBox>
+    <MethodBox_Nose>
       <MethodBoxText>{obj1}</MethodBoxText>
       <MethodBoxText2>- {text1}</MethodBoxText2>
       <br></br>
       <MethodBoxText>{obj2}</MethodBoxText>
       <MethodBoxText2>- {text2}</MethodBoxText2>
-    </MethodBox>
+    </MethodBox_Nose>
     </div>
   );
 
@@ -95,12 +134,14 @@ const MakeUpCard_Face = ({title, obj1, text1, text2, text3}) => {
   return (
     <div>
     <TitleText>{title}</TitleText>
-    <MethodBox>
+    <MethodBox_Face>
       <MethodBoxText>{obj1}</MethodBoxText>
       <MethodBoxText2>- 아이브로우 : {text1}</MethodBoxText2>
+      <br></br>
       <MethodBoxText2>- 블러셔 : {text2}</MethodBoxText2>
+      <br></br>
       <MethodBoxText2>- 섀딩 : {text3}</MethodBoxText2>
-    </MethodBox>
+    </MethodBox_Face>
     </div>
   );
 
