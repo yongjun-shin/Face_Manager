@@ -132,7 +132,7 @@ class AiResultList(APIView):
         detector = dlib.get_frontal_face_detector()
 
         # print(img)
-        gray = cv2.cvtColor(img, cv2.COLO01R_BGR2GRAY)
+        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         rects = detector(gray, 1)
 
         print("cv2 start")

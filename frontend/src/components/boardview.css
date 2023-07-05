@@ -9,21 +9,19 @@
     background: #F8F8F8;
     border: 1px solid #F1F1F1;
     border-radius: 5px;
-  }
-  
-  .th-actions {
-    width: 300px; /* changes as needed */
-    text-align: center;
+    width: 576px;
   }
   
   .table-thead-tr th {
     color: #3A3A3A;
     text-align: left;
-    padding-left: 10px;
+    padding-left: 0;
+    padding-right: 5px;
     padding-top: 5px;
     padding-bottom: 5px;
+    width: 136px;
   }
-  
+ 
   .table-tbody-tr td {
     background: #FFF; 
     border: 1px solid #FFF;

@@ -33,6 +33,9 @@ function App() {
         event.preventDefault();
     };
     const [content, setContent] = useState();
+    const [id, setId] = useState();
+    const [title, setTitle] = useState();
+    const [username, setUsername] = useState();
 
     return (
 
@@ -44,7 +47,7 @@ function App() {
                     <Route path="/detect" element={<FaceDetect/>} />
                     <Route path="/makeup" element={<Makeup />} />
                     <Route path="/pricing" element={<Pricing/>} />
-                    <Route path="/qna" element={<QnA setContent={setContent}/>} />
+                    <Route path="/qna" element={<QnA setId={setId} id={id} setContent={setContent} setTitle={setTitle} setUsername={setUsername} title={title} username={username}/>} />
                     <Route path="/login" element={<Login/>} />
                     <Route path="/join" element={<Join/>} />
                     <Route path="/about" element={<About/>} />
@@ -55,8 +58,8 @@ function App() {
                     <Route path="/createimage" element={<CreateImage/>} />
                     <Route path="/createimage_res" element={<CreateImageResult/>} />
                     <Route path="/history" element={<History/>} />
-                    <Route path="/createboard" element={<BoardCreate/>} />
-                    <Route path="/editboard" element={<BoardEdit content={content}/>} />
+                    <Route path="/createboard" element={<BoardCreate setTitle={setTitle} setUsername={setUsername} setId={setId} setContent={setContent}/>} />
+                    <Route path="/editboard" element={<BoardEdit id={id} content={content} title={title} username={username} setId={setId} setContent={setContent} setTitle={setTitle} setUsername={setUsername} />} />
                 </Routes>
                 <Footer></Footer>
             </div>
