@@ -4,6 +4,8 @@ __pycache__/
 
 # react #
 node_modules
+node_modules/
+myvenv/
 
 # database #
 *.sqlite3
@@ -13,3 +15,5 @@ EfficientNetB6.h5
 image_gen/BeautyGAN-master-20230629T050404Z-001.zip
 image_gen/
 media/post_images/
+media/
+AI/

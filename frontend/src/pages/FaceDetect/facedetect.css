@@ -113,6 +113,7 @@
     display: flex;
     align-items: center;
     margin-right: 10px;
+    cursor: pointer;
 }
 .radio-content1{
     display: flex;
@@ -169,6 +170,7 @@ p{
 .label_content2{
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 .radio-content2{
     display: flex;
@@ -219,6 +221,7 @@ p{
 .label_content2{
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 /* 적응형 레이아웃 설정 */
 @media (max-width: 1050px) {
