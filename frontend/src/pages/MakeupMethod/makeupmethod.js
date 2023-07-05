@@ -266,7 +266,7 @@ function Makeup() {
       />      
     </div>
     <div style={{display:'flex', justifyContent:'center', marginBottom:'300px'}}>
-      <Btn_black text={"PDF로 저장하기"} onClick={downloadPDF} style={{backgroundColor: "#3A3A3A", width: "180px", fontSize: "20px", fontFamily: "Noto Serif KR", borderRadius: "4.185303688049316px"}}/>
+      <Btn_black text={"PDF로 저장하기"} onClick={downloadPDF} style={{backgroundColor: "#3A3A3A", width: "180px", height:"50px", fontSize: "20px", fontFamily: "Noto Serif KR", borderRadius: "4.185303688049316px"}}/>
     </div>
   </div>
   );
