@@ -87,7 +87,16 @@
           "mascara" : "동공 부분보단 눈 꼬리 부분에 집중해서 발라준다."
         }
     }, 
-
+    {
+      "model": "ai.eyemethod_len",
+      "pk": 3,
+      "fields": {
+        "leng" : "golden",
+        "shadow" : "황금 비율입니다. 연출하고 싶은 분위기에 맞추어 화장하세요.",
+        "eyeline" : "황금 비율입니다. 연출하고 싶은 분위기에 맞추어 화장하세요.",
+        "mascara" : "동공 부분보단 눈 꼬리 부분에 집중해서 발라준다."
+      }
+    }, 
 
     {
         "model": "ai.eyemethod_angle",

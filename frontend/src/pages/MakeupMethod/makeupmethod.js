@@ -36,15 +36,15 @@ to {
 
   const [isVisible, setIsVisible] = useState(false);
   const [imgSrc, setImgSrc] = useState('');
-  const [d, setData] = useState(null);
-  const [eye_lid, setEyelid] = useState(null);
-  const [eye_len, setEyelen] = useState(null);
-  const [eye_angle, setEyeangle] = useState(null);
-  const [lip_len, setLiplen] = useState(null);
-  const [lip_thick, setLipthick] = useState(null);
-  const [nostril, setNostril] = useState(null);
-  const [nose_len, setNoselen] = useState(null);
-  const [face_shape, setFaceshape] = useState(null);
+  // const [d, setData] = useState(null);
+  // const [eye_lid, setEyelid] = useState(null);
+  // const [eye_len, setEyelen] = useState(null);
+  // const [eye_angle, setEyeangle] = useState(null);
+  // const [lip_len, setLiplen] = useState(null);
+  // const [lip_thick, setLipthick] = useState(null);
+  // const [nostril, setNostril] = useState(null);
+  // const [nose_len, setNoselen] = useState(null);
+  // const [face_shape, setFaceshape] = useState(null);
 
   const pk = localStorage.getItem('pk')
 
@@ -60,9 +60,11 @@ to {
       console.log(response)
       const data = response.data;
       const eye_lid = data['eye_lid']
+      console.log("eye_lid data below")
       console.log(eye_lid)
+      console.log(eye_lid['shadow'])
       
-      console.log(document.getElementById("eye").getAttribute("value"));
+      //console.log(document.getElementById("eye").getAttribute("value"));
       //document.getElementById("eye").setAttribute("text", eye_lid['eyelid']);
       // setData(response.data);
       // console.log("d", d);

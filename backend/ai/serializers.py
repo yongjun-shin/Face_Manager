@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import AiResult
 from .models import MakeupText
+from .models import ApplyImage
 
 class AiResultSerializer(serializers.ModelSerializer):
     class Meta:
@@ -33,4 +34,12 @@ class MakeupTextSerializer(serializers.ModelSerializer):
             'face_shape',
         )
         model = MakeupText
-    
+
+class ApplyImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        fields = (
+            'id',
+            'user_id',
+            'image',
+        )
+        model = ApplyImage

@@ -35,6 +35,38 @@ from datetime import datetime
 import os
 import shutil
 
+from .models import ApplyImage
+from .serializers import ApplyImageSerializer
+
+class ApplyImageList(APIView):
+    def get(self, request):
+        applies = ApplyImage.objects.all()
+        
+        serializer = ApplyImageSerializer(applies, many=True)
+        return Response(serializer.data)
+
+    def post(self, request):
+        serializer = ApplyImageSerializer(
+            data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(status=status.HTTP_201_CREATED)
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+
+class ApplyImageDetail(APIView):
+    def get_object(self, pk):
+        try:
+            print(ApplyImage.objects.get(user_id=pk))
+            return ApplyImage.objects.get(user_id=pk)
+        except ApplyImage.DoesNotExist:
+            raise Http404
+        
+    def get(self, request, pk, format=None):
+        applies = self.get_object(pk)
+        serializer = ApplyImageSerializer(applies)
+        return Response(serializer.data)
+
+
 class AiResultDetail(APIView):
     def get(self, request):
         airesults = AiResult.objects.all()
@@ -125,7 +157,7 @@ class AiResultList(APIView):
         detector = dlib.get_frontal_face_detector()
 
         #print(img)
-        gray = cv2.cvtColor(img, cv2.COLO01R_BGR2GRAY)
+        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         rects = detector(gray, 1)
 
         print("cv2 start")

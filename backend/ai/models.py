@@ -1,4 +1,5 @@
 from django.db import models
+import datetime
 
 # Create your models here.
 
@@ -14,15 +15,15 @@ class AiResult(models.Model):
     face_shape = models.TextField()
 
 class MakeupText(models.Model):
-    user_id = models.CharField(max_length=10, null=True)
-    eye_lid = models.CharField(max_length=30, null=True)
-    eye_len = models.CharField(max_length=30)
-    eye_angle = models.CharField(max_length=30)
-    lip_len = models.CharField(max_length=30)
-    lip_thick = models.CharField(max_length=30)
-    nostril = models.CharField(max_length=30)
-    nose_len = models.CharField(max_length=30)
-    face_shape = models.CharField(max_length=30)
+    user_id = models.JSONField(null=True)
+    eye_lid = models.JSONField(null=True)
+    eye_len = models.JSONField()
+    eye_angle = models.JSONField()
+    lip_len = models.JSONField()
+    lip_thick = models.JSONField()
+    nostril = models.JSONField()
+    nose_len = models.JSONField()
+    face_shape = models.JSONField()
 
 class FaceShapeMethod(models.Model):
     shape = models.CharField(max_length=10)
@@ -61,3 +62,11 @@ class NoseMethod_nos(models.Model):
 class NoseMethod_len(models.Model):
     leng = models.CharField(max_length=10)
     nose = models.TextField()
+
+class ApplyImage(models.Model): 
+    user_id = models.CharField(max_length=10)
+    date = models.DateTimeField('apply date', default=datetime.datetime.now, null=True, blank=True)
+    image = models.ImageField(upload_to='media/post_images', null=True)
+    
+    def __str__(self):
+        return f"{self.user_id}, {self.date}, {self.image}"
