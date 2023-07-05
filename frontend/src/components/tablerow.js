@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Btn_beige } from "../components/button.js";
 import axios from "axios";
 
@@ -41,6 +41,7 @@ const TableRow = ({ fetchQnA, setId, authorName, titleName, setTitle, setUsernam
             console.log(error);
           });
       };
+      const navi = useNavigate();
 
     return (
         <TableDataWrapper>
@@ -49,20 +50,26 @@ const TableRow = ({ fetchQnA, setId, authorName, titleName, setTitle, setUsernam
             <TableFirstData>{titleName}</TableFirstData>
             <td>
             <BtnWrapper>
-            <Link to="/editboard">
+        
             <Btn_beige onClick={() => {
-                axios.get(`http://127.0.0.1:8000/qna/?id=${id}`)
+                axios.get(`http://127.0.0.1:8000/qna/${id}/`)
                 .then((res) => {
                     console.log(id);
-                    console.log(res.data);
-                    const post = res.data.find(item => item.id === id);
+                    console.log("tablerow page res.data",res.data);
+                    const post = res.data;
                     setId(post.id);
+                    console.log(post.id);
                     setTitle(post.title);
+                    console.log(post.title);
                     setUsername(post.user_name);
+                    console.log(post.user_name);
                     setContent(post.content);
+                    console.log(post.content);
+                    navi('/editboard')
+                    
                 })
-            }} text="Edit" style={{boxShadow: "none", width:"60px", height:"30px", fontSize: "12px"}} />
-            </Link>
+            }} text="View" style={{boxShadow: "none", width:"60px", height:"30px", fontSize: "12px"}} />
+     
             <Btn_beige text="Delete" onClick={handleDelete} style={{marginLeft: "10px", boxShadow: "none", width:"60px", height:"30px", fontSize: "12px"}} />
             </BtnWrapper>
             </td>

@@ -140,7 +140,7 @@ const MakeUpCard_Face = ({title, obj1, text1, text2, text3}) => {
       <br></br>
       <MethodBoxText2>- 블러셔 : {text2}</MethodBoxText2>
       <br></br>
-      <MethodBoxText2>- 섀딩 : {text3}</MethodBoxText2>
+      <MethodBoxText2>- 쉐딩 : {text3}</MethodBoxText2>
     </MethodBox_Face>
     </div>
   );
