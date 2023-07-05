@@ -39,8 +39,17 @@
 }
 .second .human {
     position: absolute; 
-    top: 0; 
-    left: 10px;
+    top: 20px; 
+    left: 30px;
+    width: 140px;
+    height: 140px;
+}
+.second .human_yj {
+    position: absolute; 
+    top: 0px; 
+    left: 23px;
+    width: 155px;
+    height: 165px;
 }
 .second .line1-top {
     display: flex;
@@ -50,7 +59,7 @@
     margin-top: 39px;
     display: flex;
     justify-content: space-between;
-    width: 880px;
+    width: 684px;
     height: 230px;
 }
 .second .line1 .myCanvas {

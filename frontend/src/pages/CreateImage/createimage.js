@@ -5,7 +5,7 @@ import { ReactComponent as MemberImg } from '../svgs/member_info.svg';
 import { Btn_beige } from "../../components/button.js";
 import './createimage.css'
 import axios from 'axios';
-import {Modal} from "../../components/modal.js";
+import {Modal2} from "../../components/modal.js";
 import React, { useState } from 'react';
 
 const P = styled.p`
@@ -64,14 +64,14 @@ export function CreateImage() {
                     </div>
                     <div className="example">
                         <div>
-                            <Member />
+                            <img src='./imgs/before.jpg'/>
                             <Div>
                                 <p>Before</p>
                             </Div>
                         </div>
                         <hr style={{height:'300px', width:'.1vw', borderWidth:'0', backgroundColor:'#3A3A3A'}}/>
                         <div>
-                            <Member />
+                            <img src='./imgs/after.jpg'/>
                             <Div>
                                 <p>After</p>
                             </Div>
@@ -83,9 +83,9 @@ export function CreateImage() {
                     <React.Fragment>
                     <Div>
                         <Btn_beige style={{width:'210px', height:'83px', fontSize:'20px'}} text={'AI 이미지\n생성하기'} onClick={handleBtnClick}/>
-                        <Modal open={modalOpen} close={closeModal} header="AI 이미지 생성하기">
+                        <Modal2 open={modalOpen} close={closeModal} header="AI 이미지 생성하기">
         신청이 완료되었습니다. 이미지는 1시간 이내에 제공됩니다.
-      </Modal>
+      </Modal2>
       
                     </Div>
                     </React.Fragment>

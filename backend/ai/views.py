@@ -27,7 +27,13 @@ import tensorflow as tf
 from PIL import ImageFile
 import numpy as np
 import tensorflow as tf
-from tensorflow.keras.layers import Dropout, Dense, GlobalAveragePooling2D, BatchNormalization, Flatten
+from tensorflow.keras.layers import (
+    Dropout,
+    Dense,
+    GlobalAveragePooling2D,
+    BatchNormalization,
+    Flatten,
+)
 from tensorflow.keras.applications import EfficientNetB6
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
@@ -148,36 +154,45 @@ class AiResultList(APIView):
         query = FaceInput.objects.filter(user_id = id).values()
         query = query[len(query)-1]
         print(query)
-        
-        img_path = query['image']
-        #print(img_path)
+
+        img_path = query["image"]
+        # print(img_path)
         img = cv2.imread(img_path)
-        
-        predictor = dlib.shape_predictor("media/ai/shape_predictor_68_face_landmarks.dat")
+
+        predictor = dlib.shape_predictor(
+            "media/ai/shape_predictor_68_face_landmarks.dat"
+        )
         detector = dlib.get_frontal_face_detector()
 
-        #print(img)
+        # print(img)
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         rects = detector(gray, 1)
 
         print("cv2 start")
         points = None
-        for (i, rect) in enumerate(rects):
+        for i, rect in enumerate(rects):
             points = np.matrix([[p.x, p.y] for p in predictor(gray, rect).parts()])
             show_parts = points
-            for (i, point) in enumerate(show_parts):
-                x = point[0,0]
-                y = point[0,1]
+            for i, point in enumerate(show_parts):
+                x = point[0, 0]
+                y = point[0, 1]
                 cv2.circle(img, (x, y), 1, (0, 255, 255), -1)
-                cv2.putText(img, "{}".format(i + 1), (x, y - 2),
-                cv2.FONT_HERSHEY_SIMPLEX, 0.3, (0, 255, 0), 1)
-        
+                cv2.putText(
+                    img,
+                    "{}".format(i + 1),
+                    (x, y - 2),
+                    cv2.FONT_HERSHEY_SIMPLEX,
+                    0.3,
+                    (0, 255, 0),
+                    1,
+                )
+
         print("AI detection start")
-        result = Face_Analysis(points)        
+        result = Face_Analysis(points)
         face_shape = Face_Shape(img)
-        result['face_shape'] = face_shape
+        result["face_shape"] = face_shape
         print(result)
-        
+
         result_data = AiResult(
             user_id = id,
             eye_lid = query['eyelid'],
@@ -190,11 +205,9 @@ class AiResultList(APIView):
             face_shape = result['face_shape'],
         )
         result_data.save()
-                
+
         return Response(status=status.HTTP_201_CREATED)
-    
-        
-    
+
     # def post(self, request):
     #     serializer = AiResultSerializer(
     #         data=request.data)
@@ -349,19 +362,18 @@ def Face_Analysis(points):
             return('short')
 
     result = {}
-    result['nose_len'] = Nose_Length_Classification(points)
-    result['nostril'] = Nostrils_Classification(points)
-    result['lip_thick'] = Lip_Thickness_Classification(points)
-    result['lip_len'] = Lip_Length_Classification(points)
-    result['eye_angle'] = Eyes_Angle_Classification(points)
-    result['eye_len'] = Eyes_Length_Classification(points)
-    
+    result["nose_len"] = Nose_Length_Classification(points)
+    result["nostril"] = Nostrils_Classification(points)
+    result["lip_thick"] = Lip_Thickness_Classification(points)
+    result["lip_len"] = Lip_Length_Classification(points)
+    result["eye_angle"] = Eyes_Angle_Classification(points)
+    result["eye_len"] = Eyes_Length_Classification(points)
+
     return result
-    #print("Eyes_Length_Classification: {} \nEyes_Angle_Classification: {} \nLip_Length_Classification: {} \nLip_Thickness_Classification: {} \nNostrils_Classification: {} \nNose_Length_Classification: {}"
-    #.format(Eyes_Length_Classification(points), Eyes_Angle_Classification(points), Lip_Length_Classification(points), Lip_Thickness_Classification(points), Nostrils_Classification(points), Nose_Length_Classification(points)))    
+    # print("Eyes_Length_Classification: {} \nEyes_Angle_Classification: {} \nLip_Length_Classification: {} \nLip_Thickness_Classification: {} \nNostrils_Classification: {} \nNose_Length_Classification: {}"
+    # .format(Eyes_Length_Classification(points), Eyes_Angle_Classification(points), Lip_Length_Classification(points), Lip_Thickness_Classification(points), Nostrils_Classification(points), Nose_Length_Classification(points)))
 
 
-    
 def Face_Shape(img):
     ImageFile.LOAD_TRUNCATED_IMAGES = True
 
@@ -370,21 +382,23 @@ def Face_Shape(img):
 
     class_nums = 5
 
-    pre_trained_model = EfficientNetB6(weights='imagenet', include_top=False, input_shape=(IMG_WIDTH,IMG_HEIGHT,3))
+    pre_trained_model = EfficientNetB6(
+        weights="imagenet", include_top=False, input_shape=(IMG_WIDTH, IMG_HEIGHT, 3)
+    )
 
     model = Sequential()
 
     model.add(pre_trained_model)
-    
+
     model.add(GlobalAveragePooling2D())
 
-    model.add(Dense(256,activation='relu'))
+    model.add(Dense(256, activation="relu"))
     model.add(Dropout(0.5))
-    model.add(Dense(128,activation='relu'))
+    model.add(Dense(128, activation="relu"))
     model.add(Dropout(0.5))
-    model.add(Dense(class_nums, activation='softmax'))
+    model.add(Dense(class_nums, activation="softmax"))
 
-    model.load_weights('media/ai/EfficientNetB6.h5')
+    model.load_weights("media/ai/EfficientNetB6.h5")
 
     img = cv2.resize(img, (240, 240))
     img = np.expand_dims(img, axis=0)

@@ -3,6 +3,7 @@ import datetime
 
 # Create your models here.
 
+
 class AiResult(models.Model):
     user_id = models.CharField(max_length=10, null=True)
     eye_lid = models.TextField(null=True)

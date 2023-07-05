@@ -1,9 +1,8 @@
 import { ReactComponent as Logos } from '../svgs/logos.svg';
 import './about.css'
 
-export function About() {
-    
 
+export function About() {
     return (
         <div class='total'>
             <div class='first'>
@@ -23,41 +22,37 @@ export function About() {
                     <div class='line1'>
                         <div class='parent'>
                             <div class='myCanvas' style={{backgroundColor: '#FAE1DD' }}></div>
-                            <img class='human' src='/imgs/human.png' />
+                            <img class='human' src='/imgs/jy.png' />
                             <p class='info'>박진영<br/>AI Track</p>
                         </div>
                         <div class='parent'>
                             <div class='myCanvas' style={{backgroundColor: '#F8EDEB' }}></div>
-                            <img class='human' src='/imgs/human.png' />
+                            <img class='human' src='/imgs/cs.png' />
                             <p class='info'>박천성<br/>AI Track</p>
                         </div>
                         <div class='parent'>
                             <div class='myCanvas' style={{backgroundColor: '#E8E8E4' }}></div>
-                            <img class='human' src='/imgs/human.png' />
+                            <img class='human' src='/imgs/yj2.png' />
                             <p class='info'>심유진<br/>AI Track</p>
                         </div>
-                        <div class='parent'>
-                            <div class='myCanvas' style={{backgroundColor: '#D8E2DC' }}></div>
-                            <img class='human' src='/imgs/human.png' />
-                            <p class='info'>신용준<br/>AI Track</p>
-                        </div>
+                        
                     </div>
                 </div>
                 <div class='line2-top'>
                     <div class='line2'>
                         <div class='parent'>
-                            <div class='myCanvas' style={{backgroundColor: '#ECE4DB' }}></div>
-                            <img class='human' src='/imgs/human.png' />
-                            <p class='info'>이성욱<br/>AI Track</p>
+                            <div class='myCanvas' style={{backgroundColor: '#D8E2DC' }}></div>
+                            <img class='human_yj' src='/imgs/yj.png' />
+                            <p class='info'>신용준<br/>AI Track</p>
                         </div>
                         <div class='parent'>
                             <div class='myCanvas' style={{backgroundColor: '#FFE5D9' }}></div>
-                            <img class='human' src='/imgs/human.png' />
+                            <img class='human' src='/imgs/se.png' />
                             <p class='info'>박세은<br/>AI Track</p>
                         </div>
                         <div class='parent'>
                             <div class='myCanvas' style={{backgroundColor: '#FFD7BA' }}></div>
-                            <img class='human' src='/imgs/human.png' />
+                            <img class='human' src='/imgs/ch.png' />
                             <p class='info'>이채현<br/>AI Track</p>
                         </div>
                     </div>

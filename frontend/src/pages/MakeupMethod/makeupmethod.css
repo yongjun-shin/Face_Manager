@@ -6,7 +6,6 @@ body {
 }
 
 .wrapper {
-  height: 1400px;
   margin-bottom: 300px;
   display: flex;
   flex-direction: column;
@@ -96,4 +95,7 @@ body {
 
 .userimage{
   margin-top: 40px;
+  width: 274px;
+  height: 383px;
+  object-fit: cover;
 }

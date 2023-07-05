@@ -2,8 +2,8 @@ import styled from "styled-components";
 import Nav_my from '../../components/nav_mypage.js';
 import { ReactComponent as MemberImg } from '../svgs/member_info.svg';
 import { Btn_black } from '../../components/button.js';
+import axios from "axios";
 import './createimage.css'
-import axios from 'axios';
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 
 import html2canvas from 'html2canvas';
