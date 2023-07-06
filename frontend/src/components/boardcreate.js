@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Btn_beige } from "../components/button.js";
 import "../components/boardcreate.css";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from "axios";
 
 import Axios from 'axios';
@@ -34,6 +34,7 @@ const ContentWrapper = styled.div`
 `;
 
 const BoardCreate = (props) => {
+    const navi = useNavigate()
     const handleCreate = () => {
         const username = document.querySelectorAll('.name-input')[0].value;
         const title = document.querySelectorAll('.name-input')[1].value;
@@ -55,6 +56,7 @@ const BoardCreate = (props) => {
             props.setUsername(response.data.username);
             props.setContent(response.data.content);
         });
+        navi('/qna')
     };
       
     return (
@@ -72,10 +74,9 @@ const BoardCreate = (props) => {
             </TitleWrapper>
             <ContentWrapper>
                 <textarea class="content-input" type="text" placeholder="문의 내용을 입력하세요. 문의 답변은 이메일로 전송됩니다."></textarea>
-                <Link to="/qna">
+
                     <Btn_beige text="Create" style={{ boxShadow: "none", width: "80px", height: "40px", fontSize: "15px" }} 
                     onClick={()=>{handleCreate()}}/>
-                </Link>
             </ContentWrapper>
         </CreateWrapper>
     );

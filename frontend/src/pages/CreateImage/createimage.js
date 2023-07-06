@@ -64,14 +64,14 @@ export function CreateImage() {
                     </div>
                     <div className="example">
                         <div>
-                            <img src='./imgs/before.jpg'/>
+                            <img src='./imgs/before2.jpg'/>
                             <Div>
                                 <p>Before</p>
                             </Div>
                         </div>
                         <hr style={{height:'300px', width:'.1vw', borderWidth:'0', backgroundColor:'#3A3A3A'}}/>
                         <div>
-                            <img src='./imgs/after.jpg'/>
+                            <img src='./imgs/after2.jpg'/>
                             <Div>
                                 <p>After</p>
                             </Div>
