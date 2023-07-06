@@ -165,6 +165,7 @@ function Body() {
         .catch(function (error) {
             console.log(error);
         });
+        
     }
 
     function getpk(){
@@ -188,7 +189,7 @@ function Body() {
                 </div>
 
                 <p class="text1">당신은 쌍커풀을 가지고 있나요?</p>
-                <NewRadio id="ox" name="O_or_X" accentColor="#C0BDB6"
+                <NewRadio id="ox" name="O_or_X" accentColor="#000000"
                     value1="yes" text_top1="O" text_center1="있음" text_bottom1="Yes"
                     description1="쌍커풀을 가지고 있습니다." bg_color1="#D3CFC8"
                     value2="no" text_top2="X" text_center2="없음" text_bottom2="No"

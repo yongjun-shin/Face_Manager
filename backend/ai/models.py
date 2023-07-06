@@ -1,4 +1,5 @@
 from django.db import models
+import datetime
 
 # Create your models here.
 
@@ -25,7 +26,6 @@ class MakeupText(models.Model):
     nostril = models.JSONField()
     nose_len = models.JSONField()
     face_shape = models.JSONField()
-
 
 class FaceShapeMethod(models.Model):
     shape = models.CharField(max_length=10)
@@ -71,3 +71,11 @@ class NoseMethod_nos(models.Model):
 class NoseMethod_len(models.Model):
     leng = models.CharField(max_length=10)
     nose = models.TextField()
+
+class ApplyImage(models.Model): 
+    user_id = models.CharField(max_length=10)
+    date = models.DateTimeField('apply date', default=datetime.datetime.now, null=True, blank=True)
+    image = models.ImageField(upload_to='media/post_images', null=True)
+    
+    def __str__(self):
+        return f"{self.user_id}, {self.date}, {self.image}"

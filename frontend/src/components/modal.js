@@ -1,3 +1,4 @@
+import './modal.css';
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
@@ -61,6 +62,33 @@ const Div = styled.div`
     `}
 `;
 
+export const Modal2 = (props) => {
+    // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
+    const { open, close, header } = props;
+  
+    return (
+      // 모달이 열릴때 openModal 클래스가 생성된다.
+      <div className={open ? 'openModal modal' : 'modal'}>
+        {open ? (
+          <section>
+            <header>
+              {header}
+              <button className="close" onClick={close}>
+                &times;
+              </button>
+            </header>
+            <main>{props.children}</main>
+            <footer>
+              <button className="close" onClick={close}>
+                close
+              </button>
+            </footer>
+          </section>
+        ) : null}
+      </div>
+    );
+  };
+
 
 export function Modal(props) {
     const { open, close, header, buy, price } = props;
@@ -108,13 +136,11 @@ export function Modal(props) {
         axios.post('http://127.0.0.1:8000/pricing/', data)
             .then(response => {
                 console.log('Data submitted successfully');
-                close();
+                close(1);
             })
             .catch(error => {
                 console.error('Failed to submit data:', error);
             });
-
-        close();
     };
 
     if(open === true){

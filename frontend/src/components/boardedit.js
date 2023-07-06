@@ -47,6 +47,7 @@ const BoardEdit = (props) => {
             props.setTitle(updatedData.title);
             props.setUserName(updatedData.user_name);
             props.setContent(updatedData.content);
+            // window.location = "http://localhost:3000/qna/";
           })
 
           .catch(function (error) {
@@ -54,7 +55,7 @@ const BoardEdit = (props) => {
             console.log(error);
         });
         };
-
+        console.log("edit page", props.id, props.title, props.username, props.content);
     return (
         <CreateWrapper>
             <h1 style={{fontSize: "20px", fontWeight: "bold", color: "#3A3A3A"}}>문의글 수정하기</h1>

@@ -44,6 +44,6 @@ class QnaDetail(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
     def delete(self, request, pk, format=None):
-        qna = self.get_object(pk)
+        qna = self.get_object(pk)   
         qna.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)

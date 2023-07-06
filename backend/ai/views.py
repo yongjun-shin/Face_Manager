@@ -41,6 +41,37 @@ from datetime import datetime
 import os
 import shutil
 
+from .models import ApplyImage
+from .serializers import ApplyImageSerializer
+
+class ApplyImageList(APIView):
+    def get(self, request):
+        applies = ApplyImage.objects.all()
+        
+        serializer = ApplyImageSerializer(applies, many=True)
+        return Response(serializer.data)
+
+    def post(self, request):
+        serializer = ApplyImageSerializer(
+            data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(status=status.HTTP_201_CREATED)
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+
+class ApplyImageDetail(APIView):
+    def get_object(self, pk):
+        try:
+            print(ApplyImage.objects.get(user_id=pk))
+            return ApplyImage.objects.get(user_id=pk)
+        except ApplyImage.DoesNotExist:
+            raise Http404
+        
+    def get(self, request, pk, format=None):
+        applies = self.get_object(pk)
+        serializer = ApplyImageSerializer(applies)
+        return Response(serializer.data)
+
 
 class AiResultDetail(APIView):
     def get(self, request):
@@ -98,10 +129,10 @@ class AiResultDetail(APIView):
             face_shape=q_face,
         )
         result_data = MakeupTextSerializer(result_data)
-
-        return Response(data=result_data.data, status=status.HTTP_201_CREATED)
-
-
+        
+        return Response(data = result_data.data, status=status.HTTP_201_CREATED)
+        
+        
 class AiResultList(APIView):
     def get(self, request):
         airesults = AiResult.objects.all()
@@ -371,10 +402,9 @@ def Face_Shape(img):
     pred = model.predict(img)
 
     predicted_class_idx = np.argmax(pred, axis=-1)
-    # class_dict = {0:'heart', 1:'oblong', 2:'oval', 3:'round', 4:'square'}
-    class_dict = {0: "역삼각형", 1: "긴형", 2: "계란형", 3: "둥근형", 4: "각진형"}
-    return class_dict[predicted_class_idx[0]]
-
-
-class AiDetect:
+    #class_dict = {0:'heart', 1:'oblong', 2:'oval', 3:'round', 4:'square'}
+    class_dict = {0:'역삼각형', 1:'긴형', 2:'계란형', 3:'둥근형', 4:'각진형'}
+    return(class_dict[predicted_class_idx[0]])
+    
+class AiDetect():
     print()

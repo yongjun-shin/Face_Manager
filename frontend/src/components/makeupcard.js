@@ -4,7 +4,7 @@ import styled from "styled-components";
 const TitleText = styled.div`
   color:#3A3A3A;
   font-weight: bold;
-  width:137px;
+  width:250px;
   height:70px;
   font-family:PT Serif;
   font-size:40px;
@@ -19,7 +19,7 @@ const MethodBox_Eye = styled.div`
   box-sizing: border-box;
   overflow: visible;
   width: 600px;
-  height: 725px;
+  height: 800px;
   padding: 25px;
   margin-bottom: 50px;
 `;
@@ -140,7 +140,7 @@ const MakeUpCard_Face = ({title, obj1, text1, text2, text3}) => {
       <br></br>
       <MethodBoxText2>- 블러셔 : {text2}</MethodBoxText2>
       <br></br>
-      <MethodBoxText2>- 섀딩 : {text3}</MethodBoxText2>
+      <MethodBoxText2>- 쉐딩 : {text3}</MethodBoxText2>
     </MethodBox_Face>
     </div>
   );

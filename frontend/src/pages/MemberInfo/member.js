@@ -171,7 +171,7 @@ function Skin(props) {
     if (data.length > 0) {
       props.setType(data[data.length - 1].type_list);
       localStorage.setItem('type', data[data.length - 1].type_list);
-      props.setImg(<img src={`http://127.0.0.1:8000${data[data.length-1].image}`} alt="이미지" style={{width:'150px', height:'150px'}}/>);
+      props.setImg(<img src={`http://127.0.0.1:8000${data[data.length-1].image}`} alt="이미지" style={{width:'150px', height:'150px', objectFit:'cover'}}/>);
     }
   }, [data, props.setType, props.setImg]);
 

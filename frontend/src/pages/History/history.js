@@ -44,7 +44,7 @@ function Rec() {
         ]
     } else if (type === 'dspw'){ 
         url = [
-            "https://beplaitr6500.cdn-nhncommerce.com/data/goods/20/06/27/1000000059/1000000059_detail_09.jpg",
+            "./imgs/dspw_1.jpg",
             "https://images-kr.amoremall.com/products/001251000002/001251000002_01.jpg?1655894334214&format=webp&resize=550:550&shrink=550:550",
             "https://droracle.co.kr/web/product/extra/big/202305/e248e32182f0f5a4cee4341d8fc26f3f.jpg",
         ]
@@ -156,7 +156,7 @@ function Rec() {
         ]
     } else if (type === 'ornt'){
         url = [
-            "https://beplaitr6500.cdn-nhncommerce.com/data/goods/20/09/36/1000000078/t50_1000000078_detail_025.jpg",
+            "./imgs/ornt_1.jpg",
             "./imgs/ornt_2.png",
             "https://snature.kr/web/product/big/202211/7fef6ef9806552a2cc1eff3907ab40b7.jpg",
         ]

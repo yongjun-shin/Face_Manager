@@ -10,6 +10,7 @@ from .models import LipMethod_thick
 from .models import NoseMethod_nos
 from .models import NoseMethod_len
 from .models import MakeupText
+from .models import ApplyImage
 
 admin.site.register(AiResult)
 admin.site.register(FaceShapeMethod)
@@ -20,3 +21,4 @@ admin.site.register(LipMethod_len)
 admin.site.register(LipMethod_thick)
 admin.site.register(NoseMethod_len)
 admin.site.register(MakeupText)
+admin.site.register(ApplyImage)

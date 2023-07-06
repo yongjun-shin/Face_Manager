@@ -1,11 +1,30 @@
 import React,{ useEffect, useState, useRef, useCallback} from 'react';
+import React,{ useEffect, useState, useRef, useCallback} from 'react';
 import './makeupmethod.css'
 import styled, { keyframes }  from 'styled-components';
+import {MakeUpCard_Eye, MakeUpCard_Lip, MakeUpCard_Nose, MakeUpCard_Face}  from '../../components/makeupcard.js';
 import {MakeUpCard_Eye, MakeUpCard_Lip, MakeUpCard_Nose, MakeUpCard_Face}  from '../../components/makeupcard.js';
 import { Btn_black } from "../../components/button.js";
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import axios from 'axios';
+
+function saveAsPdf() {
+  const element = document.getElementById('wrap');
+  const pdf = new jsPDF();
+  const pdfWidth = pdf.internal.pageSize.getWidth();
+  const pdfHeight = pdf.internal.pageSize.getHeight();
+  
+  html2canvas(element, { useCORS: true }).then(canvas => {
+    const imgData = canvas.toDataURL('image/png');
+    const imgWidth = pdfWidth * 0.5; // 이미지를 원하는 크기로 조정합니다.
+    const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+    pdf.addImage(imgData, 'PNG', (pdfWidth - imgWidth) / 2, (pdfHeight - imgHeight) / 2, imgWidth, imgHeight);
+    console.log(pdf);
+    pdf.save('makeup_method.pdf');
+  });
+}
 
 function Makeup() {
 
@@ -18,23 +37,10 @@ function Makeup() {
   }
   `;
 
-  const fadeInUp = keyframes`
-    0% {
-      opacity: 0;
-      transform: translate3d(0, 100%, 0);
-  }
-    to {
-      opacity: 1;
-      transform: translateZ(0);
-  }
-  `;
-
   const MainTextContainer = styled.div`
-    opacity: 0;
+    opacity: 1;
     animation: ${fadeInAnimation} 1s ease-in forwards;
   `;
-
-  const [isVisible, setIsVisible] = useState(false);
   const [imgSrc, setImgSrc] = useState('');
 
   useEffect(() => {
@@ -51,26 +57,6 @@ function Makeup() {
       });
 
   }, []); // The empty array makes sure the effect only runs once on mount
-
-
-  const pdfRef = useRef();
-  const downloadPDF = useCallback(() => {
-    const input = pdfRef.current;
-    const { offsetHeight, scrollHeight } = input;
-    html2canvas(input).then((canvas) => {
-        const imgData = canvas.toDataURL('image/png');
-        const pdf = new jsPDF('p', 'mm', 'a4', true);
-        const pdfWidth = pdf.internal.pageSize.getWidth();
-        const pdfHeight = pdf.internal.pageSize.getHeight();
-        const imgWidth = canvas.width;
-        const imgHeight = canvas.height;
-        const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
-        const imgX = (pdfWidth - imgWidth * ratio) / 2;
-        const imgY = 10;
-        pdf.addImage(imgData, 'PNG', imgX, imgY, imgWidth * ratio, imgHeight * ratio);
-        pdf.save('makeupmethod.pdf');
-    });
-  }, [pdfRef]);
 
   const [d, setData] = useState(null);
 
@@ -163,8 +149,7 @@ function Makeup() {
 
   
   return (
-    <div> 
-      <div className='wrapper' ref={pdfRef}>
+    <div className='wrapper' id='wrap'>
       <div className='container'>
       <div className="makeup-method-01">
           <span class="makeup-method-01_sub1">
@@ -173,7 +158,7 @@ function Makeup() {
           </span>
           <span class="makeup-method-01_sub2">Makeup Method</span>
       </div>
-      <MainTextContainer style={{ opacity: isVisible ? 1 : 0 }}>
+      <MainTextContainer >
       <img className='userimage' src={imgSrc} />
       </MainTextContainer>
       <div className='makeup-forme'>
@@ -265,10 +250,6 @@ function Makeup() {
 
       />      
     </div>
-    <div style={{display:'flex', justifyContent:'center', marginBottom:'300px'}}>
-      <Btn_black text={"PDF로 저장하기"} onClick={downloadPDF} style={{backgroundColor: "#3A3A3A", width: "180px", height:"50px", fontSize: "20px", fontFamily: "Noto Serif KR", borderRadius: "4.185303688049316px"}}/>
-    </div>
-  </div>
   );
 };
 

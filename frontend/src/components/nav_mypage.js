@@ -28,7 +28,9 @@ export function Nav_my() {
                     <hr style={{border:'1px solid #61594B'}}/>
                     <CustomLink style={{fontSize:'15px'}} to={'/member'} isActive={location.pathname === "/member"}>회원정보</CustomLink>
                     <hr />
-                    <CustomLink style={{fontSize:'15px'}} to={'/createimage'} isActive={location.pathname === "/createimage" || location.pathname === "/createimage_res"}>AI 이미지 생성</CustomLink>
+                    <CustomLink style={{fontSize:'15px'}} to={'/createimage'} isActive={location.pathname === "/createimage"}>AI 이미지 생성</CustomLink>
+                    <hr />
+                    <CustomLink style={{fontSize:'15px'}} to={'/createimage_res'} isActive={location.pathname === "/createimage_res"}>AI 이미지 확인</CustomLink>
                     <hr />
                     <CustomLink style={{fontSize:'15px'}} to={'/history'} isActive={location.pathname === "/history"}>히스토리</CustomLink>
                     <hr />

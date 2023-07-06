@@ -3,12 +3,19 @@ import Btn_black from '../../components/button';
 import React, { useState, useEffect } from 'react';
 import Swal from "sweetalert2";
 import Modal from '../../components/modal';
+import { useNavigate } from "react-router-dom";
 
 export function Pricing() {
     const [selectedBox, setSelectedBox] = useState('');
     const [modalOpen, setModalOpen] = useState(false);
     const [buy, setBuy] = useState('');
     const [price, setPrice] = useState('');
+    const [flg, setFlg] = useState(0);
+    const navigate = useNavigate();
+
+    const scrollToTop = () => {
+        window.scrollTo(0, 0);
+      }
 
     useEffect(() => {
         const boxElement = document.querySelector('.box.checked');
@@ -38,8 +45,16 @@ export function Pricing() {
             })
         }
     }
-    const closeModal = () => {
+    const closeModal = (val) => {
         setModalOpen(false);
+        if(val === 1){
+            setFlg(1);
+        }
+    }
+
+    if(flg === 1){
+        scrollToTop();
+        navigate('/member');
     }
 
     return (
