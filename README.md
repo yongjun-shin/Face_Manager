@@ -1,6 +1,8 @@
 # Face Manager
 
-### 프로젝트 개요
+### KT Aivle School 빅프로젝트 ( 23. 05. 30 ~ 23. 07. 06 )
+<br/><br/>
+### 😊 프로젝트 개요
 
 ---
 
@@ -16,8 +18,8 @@
 - 개인 맞춤화된 화장 법 제공
 - 효율적인 화장품 추천
 - 피부 관리 및 변화 추적
-
-### 과정
+<br/><br /><br /><br />
+### 🎢 과정
 
 ---
 
@@ -30,8 +32,8 @@
 7. 웹, AI 모델 결합
 8. 테스팅 및 수정
 9. 문서 작성 및 프로젝트 마무리
-
-### 서비스 기능
+<br/><br /><br /><br />
+### 🛠 서비스 기능
 
 ---
 
@@ -55,8 +57,8 @@
         - 화장이 적용된 이미지에 Stable Diffusion 사용하여 눈썹과 입술을 제외한 부분을 Mask로 고정 시킨 후 텍스트 명령에 맞춰 이미지 변경
 3. 화장품 추천
     - 4가지의 피부타입(유수분 밸런스, 피부 민감도, 멜라닌 색소 활성도, 피부 탄력도 및 주름)을 입력받아 결정되는 16가지의 바우만 피부타입에 기반하여 화장품 추천
-
-### 역할
+<br/><br /><br /><br />
+### 💪 역할
 
 ---
 
@@ -70,8 +72,25 @@
         
         애니메이션, swiper, modal 구현
         
+<br/><br /><br /><br />
 
-### 구현 결과 및 평가
+### 📘 Stacks
+
+---
+
+<div>
+    <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=white" />
+    <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white" />
+    <img src="https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=HTML5&logoColor=white" />
+    <img src="https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=CSS3&logoColor=white" />
+    <img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=Figma&logoColor=white" />
+    <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white" />
+    <img src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=Django&logoColor=white" />
+    <img src="https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=Tensorflow&logoColor=white" />
+</div>
+<br/><br /><br /><br />
+
+### 📈 구현 결과 및 평가
 
 ---
 
