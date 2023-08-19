@@ -6,7 +6,7 @@
 
 ---
 
-![KakaoTalk_20230705_140254051](https://github.com/yongjun-shin/Face_Manager/assets/73512218/58791f2e-7937-4824-b7a1-29430925bf4a)
+![banner](https://github.com/yongjun-shin/Face_Manager/assets/73512218/53834c46-3a93-4560-8ed3-98a9595ac518)
 
 
 - 현대사회에서 자기관리는 중요한 요소 중 하나로 인식됩니다. 특히, 화장에 대한 관심이 높아지면서 많은 사람들이 화장법과 화장품에 대한 정보를 찾고 있습니다.
@@ -94,10 +94,9 @@
 
 ---
 
-![Snipaste_2023-07-10_16-16-05](https://github.com/yongjun-shin/Face_Manager/assets/73512218/dc7ba205-c10f-4c84-b8e0-cfec784826f7)
-
-
-![KakaoTalk_20230705_141330040](https://github.com/yongjun-shin/Face_Manager/assets/73512218/e09abd15-ff5b-4035-b93e-c6499d9b2d6c)
+![home](https://github.com/yongjun-shin/Face_Manager/assets/73512218/e2dc4860-f07f-413a-b724-6d573560c963)
+![transition](https://github.com/yongjun-shin/Face_Manager/assets/73512218/411bc172-3dfb-4a75-8136-92aab80cc509)
+![method](https://github.com/yongjun-shin/Face_Manager/assets/73512218/334a6da6-88e7-4bd7-b6b0-cfea341d55dd)
 
 
 - B2C
